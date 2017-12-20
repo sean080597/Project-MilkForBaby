@@ -11,16 +11,15 @@ body {
   overflow-x: hidden; }
 
 body.sticky-footer {
-  margin-bottom: 56px; }
+  margin-bottom: 32px; }
   body.sticky-footer .content-wrapper {
-    min-height: calc(100vh - 56px - 56px); }
+    width: 82.5%; }
 
 body.fixed-nav {
   padding-top: 56px; }
 
 .content-wrapper {
-  min-height: calc(100vh - 56px);
-  padding-top: 1rem; }
+  min-height: calc(100vh - 118px);  }
 
 .scroll-to-top {
   position: fixed;
@@ -116,7 +115,7 @@ body.fixed-nav {
       -webkit-flex-direction: column;
       -ms-flex-direction: column;
       flex-direction: column;
-      margin-top: 56px; }
+      margin-top: 57px; }
       #mainNav .navbar-collapse .navbar-sidenav > .nav-item {
         width: 250px;
         padding: 0; }
@@ -160,7 +159,7 @@ body.fixed-nav {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    margin-top: calc(100vh - 56px); }
+    margin-top: calc(100vh - 47px); }
     #mainNav.fixed-top .sidenav-toggler > .nav-item {
       width: 250px;
       padding: 0; }
@@ -334,9 +333,9 @@ footer.sticky-footer {
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 56px;
+  height: 46px;
   background-color: #e9ecef;
-  line-height: 55px; }
+  line-height: 45px; }
   @media (min-width: 992px) {
     footer.sticky-footer {
       width: calc(100% - 250px); } }
@@ -346,6 +345,20 @@ footer.sticky-footer {
     width: calc(100% - 55px); } }
 
 /* Custom CSS */
+.logo {
+  background: url(../imgs/logo_bg_01.jpg) -80px -80px;
+  color: red;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: arial, helvetica;
+  width: 600px;
+  margin: 50px auto;
+  text-align: center;
+  text-shadow: 0px 1px 1px rgba(250, 250, 250, 0.3);
+}
+
 .custom-search {
   background-color: #e9ecef;
   margin: 5px -15px;

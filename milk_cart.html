@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>Milk for Baby</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -16,13 +16,17 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.min.css">
+  <link rel="stylesheet" href="css/shopping-cart.css">
 
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <div class="navbar-brand">
+        <a class="logo" href="index.html">Milk for Baby</a>
+      </div>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -164,27 +168,70 @@
         </ol>
 
         <!-- Search product -->
-        <form class="custom-form-search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
-            <div class="input-group-btn">
-              <button class="btn btn-default" type="submit">
-                <i class="fa fa-fw fa-search" aria-hidden="true"></i>
-              </button>
-            </div>
+        
+          <div class="input-group input-group-sm custom-form-search col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input type="text" class="form-control" placeholder="Enter name">
+            <span class="input-group-btn">
+              <button class="btn btn-default">Find</button>
+            </span>
           </div>
-        </form>
+        
       </div>
 
       <div class="row">
         <!-- middle content -->
           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
+            <div class="custom-mid-payment">
+              <div class="column-labels">
+                <label class="product-stt">STT</label>
+                <label class="product-id">Mã hàng</label>
+                <label class="product-name">Tên hàng</label>
+                <label class="product-unit">Đơn vị</label>
+                <label class="product-quantity">Số lượng</label>
+                <label class="product-price">Đơn giá</label>
+                <label class="product-discount">Chiết khấu</label>
+                <label class="product-removal">Remove</label>
+                <label class="product-line-price">Thành tiền</label>
+              </div>
+            </div>
+          </div><!-- End middle content -->
+
         <!-- right payment -->
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 custom-right-payment">
+            <div class="jumbotron vertical-center">
+              <div class="custom-payment-text">Thanh toán</div>
+            </div>
+
+            <div class="totals">
+              <div class="totals-item">
+                <label>Tổng tiền</label>
+                <div class="totals-value" id="cart-subtotal">0</div>
+              </div>
+              <div class="totals-item">
+                <label>VAT</label>
+                <div class="totals-value" id="cart-vat">0</div>
+              </div>
+              <div class="totals-item totals-discount">
+                <label>Chiết khấu (%)</label>
+                <div class="totals-value" id="cart-shipping">0</div>
+              </div>
+              
+              <div class="totals-item totals-item-total">
+                <label style="color: #494">Khách hàng phải trả</label>
+                <div class="totals-value" id="cart-total">0</div>
+              </div>
+              
+              <input type="number" placeholder="Nhập tiền khách đưa" class="totals-customer">
+
+              <div class="totals-item">
+                <label>Tiền thừa</label>
+                <div class="totals-value" id="cart-excess">0</div>
+              </div>
+
+              <button class="checkout">Thanh toán</button>
+            </div>
+
+          </div><!-- End right payment -->
       </div>
       
     <!-- /.container-fluid-->
@@ -233,6 +280,11 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
+
+    <!-- Add JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/custom.js"></script>
 
   </div>
 </body>
