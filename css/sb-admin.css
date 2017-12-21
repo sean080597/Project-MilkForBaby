@@ -57,14 +57,6 @@ body.fixed-nav {
 }
 
 
-/*css cho ol breadcrumb*/
-
-ol.breadcrumb {
-    border-bottom: 1px solid;
-    margin-bottom: 50px;
-}
-
-
 /*css cho nut button*/
 
 li.addnew-button {
@@ -627,7 +619,7 @@ footer.sticky-footer {
 
 .custom-search {
     background-color: #e9ecef;
-    margin: 5px -15px;
+    margin: 5px -10px;
 }
 
 .custom-form-search {

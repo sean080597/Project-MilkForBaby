@@ -95,7 +95,7 @@ label {
 
 .column-labels .product-stt {
   float: left;
-  padding: 0px 10px 0px 00px;
+  padding: 0px 10px 0px 10px;
   margin: 10px 0px 10px 0px;
 }
 
@@ -325,12 +325,13 @@ label {
   float: left;
   width: 100%;
   background-color: #e9ecef;
-  height: 421px;
+  height: 426px;
 }
 
 .custom-mid-payment {
   background-color: #e9ecef;
-  height: 465px;
+  height: 470px;
+  margin: 0px -10px;
 }
 
 .column-labels {
@@ -401,4 +402,10 @@ input[type="number"] {
     border-radius:5px;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
+}
+
+.bottom_carousel {
+  bottom: 0;
+  height: 150px;
+  position: absolute;
 }
