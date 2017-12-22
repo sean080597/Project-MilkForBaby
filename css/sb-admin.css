@@ -125,6 +125,11 @@ li.btn-li-center {
     justify-content: center;
     padding: 5px 0;
 }
+.area-addnew{
+	border-top: 1px solid;
+	margin-top: 5px;
+	padding-top: 30px;
+}
 
 .content-addnew ul li p {
     padding-top: 5px;
