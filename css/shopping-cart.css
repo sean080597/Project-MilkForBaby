@@ -404,8 +404,46 @@ input[type="number"] {
     -webkit-border-radius:5px;
 }
 
-.bottom_carousel {
+.order-product {
+  margin: 0px auto;
+  height: 270px;
+}
+
+.bottom_product {
   bottom: 0;
-  height: 150px;
+  height: 165px;
   position: absolute;
+  margin: 0px auto;
+}
+
+.bottom_product>ul {
+  list-style: none;
+  padding-left: 0px;
+  margin: 0px -7px 0px -19px;
+}
+
+.bottom_product_img_first {
+  padding: 0px 5px 0px 10px;
+}
+
+.bottom_product_img_mid {
+  padding: 0px 7px;
+}
+
+.bottom_product_img_last {
+  padding: 0px 10px 0px 5px;
+}
+
+.ratio-4-3{
+  width:100%;
+  position:relative;
+  background:url() 50% 50% no-repeat;
+  background-size:auto;
+  background-clip:content-box;
+  height: 160px;
+}
+.ratio-4-3:before{
+  display:block;
+  content:"";
+  padding-top:75%;
 }
