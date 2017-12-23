@@ -1,0 +1,32 @@
+/*Items page*/
+/*******************************/
+.btn-primary {
+	color: #fff;
+    background-color: #28a745;;
+    border-color: #28a745;;
+}
+body.sticky-footer .content-wrapper {
+    width: 95%;
+}
+
+/*btn them: canh le*/
+li.btn-add-new-item{
+    position: absolute;
+    right:30px;
+ }
+
+ a.margin-a{
+ 	margin-right: 5px;
+ }
+
+/* container-items */
+.container-items {
+    margin-top: 10px;
+    background-color:#BAE4CE;
+}
+.container-items .row{
+	margin: 1px 5px 1px 3px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
