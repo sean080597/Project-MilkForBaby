@@ -233,14 +233,14 @@
               </div>
 
               <div class="container-fluid row order-product">
-                <?php 
+                <!-- <?php 
                   $hinhanh = "";
                   $hinhanh .= $hinhanh1;
                   $hinhanh .= $hinhanh2;
                   $hinhanh .= $hinhanh3;
                   $hinhanh .= $hinhanh4;
                   echo $hinhanh;
-                ?>
+                ?> -->
               </div>
 
               <div class="container-fluid bottom_product">
