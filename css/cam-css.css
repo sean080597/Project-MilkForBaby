@@ -15,6 +15,10 @@ li.btn-add-new-item{
     right:30px;
  }
 
+ a.margin-a{
+ 	margin-right: 5px;
+ }
+
 /* container-items */
 .container-items {
     margin-top: 10px;

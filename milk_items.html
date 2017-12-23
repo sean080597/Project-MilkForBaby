@@ -47,14 +47,17 @@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
+            <span class="nav-link-text">Hàng hóa</span>
           </a>
                     <ul class="sidenav-second-level collapse" id="collapseComponents">
                         <li>
-                            <a href="navbar.html">Navbar</a>
+                            <a href="milk_items.html">Cập nhật hàng hóa</a>
                         </li>
                         <li>
-                            <a href="cards.html">Cards</a>
+                            <a href="milk_add_new.html">Thêm hàng hóa</a>
+                        </li>
+                        <li>
+                            <a href="#">Thêm loại hàng hóa</a>
                         </li>
                     </ul>
                 </li>
@@ -152,11 +155,31 @@
                 </li>
                 <li class="breadcrumb-item active">Items</li>
                 <li class="btn-add-new-item">
-                    <a href="milk_add_new.html">
-                        <button type="button" class="btn btn-outline-success btn-sm">
-                            Thêm mới
-                        </button>
-                    </a>
+                    <div class="form-inline">
+                        <a href="milk_add_new.html" class="margin-a">
+                            <button type="button" class="btn btn-outline-success btn-sm">
+                                Thêm mới
+                            </button>
+                        </a>
+                        <a href="#" class="margin-a">
+                            <button type="button" class="btn btn-outline-success btn-sm">
+                                Cập nhật
+                            </button>
+                        </a>
+                        <a href="#" class="margin-a">
+                            <button type="button" class="btn btn-outline-success btn-sm">
+                                Sửa
+                            </button>
+                        </a>
+                        <a href="#" class="margin-a">
+                            <button type="button" class="btn btn-outline-success btn-sm">
+                                Xóa
+                            </button>
+                        </a>
+                        <a href="index.html" class="text-success">
+                            Quay lại
+                        </a>
+                    </div>
                 </li>
             </ol>
             <!-- Area for Example-->
@@ -164,30 +187,30 @@
         </div>
         <!-- container-item-->
         <div class="container-items">
-            <div class="row bg-light text-muted rounded-left rounded-right">
-                <div class="col-lg-1">STT</div>
-                <div class="col-lg-4">Tên Hàng</div>
-                <div class="col-lg-2">Loại</div>
-                <div class="col-lg-2">Số lượng</div>
+            <div class="row bg-light text-muted rounded-left rounded-right ">
+                <div class="col-lg-4"><strong>Tên Hàng</strong></div>
+                <div class="col-lg-2"><strong>Loại</strong></div>
+                <div class="col-lg-2"><strong>Số lượng</strong></div>
+                <div class="col-lg-3"><strong>Tình trạng</strong></div>
             </div>
             <!--examples-->
             <div class="row bg-light text-muted rounded-left rounded-right">
-                <div class="col-lg-1">1</div>
                 <div class="col-lg-4">vinamikl</div>
                 <div class="col-lg-2">Hộp</div>
                 <div class="col-lg-2">100</div>
+                <div class="col-lg-3">Đang giao dịch</div>
             </div>
             <div class="row bg-light text-muted rounded-left rounded-right">
-                <div class="col-lg-1">1</div>
                 <div class="col-lg-4">vinamikl</div>
                 <div class="col-lg-2">Hộp</div>
                 <div class="col-lg-2">100</div>
+                <div class="col-lg-3">Đang giao dịch</div>
             </div>
             <div class="row bg-light text-muted rounded-left rounded-right">
-                <div class="col-lg-1">1</div>
                 <div class="col-lg-4">vinamikl</div>
                 <div class="col-lg-2">Hộp</div>
                 <div class="col-lg-2">100</div>
+                <div class="col-lg-3">Đang giao dịch</div>
             </div>
         </div>
         <!-- /.container-items-->
