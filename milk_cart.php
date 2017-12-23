@@ -45,6 +45,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Milk for Baby</title>
+
+  <!-- Link to CSS -->
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -55,6 +57,36 @@
   <link href="css/sb-admin.css" rel="stylesheet">
   <link rel="stylesheet" href="css/normalize.min.css">
   <link rel="stylesheet" href="css/shopping-cart.css">
+
+  <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="js/sb-admin-charts.min.js"></script>
+
+  <!-- Add JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/milk_cart.js"></script>
+
+    <script type="text/javascript">
+    jQuery(document).ready(function(){
+      jQuery('.prodlist li').hover(function(){
+        jQuery(this).find('.contentinner').stop().animate({marginTop: 0});
+      },function(){
+        jQuery(this).find('.contentinner').stop().animate({marginTop: '118px'});
+      });
+    });
+    </script>
 
 </head>
 
@@ -222,7 +254,6 @@
 
               <div class="column-labels">
                 <label class="product-stt">STT</label>
-                <label class="product-id">Mã hàng</label>
                 <label class="product-name">Tên hàng</label>
                 <label class="product-unit">Đơn vị</label>
                 <label class="product-quantity">Số lượng</label>
@@ -233,40 +264,92 @@
               </div>
 
               <div class="container-fluid row order-product">
-                <!-- <?php 
+                <?php 
                   $hinhanh = "";
                   $hinhanh .= $hinhanh1;
                   $hinhanh .= $hinhanh2;
                   $hinhanh .= $hinhanh3;
                   $hinhanh .= $hinhanh4;
                   echo $hinhanh;
-                ?> -->
+                ?>
               </div>
 
               <div class="container-fluid bottom_product">
-                <ul class="row">
+                <ul class="row prodlist">
                   <li class="col-lg-3 col-md-3 col-sm-6 bottom_product_img_first">
                     <?php 
                       echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh1.')"></div>'
                     ?>
+                    <!-- <div> -->
+                      <!-- <a href=""><img src="imgs/sua_aplus.jpg" alt="" class="img-responsive img-thumbnail ratio-4-3"></a> -->
+                    <!-- </div> -->
+
+                    <div class="content">
+                      <div class="contentinner" style="margin-top: 118px;">
+                          <div>
+                            <span class="price">$45</span>
+                            <a href="" class="title">Sony Camera</a>
+                            </div>
+                    
+                            <div class="by">By: <a href="http://w3lessons.info">w3lessons.info</a></div>
+                            <p class="desc">Your product description goes here</p>
+                        </div>
+                    </div><!--content-->
+
                   </li>
 
                   <li class="col-lg-3 col-md-3 col-sm-6 bottom_product_img_mid">
                     <?php 
                       echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh2.')"></div>'
                     ?>
+
+                    <div class="content">
+                      <div class="contentinner" style="margin-top: 118px;">
+                          <div>
+                            <span class="price">$45</span>
+                            <a href="" class="title">Sony Camera</a>
+                            </div>
+                    
+                            <div class="by">By: <a href="http://w3lessons.info">w3lessons.info</a></div>
+                            <p class="desc">Your product description goes here</p>
+                        </div>
+                    </div><!--content-->
                   </li>
 
                   <li class="col-lg-3 col-md-3 col-sm-6 bottom_product_img_mid">
                     <?php 
                       echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh3.')"></div>'
                     ?>
+
+                    <div class="content">
+                      <div class="contentinner" style="margin-top: 118px;">
+                          <div>
+                            <span class="price">$45</span>
+                            <a href="" class="title">Sony Camera</a>
+                            </div>
+                    
+                            <div class="by">By: <a href="http://w3lessons.info">w3lessons.info</a></div>
+                            <p class="desc">Your product description goes here</p>
+                        </div>
+                    </div><!--content-->
                   </li>
 
                   <li class="col-lg-3 col-md-3 col-sm-6 bottom_product_img_last">
                     <?php 
                       echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh4.')"></div>'
                     ?>
+
+                    <div class="content">
+                      <div class="contentinner" style="margin-top: 118px;">
+                          <div>
+                            <span class="price">$45</span>
+                            <a href="" class="title">Sony Camera</a>
+                            </div>
+                    
+                            <div class="by">By: <a href="http://w3lessons.info">w3lessons.info</a></div>
+                            <p class="desc">Your product description goes here</p>
+                        </div>
+                    </div><!--content-->
                   </li>
                 </ul>
               </div>
@@ -343,26 +426,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-    <!-- Custom scripts for this page-->
-    <script src="js/sb-admin-datatables.min.js"></script>
-    <script src="js/sb-admin-charts.min.js"></script>
-
-    <!-- Add JS -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/custom.js"></script>
 
   </div>
 </body>
