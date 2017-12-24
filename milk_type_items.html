@@ -14,7 +14,7 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/add_new_item.css">
+    <link rel="stylesheet" href="css/milk_items.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -151,84 +151,82 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#" class="text-success">Tổng Quan</a>
+                    <a href="#" class="bt text-success">Tổng Quan</a>
                 </li>
-                <li class="breadcrumb-item active">Thêm mới</li>
-                <li class="addnew-button">
-                    <button type="button" class="bt btn-success btn-sm">Lưu</button>
-                    <a href="milk_items.html"><button type="button" class="bt btn-outline-success btn-sm">Hủy</button></a>
+                <li class="breadcrumb-item active">Loại hàng</li>
+                <li class="btn-add-new-item">
+                    <div class="form-inline">
+                        <button type="button" class="btn btn-outline-success btn-sm" data-toggle=modal data-target=#add-type-modal>
+                            Thêm mới
+                        </button>
+                        <button type="button" class="btn btn-outline-success btn-sm">
+                            Sửa
+                        </button>
+                        <button type="button" class="btn btn-outline-success btn-sm">
+                            Xóa
+                        </button>
+                        <a href="index.html" class="text-success">
+                            Quay lại
+                        </a>
+                    </div>
                 </li>
             </ol>
-            <!-- Area Input Example-->
-            <div class="area-addnew">
-                <div class="content-addnew">
-                    <ul>
-                        <li class="right-side">
-                            <p>Tên sản phẩm</p>
-                            <input name="ipNameItem" class="input" placeholder="Tên sản phẩm" />
-                        </li>
-                        <li class="right-side">
-                            <p>Barcode.</p>
-                            <input name="ipBarcode" class="input" placeholder="Mã barcode" />
-                        </li>
-                        <li class="right-side">
-                            <p>Giá bán.</p>
-                            <input name="ipPrice" class="input" placeholder="Giá" />
-                        </li>
-                        <li class="right-side">
-                            <p>Link ảnh.</p>
-                            <input name="ipImageLink" class="input" placeholder="link" />
-                        </li>
-                        <li class="right-side">
-                            <p>Loại hàng</p>
-                            <select name="cbTypeItem" size=1 onChange="">
-                                <option value="Loại 1">loại 1</option>
-                                <option value="Loại 2">loại 2</option>
-                            </select>
-                        </li>
-                        <li class="right-side">
-                            <button type="button" class="bt btn-outline-success btn-sm" data-toggle=modal data-target=#add-type-modal>Thêm loại</button>
-                            <!--modal add type of item-->
-                            <div class="modal fade" id="add-type-modal">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-success text-light">
-                                            <h5>Thêm loại hàng hóa</h5>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <!--&times là icon entity trong html-->
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="form-horizontal">
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2">Tên</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="" placeholder="Enter name">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2">Mã</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="" placeholder="Enter code">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-success btn-sm">Thêm</button>
-                                            <button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal">Thoát</button>
-                                        </div>
+            <!-- Area for Example-->
+            <!--modal add type of item-->
+            <div class="modal fade" id="add-type-modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-light">
+                            <h5>Thêm loại hàng hóa</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <!--&times là icon entity trong html-->
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Tên</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="" placeholder="Enter name">
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="btn-li-flex-end">
-                            <button type="button" class="btn btn-success btn-sm">Lưu</button>
-                        </li>
-                    </ul>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Mã</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="" placeholder="Enter code">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success btn-sm">Thêm</button>
+                            <button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal">Thoát</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- /.container-fluid-->
         </div>
-        <!-- /.container-fluid-->
+        <!-- container-item-->
+        <div class="container-items">
+            <div class="row bg-light text-muted rounded-left rounded-right ">
+                <div class="col-lg-4"><strong>Tên loại</strong></div>
+                <div class="col-lg-4"><strong>Mã</strong></div>
+            </div>
+            <!--examples-->
+            <div class="row bg-light text-muted rounded-left rounded-right">
+                <div class="col-lg-4">Hộp</div>
+                <div class="col-lg-2">1212121212</div>
+            </div>
+            <div class="row bg-light text-muted rounded-left rounded-right">
+                <div class="col-lg-4">Hộp</div>
+                <div class="col-lg-2">1212121212</div>
+            </div>
+            <div class="row bg-light text-muted rounded-left rounded-right">
+                <div class="col-lg-4">Hộp</div>
+                <div class="col-lg-2">1212121212</div>
+            </div>
+        </div>
+        <!-- /.container-items-->
         <!-- /.content-wrapper-->
         <footer class="sticky-footer">
             <div class="container">
