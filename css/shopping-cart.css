@@ -103,7 +103,7 @@ label {
   float: left;
   padding: 0px 10px 0px 10px;
   margin: 10px 0px 10px 0px;
-  width: 79px;
+  width: 95px;
 }
 
 .column-labels .product-name {
@@ -117,7 +117,7 @@ label {
   float: left;
   padding: 0px 10px 0px 10px;
   margin: 10px 0px 10px 0px;
-  width: 88px;
+  width: 95px;
 }
 
 .column-labels .product-removal {
@@ -131,7 +131,7 @@ label {
   float: left;
   padding: 0px 0px 0px 10px;
   margin: 10px 0px 10px 0px;
-  width: 86px;
+  width: 110px;
   border-right: none;
 }
 
@@ -406,7 +406,7 @@ input[type="number"] {
 
 .order-product {
   margin: 0px auto;
-  height: 270px;
+  height: 255px;
 }
 
 .bottom_product {
@@ -469,38 +469,42 @@ input[type="number"] {
   width: 176px;
   height: 150px;
   overflow: hidden; 
+  background: transparent;
 }
 .prodlist li .contentinner { 
-  background: url("../imgs/details-product.jpg");
+  background: url("../imgs/details-product.png");
   padding: 5px 7px; 
   margin-top: 118px; 
   height: 163px; 
 }
 
-.prodlist li .title { 
+.prodlist li .prod-name { 
   color: #fff; 
   font-family:Arial,Helvetica,sans-serif; 
-  font-size: 13px; 
+  font-size: 17px; 
+  font-weight: bold;
+  margin-left: 25px;
+  display: table;
+  margin: 0px auto;
 }
 
-.prodlist li .title:hover { 
-  color: #FB9337; 
+.prodlist li .prod-name:hover { 
+  color: #8911EF; 
 }
 
-.prodlist li .price { 
-  color: #fff; 
+.prodlist li .prod-details-area { 
+  float: left;
+  width: 100%;
+}
+
+.prod-details-area button {
+  display: table;
+  margin: 10px auto 0px auto;
+}
+
+.prodlist li .prod-details { 
+  float: left;
+  color: #3c3c3c; 
   font-weight: bold; 
-  float: right; 
-}
-
-.prodlist li .by { 
-  font-size: 12px; 
-  font-style: italic; 
-  margin-top:8px; 
-}
-
-.prodlist li .desc { 
-  font-size: 12px; 
-  margin: 5px 0; 
-  line-height: 16px; 
+  margin: 10px 0px 0px 10px;
 }

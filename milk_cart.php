@@ -7,14 +7,21 @@
     echo "Failed to connect MySQL".mysqli_connect_error();
   }
 
+  $tenhh1 = $tenhh2 = $tenhh3 = $tenhh4 = "";
+  $giaban1 = $giaban2 = $giaban3 = $giaban4 = "";
+  $dvt1 = $dvt2 = $dvt3 = $dvt4 = "";
   $hinhanh1 = $hinhanh2 = $hinhanh3 = $hinhanh4 = "";
+
+  $count = 0;
 
   //collect
   if (isset($_POST['search'])) {
     $searchq = $_POST['search'];
     $searchq = preg_replace("#[^0-9a-z]#i", "", $searchq);
 
-    $query = mysqli_query($conn, "SELECT * FROM hanghoa WHERE TenHH LIKE '%$searchq%'") or die("Could not search!");
+    $sql = "SELECT * FROM hanghoa WHERE TenHH LIKE '%$searchq%'";
+
+    $query = mysqli_query($conn, $sql) or die("Could not search!");
     $count = mysqli_num_rows($query);
     if ($count == 0) {
       $hinhanh1 = "There was no search results!";
@@ -22,17 +29,30 @@
     else {
       while ($row = mysqli_fetch_array($query)) {
           if (empty($hinhanh1)) {
+            $tenhh1 = $row['TenHH'];
+            $giaban1 = $row['GiaBan'];
+            $dvt1 = $row['DVT'];
             $hinhanh1 = $row['HinhAnh'];
           }elseif (empty($hinhanh2)) {
+            $tenhh2 = $row['TenHH'];
+            $giaban2 = $row['GiaBan'];
+            $dvt2 = $row['DVT'];
             $hinhanh2 = $row['HinhAnh'];
           }elseif (empty($hinhanh3)) {
+            $tenhh3 = $row['TenHH'];
+            $giaban3 = $row['GiaBan'];
+            $dvt3 = $row['DVT'];
             $hinhanh3 = $row['HinhAnh'];
           }else {
+            $tenhh4 = $row['TenHH'];
+            $giaban4 = $row['GiaBan'];
+            $dvt4 = $row['DVT'];
             $hinhanh4 = $row['HinhAnh'];
           }
       }
     }
   }
+
 ?>
 
 <!DOCTYPE html>
@@ -108,7 +128,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="cart">
-          <a class="nav-link" href="milk_cart.html">
+          <a class="nav-link" href="milk_cart.php">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Bán hàng</span>
           </a>
@@ -264,92 +284,139 @@
               </div>
 
               <div class="container-fluid row order-product">
-                <?php 
-                  $hinhanh = "";
-                  $hinhanh .= $hinhanh1;
-                  $hinhanh .= $hinhanh2;
-                  $hinhanh .= $hinhanh3;
-                  $hinhanh .= $hinhanh4;
-                  echo $hinhanh;
-                ?>
+
               </div>
 
               <div class="container-fluid bottom_product">
                 <ul class="row prodlist">
                   <li class="col-lg-3 col-md-3 col-sm-6 bottom_product_img_first">
                     <?php 
-                      echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh1.')"></div>'
+                      if (!empty($hinhanh1)) {
+                        echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh1.')"></div>
+                        
+                        <div class="content">
+                          <div class="contentinner" style="margin-top: 118px;">
+                            <a href="" class="prod-name">'.$tenhh1.'</a>
+                            <div class="prod-details-area">
+                              <p class="prod-details">Giá:</p>
+                              <p class="prod-details">'.$giaban1.'</p>
+                              <p class="prod-details">VNĐ</p>
+                            </div>
+                            
+                            <div class="prod-details-area">
+                              <p class="prod-details">Đơn vị:</p>
+                              <p class="prod-details">'.$dvt1.'</p>
+                            </div>
+
+                            <div class="prod-details-area">
+                              <button type="submit" class="btn btn-success">Thêm</button>
+                            </div>
+                          </div>
+                        </div><!--content-->
+
+                        ';
+                      }
                     ?>
                     <!-- <div> -->
                       <!-- <a href=""><img src="imgs/sua_aplus.jpg" alt="" class="img-responsive img-thumbnail ratio-4-3"></a> -->
                     <!-- </div> -->
 
-                    <div class="content">
-                      <div class="contentinner" style="margin-top: 118px;">
-                          <div>
-                            <span class="price">$45</span>
-                            <a href="" class="title">Sony Camera</a>
-                            </div>
-                    
-                            <div class="by">By: <a href="http://w3lessons.info">w3lessons.info</a></div>
-                            <p class="desc">Your product description goes here</p>
-                        </div>
-                    </div><!--content-->
-
                   </li>
 
                   <li class="col-lg-3 col-md-3 col-sm-6 bottom_product_img_mid">
                     <?php 
-                      echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh2.')"></div>'
-                    ?>
-
-                    <div class="content">
-                      <div class="contentinner" style="margin-top: 118px;">
-                          <div>
-                            <span class="price">$45</span>
-                            <a href="" class="title">Sony Camera</a>
+                      if (empty($hinhanh2)) {
+                      }
+                      else {
+                        echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh2.')"></div>
+                        
+                        <div class="content">
+                          <div class="contentinner" style="margin-top: 118px;">
+                            <a href="" class="prod-name">'.$tenhh2.'</a>
+                            <div class="prod-details-area">
+                              <p class="prod-details">Giá:</p>
+                              <p class="prod-details">'.$giaban2.'</p>
+                              <p class="prod-details">VNĐ</p>
                             </div>
-                    
-                            <div class="by">By: <a href="http://w3lessons.info">w3lessons.info</a></div>
-                            <p class="desc">Your product description goes here</p>
-                        </div>
-                    </div><!--content-->
+                            
+                            <div class="prod-details-area">
+                              <p class="prod-details">Đơn vị:</p>
+                              <p class="prod-details">'.$dvt2.'</p>
+                            </div>
+
+                            <div class="prod-details-area">
+                              <button type="submit" class="btn btn-success">Thêm</button>
+                            </div>
+                          </div>
+                        </div><!--content-->
+
+                        ';
+                      }
+                    ?>
                   </li>
 
                   <li class="col-lg-3 col-md-3 col-sm-6 bottom_product_img_mid">
                     <?php 
-                      echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh3.')"></div>'
-                    ?>
-
-                    <div class="content">
-                      <div class="contentinner" style="margin-top: 118px;">
-                          <div>
-                            <span class="price">$45</span>
-                            <a href="" class="title">Sony Camera</a>
+                      if (empty($hinhanh3)) {
+                      }
+                      else {
+                        echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh3.')"></div>
+                        
+                        <div class="content">
+                          <div class="contentinner" style="margin-top: 118px;">
+                            <a href="" class="prod-name">'.$tenhh3.'</a>
+                            <div class="prod-details-area">
+                              <p class="prod-details">Giá:</p>
+                              <p class="prod-details">'.$giaban3.'</p>
+                              <p class="prod-details">VNĐ</p>
                             </div>
-                    
-                            <div class="by">By: <a href="http://w3lessons.info">w3lessons.info</a></div>
-                            <p class="desc">Your product description goes here</p>
-                        </div>
-                    </div><!--content-->
+                            
+                            <div class="prod-details-area">
+                              <p class="prod-details">Đơn vị:</p>
+                              <p class="prod-details">'.$dvt3.'</p>
+                            </div>
+
+                            <div class="prod-details-area">
+                              <button type="submit" class="btn btn-success">Thêm</button>
+                            </div>
+                          </div>
+                        </div><!--content-->
+
+                        ';
+                      }
+                    ?>
                   </li>
 
                   <li class="col-lg-3 col-md-3 col-sm-6 bottom_product_img_last">
                     <?php 
-                      echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh4.')"></div>'
-                    ?>
-
-                    <div class="content">
-                      <div class="contentinner" style="margin-top: 118px;">
-                          <div>
-                            <span class="price">$45</span>
-                            <a href="" class="title">Sony Camera</a>
+                      if (empty($hinhanh4)) {
+                      }
+                      else {
+                        echo '<div class="img-responsive img-thumbnail ratio-4-3" style="background-image: url('.$hinhanh4.')"></div>
+                        
+                        <div class="content">
+                          <div class="contentinner" style="margin-top: 118px;">
+                            <a href="" class="prod-name">'.$tenhh4.'</a>
+                            <div class="prod-details-area">
+                              <p class="prod-details">Giá:</p>
+                              <p class="prod-details">'.$giaban4.'</p>
+                              <p class="prod-details">VNĐ</p>
                             </div>
-                    
-                            <div class="by">By: <a href="http://w3lessons.info">w3lessons.info</a></div>
-                            <p class="desc">Your product description goes here</p>
-                        </div>
-                    </div><!--content-->
+                            
+                            <div class="prod-details-area">
+                              <p class="prod-details">Đơn vị:</p>
+                              <p class="prod-details">'.$dvt4.'</p>
+                            </div>
+
+                            <div class="prod-details-area">
+                              <button type="submit" class="btn btn-success">Thêm</button>
+                            </div>
+                          </div>
+                        </div><!--content-->
+
+                        ';
+                      }
+                    ?>
                   </li>
                 </ul>
               </div>
