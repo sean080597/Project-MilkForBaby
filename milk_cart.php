@@ -117,7 +117,10 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
+        //show product in cart
         getCartItem();
+        getTotalCustomer();
+
         function getCartItem(){
           $.ajax({
             url: 'action.php',
@@ -129,6 +132,7 @@
           });
         }
 
+        //update quantity
         $("body").delegate(".qty", "keyup click", function(event) {
           var pid = $(this).attr("pid");
           var qty = $("#qty-"+pid).val();
@@ -137,10 +141,27 @@
           var numb = price.match(/\d/g); //removed " VNĐ" converted to number
           numb = numb.join("");
 
-          var total = accounting.formatMoney(qty * numb, "", 0, ",", ".");
-          $("#total-"+pid).val(total + " VNĐ");
+          var total = qty * numb;
+          $("#total-"+pid).val(accounting.formatMoney(total, "", 0, ",", ".") + " VNĐ");
+
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {updateQuantity:1, updateId:pid, qty:qty, price:numb, total: total},
+            success: function(data){
+              $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {get_total_customer:1},
+                success: function(data){
+                  $('#cart_subtotal').html(data + " VNĐ");
+                }
+              });
+            }
+          });
         });
 
+        //remove product
         $("body").delegate(".remove", "click", function(event) {
           event.preventDefault();
           var pid = $(this).attr("remove_id");
@@ -153,8 +174,18 @@
               location.reload();
             }
           })
-          
         });
+
+        function getTotalCustomer(){
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {get_total_customer:1},
+            success: function(data){
+              $('#cart_subtotal').html(data + " VNĐ");
+            }
+          });
+        }
 
       });
     </script>
@@ -505,7 +536,7 @@
             <div class="totals">
               <div class="totals-item">
                 <label>Tổng tiền</label>
-                <div class="totals-value" id="cart-subtotal">
+                <div class="totals-value" id="cart_subtotal">
                   <?php 
                     if (isset($total)) {
                       echo number_format($total, 0, ",", ".");
