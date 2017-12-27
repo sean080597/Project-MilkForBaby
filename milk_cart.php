@@ -1,4 +1,6 @@
 <?php 
+  session_start();
+
   $conn = mysqli_connect("localhost", "LuuSean", "9704061342284595") or die("Could not connect DB");
   mysqli_select_db($conn, "milk_for_baby") or die("Could not find db!");
   mysqli_set_charset($conn, "utf8");
@@ -7,6 +9,7 @@
     echo "Failed to connect MySQL".mysqli_connect_error();
   }
 
+  $mahh1 = $mahh2 = $mahh3 = $mahh4 = "";
   $tenhh1 = $tenhh2 = $tenhh3 = $tenhh4 = "";
   $giaban1 = $giaban2 = $giaban3 = $giaban4 = "";
   $dvt1 = $dvt2 = $dvt3 = $dvt4 = "";
@@ -29,21 +32,25 @@
     else {
       while ($row = mysqli_fetch_array($query)) {
           if (empty($hinhanh1)) {
+            $mahh1 = $row['MaHH'];
             $tenhh1 = $row['TenHH'];
             $giaban1 = $row['GiaBan'];
             $dvt1 = $row['DVT'];
             $hinhanh1 = $row['HinhAnh'];
           }elseif (empty($hinhanh2)) {
+            $mahh2 = $row['MaHH'];
             $tenhh2 = $row['TenHH'];
             $giaban2 = $row['GiaBan'];
             $dvt2 = $row['DVT'];
             $hinhanh2 = $row['HinhAnh'];
           }elseif (empty($hinhanh3)) {
+            $mahh3 = $row['MaHH'];
             $tenhh3 = $row['TenHH'];
             $giaban3 = $row['GiaBan'];
             $dvt3 = $row['DVT'];
             $hinhanh3 = $row['HinhAnh'];
           }else {
+            $mahh4 = $row['MaHH'];
             $tenhh4 = $row['TenHH'];
             $giaban4 = $row['GiaBan'];
             $dvt4 = $row['DVT'];
@@ -95,17 +102,61 @@
 
   <!-- Add JS -->
     <script src="js/jquery.min.js"></script>
-    <script src="js/index.js"></script>
     <script src="js/milk_cart.js"></script>
+    <script src="js/accounting.min.js"></script>
 
     <script type="text/javascript">
-    jQuery(document).ready(function(){
-      jQuery('.prodlist li').hover(function(){
-        jQuery(this).find('.contentinner').stop().animate({marginTop: 0});
-      },function(){
-        jQuery(this).find('.contentinner').stop().animate({marginTop: '118px'});
+      $(document).ready(function(){
+        jQuery('.prodlist li').hover(function(){
+          jQuery(this).find('.contentinner').stop().animate({marginTop: 0});
+        },function(){
+          jQuery(this).find('.contentinner').stop().animate({marginTop: '118px'});
+        });
       });
-    });
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        getCartItem();
+        function getCartItem(){
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {get_cart_product:1},
+            success: function(data){
+              $('#cart_product').html(data);
+            }
+          });
+        }
+
+        $("body").delegate(".qty", "keyup click", function(event) {
+          var pid = $(this).attr("pid");
+          var qty = $("#qty-"+pid).val();
+
+          var price = $("#price-"+pid).val();
+          var numb = price.match(/\d/g); //removed " VNĐ" converted to number
+          numb = numb.join("");
+
+          var total = accounting.formatMoney(qty * numb, "", 0, ",", ".");
+          $("#total-"+pid).val(total + " VNĐ");
+        });
+
+        $("body").delegate(".remove", "click", function(event) {
+          event.preventDefault();
+          var pid = $(this).attr("remove_id");
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {removeFromCart:1, removeId:pid},
+            success: function(data){
+              alert(data);
+              location.reload();
+            }
+          })
+          
+        });
+
+      });
     </script>
 
 </head>
@@ -128,7 +179,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="cart">
-          <a class="nav-link" href="milk_cart.php">
+          <a class="nav-link" href="milk_cart.html">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Bán hàng</span>
           </a>
@@ -272,19 +323,29 @@
           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
             <div class="custom-mid-payment">
 
-              <div class="column-labels">
+              <div class="column-labels row">
                 <label class="product-stt">STT</label>
                 <label class="product-name">Tên hàng</label>
                 <label class="product-unit">Đơn vị</label>
                 <label class="product-quantity">Số lượng</label>
                 <label class="product-price">Đơn giá</label>
                 <label class="product-discount">Chiết khấu</label>
-                <label class="product-removal">Remove</label>
+                <label class="product-removal">Bỏ</label>
                 <label class="product-line-price">Thành tiền</label>
               </div>
 
-              <div class="container-fluid row order-product">
-
+              <div class="row order-product">
+                <div id="cart_product" style="width: 100%;" class="cart_product">
+                  <!--div class="product-cart row">
+                    <div class="product-name col-md-3">Ten hang</div>
+                    <div class="product-unit">Đơn vị</div>
+                    <div class="product-quantity">Số lượng</div>
+                    <div class="product-price">Đơn giá</div>
+                    <div class="product-discount">Chiết khấu</div>
+                    <div class="product-removal">Remove</div>
+                    <div class="product-line-price">Thành tiền</div>
+                  </div-->
+                </div>
               </div>
 
               <div class="container-fluid bottom_product">
@@ -309,14 +370,13 @@
                             </div>
 
                             <div class="prod-details-area">
-                              <button type="submit" class="btn btn-success">Thêm</button>
+                              <button pid="'.$mahh1.'" class="btn btn-success" id="product">Thêm</button>
                             </div>
                           </div>
-                        </div><!--content-->
-
-                        ';
+                        </div><!--content-->';
                       }
                     ?>
+
                     <!-- <div> -->
                       <!-- <a href=""><img src="imgs/sua_aplus.jpg" alt="" class="img-responsive img-thumbnail ratio-4-3"></a> -->
                     <!-- </div> -->
@@ -345,12 +405,10 @@
                             </div>
 
                             <div class="prod-details-area">
-                              <button type="submit" class="btn btn-success">Thêm</button>
+                              <button pid="'.$mahh2.'" class="btn btn-success" id="product">Thêm</button>
                             </div>
                           </div>
-                        </div><!--content-->
-
-                        ';
+                        </div><!--content-->';
                       }
                     ?>
                   </li>
@@ -377,12 +435,10 @@
                             </div>
 
                             <div class="prod-details-area">
-                              <button type="submit" class="btn btn-success">Thêm</button>
+                              <button pid="'.$mahh3.'" class="btn btn-success" id="product">Thêm</button>
                             </div>
                           </div>
-                        </div><!--content-->
-
-                        ';
+                        </div><!--content-->';
                       }
                     ?>
                   </li>
@@ -409,17 +465,33 @@
                             </div>
 
                             <div class="prod-details-area">
-                              <button type="submit" class="btn btn-success">Thêm</button>
+                              <button pid="'.$mahh4.'" class="btn btn-success" id="product">Thêm</button>
                             </div>
                           </div>
-                        </div><!--content-->
-
-                        ';
+                        </div><!--content-->';
                       }
                     ?>
                   </li>
                 </ul>
               </div>
+
+              <?php
+                echo "<script>
+                        $('body').delegate('#product', 'click', function(envent){
+                          envent.preventDefault();
+                          var p_id = $(this).attr('pid');
+                          $.ajax({
+                              url: 'action.php',
+                              method: 'POST',
+                              data: {addToProduct:1, proId:p_id},
+                              success: function(data){
+                                alert(data);
+                                location.reload();
+                              }
+                          })
+                        })
+                      </script>";
+              ?>
 
             </div>
           </div><!-- End middle content -->
@@ -433,7 +505,16 @@
             <div class="totals">
               <div class="totals-item">
                 <label>Tổng tiền</label>
-                <div class="totals-value" id="cart-subtotal">0</div>
+                <div class="totals-value" id="cart-subtotal">
+                  <?php 
+                    if (isset($total)) {
+                      echo number_format($total, 0, ",", ".");
+                    }
+                    else {
+                      echo '0';
+                    }
+                  ?>
+                </div>
               </div>
               <div class="totals-item">
                 <label>VAT</label>
@@ -495,6 +576,7 @@
     </div>
 
   </div>
+
 </body>
 
 </html>
