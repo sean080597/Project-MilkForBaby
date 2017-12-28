@@ -1,0 +1,49 @@
+body.sticky-footer .content-wrapper {
+    width: 81%;
+}
+.content-wrapper {
+	background-color: #e9ecef
+}
+.container-import>div{
+	width: 100%;
+	background-color: #FFFFFF;
+	box-sizing: border-box;
+	padding: 5px;
+	margin: 0px;
+}
+.container-total {
+    min-height: 420px;
+    display: flex;
+}
+.container-import>div{
+	padding-left: 50px;
+}
+.container-import>.form-inline>input{
+	margin-right: 50px;
+}
+#th-code{
+	width: 200px;
+}
+#th-name{
+	width: 300px;
+}
+.container-items{
+	flex-grow: 1;
+	min-height: 445px;
+}
+.table-items{
+	height:70%; 
+}
+.container-search{
+	height: 30%;
+	background-color: #A49090
+}
+.container-cal {
+	width: 25%;
+}
+.container-handle{
+	text-align: center;
+}
+.container-handle>button{
+	border: 1px solid;
+}
