@@ -66,6 +66,7 @@
 		            echo '<select class="product-discount" id="disc-'.$pro_id.'" pid="'.$pro_id.'">';
 		            	$sql_discount = "SELECT * FROM ck_hh WHERE MaHH = '$pro_id'";
 		            	$run_sql_above = mysqli_query($conn, $sql_discount);
+		            	echo '<option>---</option>';
 		            	while ($row_discount = mysqli_fetch_array($run_sql_above)){
 		            		if ($row_discount['MaLoaiKM']==1) {
 		            			echo '<option value="'.$row_discount['TienKM'].'">'.$row_discount['LuongKM'].'%</option>';
@@ -126,7 +127,7 @@
 		    $total_sum = array_sum($price_array);
 		    $total_customer += $total_sum;
 		}
-		echo number_format($total_customer, 0, ".", ",");
+		echo $total_customer;
 	}
 
 ?>

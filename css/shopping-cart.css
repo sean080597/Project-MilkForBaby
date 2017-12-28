@@ -102,8 +102,8 @@ label {
 .column-labels .product-quantity {
   padding: 10px 10px 10px 10px;
   margin: 10px 0px 10px 0px;
-  flex: 0 0 13%;
-  max-width: 13%;
+  flex: 0 0 12%;
+  max-width: 12%;
 }
 
 .column-labels .product-price {
@@ -152,19 +152,33 @@ label {
 .totals .totals-item label {
   float: left;
   clear: both;
-  width: 50%;
+  width: 35%;
   text-align: left;
   padding-left: 10px;
 }
 .totals .totals-item .totals-value {
   float: right;
-  width: 40%;
+  width: 60%;
   text-align: right;
   margin-right: 10px;
 }
+.totals .totals-item .totals-value input{
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: right;
+}
+
 .totals .totals-discount {
   border-bottom: 1px solid #c2c2c2;
 }
+.totals .totals-discount .totals-value input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: right;
+}
+
 .totals .totals-item-total {
   font-family: Gill Sans Extrabold, sans-serif;
   font-size: 19px;
@@ -343,7 +357,7 @@ label {
   border: 1px solid #b7b7b7;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  font: normal 16px/normal Tahoma, Geneva, sans-serif;
+  font: normal 17px/normal Tahoma, Geneva, sans-serif;
   color: rgba(0,142,198,1);
   -o-text-overflow: clip;
   text-overflow: clip;
@@ -417,8 +431,8 @@ label {
 .product-cart .product-quantity {
   padding: 0px 10px 0px 10px;
   margin: auto 0px auto 0px;
-  flex: 0 0 13%;
-  max-width: 13%;
+  flex: 0 0 12%;
+  max-width: 12%;
   text-align: center;
 }
 .product-cart .product-quantity input {

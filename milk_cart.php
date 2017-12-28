@@ -145,6 +145,9 @@
           numb = numb.join("");
 
           var disc = $("#disc-"+pid).val();
+          if (isNaN(disc)) {
+            disc = 0;
+          }
 
           var total = qty * (numb - disc);
           $("#total-"+pid).val(accounting.formatMoney(total, "", 0, ",", "."));
@@ -159,7 +162,10 @@
                 method: 'POST',
                 data: {get_total_customer:1},
                 success: function(data){
-                  $('#cart_subtotal').html(data + " VNĐ");
+                  $('#cart_subtotal').html(accounting.formatMoney(data, "", 0, ",", ".") + " VNĐ");
+                  var cart_vat = $('#cart-vat').val();
+                  var cart_discount = $('#cart-discount').val();
+                  $('#cart-total').val(accounting.formatMoney(data-cart_vat-cart_discount, "", 0, ",", ".") + " VNĐ");
                 }
               });
             }
@@ -188,7 +194,10 @@
             method: 'POST',
             data: {get_total_customer:1},
             success: function(data){
-              $('#cart_subtotal').html(data + " VNĐ");
+              $('#cart_subtotal').html(accounting.formatMoney(data, "", 0, ",", ".") + " VNĐ");
+              var cart_vat = $('#cart-vat').val();
+              var cart_discount = $('#cart-discount').val();
+              $('#cart-total').val(accounting.formatMoney(data-cart_vat-cart_discount, "", 0, ",", ".") + " VNĐ");
             }
           });
         }
@@ -203,6 +212,9 @@
           numb = numb.join("");
 
           var disc = $("#disc-"+pid).val();
+          if (isNaN(disc)) {
+            disc = 0;
+          }
 
           var total = qty * (numb - disc);
           $("#total-"+pid).val(accounting.formatMoney(total, "", 0, ",", "."));
@@ -217,12 +229,39 @@
                 method: 'POST',
                 data: {get_total_customer:1},
                 success: function(data){
-                  $('#cart_subtotal').html(data + " VNĐ");
+                  $('#cart_subtotal').html(accounting.formatMoney(data, "", 0, ",", ".") + " VNĐ");
+                  var cart_vat = $('#cart-vat').val();
+                  var cart_discount = $('#cart-discount').val();
+                  $('#cart-total').val(accounting.formatMoney(data-cart_vat-cart_discount, "", 0, ",", ".") + " VNĐ");
                 }
               });
             }
           });
+        });
 
+        //calculate excess money
+        $("body").delegate(".totals-customer", "keyup", function(event) {
+          var temp = $(this).val();
+          $(this).val(temp.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+          var numb1 = $(this).val().match(/\d/g);
+          numb1 = numb1.join("");
+
+          var cart_total = $("#cart-total").val();
+          var numb2 = cart_total.match(/\d/g); //removed " VNĐ" converted to number
+          numb2 = numb2.join("");
+
+          var temp = numb1 - numb2;
+          if (temp > 0) {
+            $("#cart-excess").val(accounting.formatMoney(temp, "", 0, ",", ".") + " VNĐ");
+          }else{
+            $("#cart-excess").val(0 + " VNĐ");
+          }
+        });
+
+        //checkout
+        $("body").delegate("#checkout_request", "click", function(event) {
+          
         });
 
       });
@@ -568,28 +607,36 @@
               </div>
               <div class="totals-item">
                 <label>VAT</label>
-                <div class="totals-value" id="cart-vat">0</div>
+                <div class="totals-value">
+                  <input type="number" value="0" id="cart-vat" disabled>
+                </div>
               </div>
               <div class="totals-item totals-discount">
-                <label>Chiết khấu (%)</label>
-                <div class="totals-value" id="cart-shipping">0</div>
+                <label>Chiết khấu</label>
+                <div class="totals-value">
+                  <input type="number" value="0" id="cart-discount" disabled>
+                </div>
               </div>
 
               <div class="totals-item totals-item-total">
                 <label style="color: #494">Khách hàng phải trả</label>
-                <div class="totals-value" id="cart-total">0</div>
+                <div class="totals-value">
+                  <input type="text" value="0" id="cart-total" style="color: #494;" disabled>
+                </div>
               </div>
               
               <form>
-                <input type="number" placeholder="Nhập tiền khách đưa" class="totals-customer"onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 189 ? false : true">
+                <input type="text" placeholder="Nhập tiền khách đưa" class="totals-customer" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 189 ? false : true">
               </form>
 
               <div class="totals-item">
                 <label>Tiền thừa</label>
-                <div class="totals-value" id="cart-excess">0</div>
+                <div class="totals-value">
+                  <input type="text" value="0 VNĐ" id="cart-excess" disabled>
+                </div>
               </div>
 
-              <button class="checkout">Thanh toán</button>
+              <button class="checkout" onclick="window.print()" id="checkout_request">Thanh toán</button>
             </div>
 
           </div><!-- End right payment -->
