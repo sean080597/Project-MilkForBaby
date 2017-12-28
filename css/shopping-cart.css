@@ -87,7 +87,7 @@ label {
   text-align: center;
 }
 .column-labels .product-unit {
-  padding: 0px 10px 0px 10px;
+  padding: 10px 10px 10px 10px;
   margin: 10px 0px 10px 0px;
   flex: 0 0 9%;
   max-width: 9%;
@@ -95,47 +95,47 @@ label {
 
 .column-labels .product-stt {
   float: left;
-  padding: 0px 10px 0px 0px;
+  padding: 10px 10px 10px 0px;
   margin: 10px 0px 10px 0px; 
 }
 
 .column-labels .product-quantity {
-  padding: 0px 10px 0px 10px;
+  padding: 10px 10px 10px 10px;
   margin: 10px 0px 10px 0px;
   flex: 0 0 13%;
   max-width: 13%;
 }
 
 .column-labels .product-price {
-  padding: 0px 10px 0px 10px;
+  padding: 0px 5px 0px 5px;
   margin: 10px 0px 10px 0px;
-  flex: 0 0 15%;
-  max-width: 15%;
+  flex: 0 0 14%;
+  max-width: 14%;
 }
 
 .column-labels .product-discount {
-  padding: 0px 10px 0px 10px;
+  padding: 10px 10px 10px 10px;
   margin: 10px 0px 10px 0px;
   flex: 0 0 13%;
   max-width: 13%;
 }
 
 .column-labels .product-name {
-  padding: 0px 10px 0px 10px;
+  padding: 10px 10px 10px 10px;
   margin: 10px 0px 10px 0px;
   flex: 0 0 18%;
   max-width: 18%;
 }
 
 .column-labels .product-removal {
-  padding: 0px 10px 0px 10px;
+  padding: 10px 10px 10px 10px;
   margin: 10px 0px 10px 0px;
   flex: 0 0 8%;
   max-width: 8%;
 }
 
 .column-labels .product-line-price {
-  padding: 0px 10px 0px 10px;
+  padding: 10px 10px 10px 10px;
   margin: 10px 0px 10px 0px;
   border-right: none;
   flex: 0 0 18.5%;
@@ -254,10 +254,6 @@ label {
     
   }
 
-  .product-tax {
-    
-  }
-
   .product-removal {
     width: auto;
   }
@@ -336,7 +332,8 @@ label {
 }
 
 .totals-customer {
-  display: flex;
+  display: block;
+  width: 85%;
   margin: 0px auto;
   text-align: right;
   -webkit-box-sizing: content-box;
@@ -434,8 +431,8 @@ label {
 .product-cart .product-price {
   padding: 0px 5px 0px 5px;
   margin: auto 0px auto 0px;
-  flex: 0 0 16%;
-  max-width: 16%;  
+  flex: 0 0 15%;
+  max-width: 15%;  
   text-align: center;
 }
 .product-cart .product-price input {
@@ -444,9 +441,12 @@ label {
 }
 
 .product-cart .product-discount {
-  padding: 0px 10px 0px 10px;
+  
+}
+.product-cart select{
+  padding: 0px 2px 0px 2px;
   margin: auto 0px auto 0px;
-  flex: 0 0 12.4%;
+  flex: 0 0 12.5%;
   max-width: 12.5%;
   text-align: center;
 }
@@ -468,7 +468,7 @@ label {
 }
 
 .product-cart .product-line-price {
-  padding: 0px 5px 0px 5px;
+  padding: 10px 5px 0px 5px;
   margin: auto 0px auto 0px;
   border-right: none;
   flex: 0 0 18%;

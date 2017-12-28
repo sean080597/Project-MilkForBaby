@@ -102,8 +102,9 @@
 
   <!-- Add JS -->
     <script src="js/jquery.min.js"></script>
-    <script src="js/milk_cart.js"></script>
     <script src="js/accounting.min.js"></script>
+
+    
 
     <script type="text/javascript">
       $(document).ready(function(){
@@ -112,6 +113,7 @@
         },function(){
           jQuery(this).find('.contentinner').stop().animate({marginTop: '118px'});
         });
+
       });
     </script>
 
@@ -120,6 +122,7 @@
         //show product in cart
         getCartItem();
         getTotalCustomer();
+        //updateCartTotal();
 
         function getCartItem(){
           $.ajax({
@@ -141,8 +144,10 @@
           var numb = price.match(/\d/g); //removed " VNĐ" converted to number
           numb = numb.join("");
 
-          var total = qty * numb;
-          $("#total-"+pid).val(accounting.formatMoney(total, "", 0, ",", ".") + " VNĐ");
+          var disc = $("#disc-"+pid).val();
+
+          var total = qty * (numb - disc);
+          $("#total-"+pid).val(accounting.formatMoney(total, "", 0, ",", "."));
 
           $.ajax({
             url: 'action.php',
@@ -176,6 +181,7 @@
           })
         });
 
+        //get total of customer
         function getTotalCustomer(){
           $.ajax({
             url: 'action.php',
@@ -186,6 +192,38 @@
             }
           });
         }
+
+        //calculate total when update discount
+        $("body").delegate(".product-discount", "change", function(event) {
+          var pid = $(this).attr("pid");
+          var qty = $("#qty-"+pid).val();
+
+          var price = $("#price-"+pid).val();
+          var numb = price.match(/\d/g); //removed " VNĐ" converted to number
+          numb = numb.join("");
+
+          var disc = $("#disc-"+pid).val();
+
+          var total = qty * (numb - disc);
+          $("#total-"+pid).val(accounting.formatMoney(total, "", 0, ",", "."));
+
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {updateDisc:1, pid:pid, total:total},
+            success: function(data){
+              $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {get_total_customer:1},
+                success: function(data){
+                  $('#cart_subtotal').html(data + " VNĐ");
+                }
+              });
+            }
+          });
+
+        });
 
       });
     </script>
@@ -308,18 +346,6 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0 mr-lg-2">
-            <div class="input-group">
-              <input class="form-control" type="text" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-success" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
@@ -359,10 +385,10 @@
                 <label class="product-name">Tên hàng</label>
                 <label class="product-unit">Đơn vị</label>
                 <label class="product-quantity">Số lượng</label>
-                <label class="product-price">Đơn giá</label>
+                <label class="product-price">Đơn giá (VNĐ)</label>
                 <label class="product-discount">Chiết khấu</label>
                 <label class="product-removal">Bỏ</label>
-                <label class="product-line-price">Thành tiền</label>
+                <label class="product-line-price">Thành tiền (VNĐ)</label>
               </div>
 
               <div class="row order-product">
@@ -555,13 +581,21 @@
                 <label>Chiết khấu (%)</label>
                 <div class="totals-value" id="cart-shipping">0</div>
               </div>
-              
+
               <div class="totals-item totals-item-total">
                 <label style="color: #494">Khách hàng phải trả</label>
                 <div class="totals-value" id="cart-total">0</div>
+                <script>
+                //update cart-total
+                jQuery(document).ready(function() {
+                  $('#cart_subtotal').clone().appendTo('#cart-total');
+                }
+              </script>
               </div>
               
-              <input type="number" placeholder="Nhập tiền khách đưa" class="totals-customer">
+              <form>
+                <input type="number" placeholder="Nhập tiền khách đưa" class="totals-customer"onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 189 ? false : true">
+              </form>
 
               <div class="totals-item">
                 <label>Tiền thừa</label>
