@@ -563,14 +563,7 @@
               <div class="totals-item">
                 <label>Tổng tiền</label>
                 <div class="totals-value" id="cart_subtotal">
-                  <?php 
-                    if (isset($total)) {
-                      echo number_format($total, 0, ",", ".");
-                    }
-                    else {
-                      echo '0';
-                    }
-                  ?>
+                  
                 </div>
               </div>
               <div class="totals-item">
@@ -585,12 +578,6 @@
               <div class="totals-item totals-item-total">
                 <label style="color: #494">Khách hàng phải trả</label>
                 <div class="totals-value" id="cart-total">0</div>
-                <script>
-                //update cart-total
-                jQuery(document).ready(function() {
-                  $('#cart_subtotal').clone().appendTo('#cart-total');
-                }
-              </script>
               </div>
               
               <form>
