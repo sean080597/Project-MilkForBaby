@@ -602,6 +602,11 @@ label {
   padding-left: 10px;
 }
 
+/* custom btn truncate table cart */
+.truncate_cart{
+  margin: auto 0px;
+}
+
 /* custom invoice.php */
 .invoice-items thead tr th{
   text-align: center;

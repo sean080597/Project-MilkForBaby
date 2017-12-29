@@ -137,6 +137,21 @@
           });
         }
 
+        //add to cart
+        $('body').delegate('#product', 'click', function(envent){
+          envent.preventDefault();
+          var p_id = $(this).attr('pid');
+          $.ajax({
+              url: 'action.php',
+              method: 'POST',
+              data: {addToProduct:1, proId:p_id},
+              success: function(data){
+                alert(data);
+                location.reload();
+              }
+          })
+        });
+
         //update quantity
         $("body").delegate(".qty", "keyup click", function(event) {
           var pid = $(this).attr("pid");
@@ -288,11 +303,23 @@
               method: 'POST',
               data: {check_bill: 1, sendSubtotal: numb1, sendTotal: numb2, sendTotalCustomer: numb3, sendExcess: numb4},
               success: function(data){
-                alert(data);
+                window.open('http://localhost:8888/Project-MilkForBaby/invoice.php');
               }
             });
           }
 
+        });
+
+        //truncate table cart
+        $("body").delegate("#truncate_cart", "click", function(event) {
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {truncate_cart: 1},
+            success: function(data){
+              location.reload();
+            }
+          });
         });
 
       });
@@ -435,13 +462,17 @@
         </ol>
 
         <!-- Search product -->
-        
-          <form action="milk_cart.php" method="post" class="input-group input-group-sm custom-form-search col-lg-5 col-md-5 col-sm-5 col-xs-5">
-            <input type="text" name="search" class="form-control" placeholder="Enter name">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-default">Search</button>
-            </span>
-          </form>
+        <form action="milk_cart.php" method="post" class="input-group input-group-sm custom-form-search col-lg-5 col-md-5 col-sm-5 col-xs-5">
+          <input type="text" name="search" class="form-control" placeholder="Enter name">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">Search</button>
+          </span>
+        </form>
+
+        <!-- truncate table cart -->
+        <div class="truncate_cart">
+          <a href="#" class="btn btn-danger" id="truncate_cart">Xóa giỏ hàng</a>
+        </div>
         
       </div>
 
@@ -596,25 +627,7 @@
                     ?>
                   </li>
                 </ul>
-              </div>
-
-              <?php
-                echo "<script>
-                        $('body').delegate('#product', 'click', function(envent){
-                          envent.preventDefault();
-                          var p_id = $(this).attr('pid');
-                          $.ajax({
-                              url: 'action.php',
-                              method: 'POST',
-                              data: {addToProduct:1, proId:p_id},
-                              success: function(data){
-                                alert(data);
-                                location.reload();
-                              }
-                          })
-                        })
-                      </script>";
-              ?>
+              </div>              
 
             </div>
           </div><!-- End middle content -->

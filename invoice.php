@@ -62,8 +62,8 @@
                                         <td>'.$i.'</td>
                                         <td class="text-dark">'.$_SESSION['checkout_product'][$key]['pro_name'].'</td>
                                         <td class="text-dark">'.$_SESSION['checkout_product'][$key]['pro_qty'].'</td>
-                                        <td class="text-dark">'.$_SESSION['checkout_product'][$key]['pro_price'].'</td>
-                                        <td class="text-dark">'.$_SESSION['checkout_product'][$key]['pro_total'].'</td>';
+                                        <td class="text-dark">'.number_format($_SESSION['checkout_product'][$key]['pro_price'], 0, ".", ",").' VNĐ</td>
+                                        <td class="text-dark">'.number_format($_SESSION['checkout_product'][$key]['pro_total'], 0, ".", ",").' VNĐ</td>';
                                         echo '</tr>';
                                         $i++;
                                     }

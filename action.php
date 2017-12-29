@@ -176,7 +176,12 @@
 				echo '0';
 			}
 		}
+	}
 
+	//truncate table cart
+	if (isset($_POST["truncate_cart"])) {
+		$sql = "TRUNCATE TABLE cart";
+		mysqli_query($conn, $sql);
 	}
 
 ?>
