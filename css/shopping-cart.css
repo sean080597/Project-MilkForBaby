@@ -87,8 +87,8 @@ label {
   text-align: center;
 }
 .column-labels .product-unit {
-  padding: 10px 10px 10px 10px;
-  margin: 10px 0px 10px 0px;
+  padding: 10px;
+  margin: 10px 0px;
   flex: 0 0 9%;
   max-width: 9%;
 }
@@ -96,47 +96,47 @@ label {
 .column-labels .product-stt {
   float: left;
   padding: 10px 10px 10px 0px;
-  margin: 10px 0px 10px 0px; 
+  margin: 10px 0px; 
 }
 
 .column-labels .product-quantity {
-  padding: 10px 10px 10px 10px;
-  margin: 10px 0px 10px 0px;
+  padding: 10px;
+  margin: 10px 0px;
   flex: 0 0 12%;
   max-width: 12%;
 }
 
 .column-labels .product-price {
-  padding: 0px 5px 0px 5px;
-  margin: 10px 0px 10px 0px;
+  padding: 0px 5px;
+  margin: 10px 0px;
   flex: 0 0 14%;
   max-width: 14%;
 }
 
 .column-labels .product-discount {
-  padding: 10px 10px 10px 10px;
-  margin: 10px 0px 10px 0px;
+  padding: 10px;
+  margin: 10px 0px;
   flex: 0 0 13%;
   max-width: 13%;
 }
 
 .column-labels .product-name {
-  padding: 10px 10px 10px 10px;
-  margin: 10px 0px 10px 0px;
+  padding: 10px;
+  margin: 10px 0px;
   flex: 0 0 18%;
   max-width: 18%;
 }
 
 .column-labels .product-removal {
-  padding: 10px 10px 10px 10px;
-  margin: 10px 0px 10px 0px;
+  padding: 10px;
+  margin: 10px 0px;
   flex: 0 0 8%;
   max-width: 8%;
 }
 
 .column-labels .product-line-price {
-  padding: 10px 10px 10px 10px;
-  margin: 10px 0px 10px 0px;
+  padding: 10px;
+  margin: 10px 0px;
   border-right: none;
   flex: 0 0 18.5%;
   max-width: 18.5%;
@@ -413,7 +413,7 @@ label {
 }
 
 .product-cart .product-unit {
-  padding: 0px 5px 0px 5px;
+  padding: 0px 5px;
   margin: auto 0px auto 0px;
   flex: 0 0 9%;
   max-width: 9%;
@@ -421,7 +421,7 @@ label {
 }
 
 .product-cart .product-stt {
-  padding: 0px 5px 0px 5px;
+  padding: 0px 5px;
   margin: auto 0px auto 0px;
   text-align: center;
   flex: 0 0 5.2%;
@@ -429,7 +429,7 @@ label {
 }
 
 .product-cart .product-quantity {
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px;
   margin: auto 0px auto 0px;
   flex: 0 0 12%;
   max-width: 12%;
@@ -443,7 +443,7 @@ label {
 }
 
 .product-cart .product-price {
-  padding: 0px 5px 0px 5px;
+  padding: 0px 5px;
   margin: auto 0px auto 0px;
   flex: 0 0 15%;
   max-width: 15%;  
@@ -458,7 +458,7 @@ label {
   
 }
 .product-cart select{
-  padding: 0px 2px 0px 2px;
+  padding: 0px 2px;
   margin: auto 0px auto 0px;
   flex: 0 0 12.5%;
   max-width: 12.5%;
@@ -466,7 +466,7 @@ label {
 }
 
 .product-cart .product-name {
-  padding: 0px 5px 0px 5px;
+  padding: 0px 5px;
   margin: auto 0px auto 0px;
   text-align: center;
   flex: 0 0 18%;
@@ -474,7 +474,7 @@ label {
 }
 
 .product-cart .product-removal {
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px;
   margin: auto 0px auto 3px;
   flex: 0 0 8%;
   max-width: 8%;
@@ -600,4 +600,26 @@ label {
 .cart_product {
   overflow-y: scroll;
   padding-left: 10px;
+}
+
+/* custom invoice.php */
+.invoice-items thead tr th{
+  text-align: center;
+}
+.invoice-items tbody tr td{
+  text-align: center;
+}
+
+.last_total h3{
+  margin-top: 10px;
+}
+
+.row_total {
+  width: 100%;
+}
+.row_total h4 {
+  display: inline-block;
+}
+.row_total h5 {
+  display: inline-block;
 }

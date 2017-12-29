@@ -1,6 +1,4 @@
 <?php 
-  session_start();
-
   $conn = mysqli_connect("localhost", "LuuSean", "9704061342284595") or die("Could not connect DB");
   mysqli_select_db($conn, "milk_for_baby") or die("Could not find db!");
   mysqli_set_charset($conn, "utf8");
@@ -119,10 +117,14 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
+        //check null
+        function isEmpty(value){
+          return (value == null || value.length === 0);
+        }
+
         //show product in cart
         getCartItem();
         getTotalCustomer();
-        //updateCartTotal();
 
         function getCartItem(){
           $.ajax({
@@ -162,7 +164,7 @@
                 method: 'POST',
                 data: {get_total_customer:1},
                 success: function(data){
-                  $('#cart_subtotal').html(accounting.formatMoney(data, "", 0, ",", ".") + " VNĐ");
+                  $('#cart_subtotal').val(accounting.formatMoney(data, "", 0, ",", ".") + " VNĐ");
                   var cart_vat = $('#cart-vat').val();
                   var cart_discount = $('#cart-discount').val();
                   $('#cart-total').val(accounting.formatMoney(data-cart_vat-cart_discount, "", 0, ",", ".") + " VNĐ");
@@ -194,7 +196,7 @@
             method: 'POST',
             data: {get_total_customer:1},
             success: function(data){
-              $('#cart_subtotal').html(accounting.formatMoney(data, "", 0, ",", ".") + " VNĐ");
+              $('#cart_subtotal').val(accounting.formatMoney(data, "", 0, ",", ".") + " VNĐ");
               var cart_vat = $('#cart-vat').val();
               var cart_discount = $('#cart-discount').val();
               $('#cart-total').val(accounting.formatMoney(data-cart_vat-cart_discount, "", 0, ",", ".") + " VNĐ");
@@ -229,7 +231,7 @@
                 method: 'POST',
                 data: {get_total_customer:1},
                 success: function(data){
-                  $('#cart_subtotal').html(accounting.formatMoney(data, "", 0, ",", ".") + " VNĐ");
+                  $('#cart_subtotal').val(accounting.formatMoney(data, "", 0, ",", ".") + " VNĐ");
                   var cart_vat = $('#cart-vat').val();
                   var cart_discount = $('#cart-discount').val();
                   $('#cart-total').val(accounting.formatMoney(data-cart_vat-cart_discount, "", 0, ",", ".") + " VNĐ");
@@ -255,13 +257,42 @@
           if (temp > 0) {
             $("#cart-excess").val(accounting.formatMoney(temp, "", 0, ",", ".") + " VNĐ");
           }else{
-            $("#cart-excess").val(0 + " VNĐ");
+            $("#cart-excess").val("0 VNĐ");
           }
         });
 
         //checkout
         $("body").delegate("#checkout_request", "click", function(event) {
-          
+          if (isEmpty($("#totals-customer").val())) {
+            alert("Chưa nhập tiền khách hàng đưa!");
+          }
+          else {
+            var subtotal = $("#cart_subtotal").val();
+            var numb1 = subtotal.match(/\d/g); //removed " VNĐ" converted to number
+            numb1 = numb1.join("");
+
+            var total = $("#cart-total").val();
+            var numb2 = total.match(/\d/g); //removed " VNĐ" converted to number
+            numb2 = numb2.join("");
+
+            var total_cust = document.getElementById("totals-customer").value;
+            var numb3 = total_cust.match(/\d/g); //removed " VNĐ" converted to number
+            numb3 = numb3.join("");
+
+            var total_excess = $("#cart-excess").val();
+            var numb4 = total_excess.match(/\d/g); //removed " VNĐ" converted to number
+            numb4 = numb4.join("");
+
+            $.ajax({
+              url: 'action.php',
+              method: 'POST',
+              data: {check_bill: 1, sendSubtotal: numb1, sendTotal: numb2, sendTotalCustomer: numb3, sendExcess: numb4},
+              success: function(data){
+                alert(data);
+              }
+            });
+          }
+
         });
 
       });
@@ -473,10 +504,6 @@
                       }
                     ?>
 
-                    <!-- <div> -->
-                      <!-- <a href=""><img src="imgs/sua_aplus.jpg" alt="" class="img-responsive img-thumbnail ratio-4-3"></a> -->
-                    <!-- </div> -->
-
                   </li>
 
                   <li class="col-lg-3 col-md-3 col-sm-6 bottom_product_img_mid">
@@ -601,8 +628,8 @@
             <div class="totals">
               <div class="totals-item">
                 <label>Tổng tiền</label>
-                <div class="totals-value" id="cart_subtotal">
-                  
+                <div class="totals-value">
+                  <input type="text" value="0 VNĐ" id="cart_subtotal" disabled>
                 </div>
               </div>
               <div class="totals-item">
@@ -626,7 +653,7 @@
               </div>
               
               <form>
-                <input type="text" placeholder="Nhập tiền khách đưa" class="totals-customer" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 189 ? false : true">
+                <input type="text" placeholder="Nhập tiền khách đưa" class="totals-customer" id="totals-customer" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 189 ? false : true">
               </form>
 
               <div class="totals-item">
@@ -636,7 +663,7 @@
                 </div>
               </div>
 
-              <button class="checkout" onclick="window.print()" id="checkout_request">Thanh toán</button>
+              <button class="checkout" id="checkout_request">Thanh toán</button>
             </div>
 
           </div><!-- End right payment -->

@@ -130,4 +130,53 @@
 		echo $total_customer;
 	}
 
+	//check out the bill
+	session_start();
+	if (isset($_POST["check_bill"])) {
+		$subtotal = $_POST["sendSubtotal"];
+		$total = $_POST["sendTotal"];
+		$total_customer = $_POST["sendTotalCustomer"];
+		$excess = $_POST["sendExcess"];
+
+		$array_result = array(
+			'bill_subtotal' => $subtotal,
+          	'bill_total' => $total,
+          	'bill_total_customer' => $total_customer,
+          	'bill_excess' => $excess
+		);
+		$_SESSION["checkout_total"] = $array_result;
+
+		$sql = "SELECT * FROM cart";
+		$run_query = mysqli_query($conn, $sql);
+		while ($row = mysqli_fetch_array($run_query)) {
+	      	$pro_name = $row['TenHH'];
+	      	$pro_qty = $row['qty'];
+	      	$pro_price = $row['GiaBan'];
+	      	$pro_total = $row['TongTien'];
+
+	      	if (isset($_SESSION["checkout_product"])) {
+				//$item_array_id = array_column($_SESSION["checkout_product"], "MaHH");
+				$count = count($_SESSION["checkout_product"]);
+				$array_result = array(
+					'pro_name' => $pro_name,
+					'pro_qty' => $pro_qty,
+					'pro_price' => $pro_price,
+					'pro_total' => $pro_total
+				);
+				$_SESSION["checkout_product"][$count] = $array_result;
+				echo $count;
+			}else {
+				$array_result = array(
+					'pro_name' => $pro_name,
+					'pro_qty' => $pro_qty,
+					'pro_price' => $pro_price,
+					'pro_total' => $pro_total
+				);
+				$_SESSION["checkout_product"][0] = $array_result;
+				echo '0';
+			}
+		}
+
+	}
+
 ?>
