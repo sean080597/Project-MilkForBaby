@@ -140,8 +140,8 @@
         }
 
         //add to cart
-        $('body').delegate('#product', 'click', function(envent){
-          envent.preventDefault();
+        $('body').delegate('#product', 'click', function(event){
+          event.preventDefault();
           var p_id = $(this).attr('pid');
           $.ajax({
               url: 'action.php',
@@ -278,7 +278,7 @@
           }
         });
 
-        //checkout
+        //checkout the bill
         $("body").delegate("#checkout_request", "click", function(event) {
           if (isEmpty($("#totals-customer").val())) {
             alert("Chưa nhập tiền khách hàng đưa!");

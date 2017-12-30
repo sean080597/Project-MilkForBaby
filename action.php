@@ -163,7 +163,6 @@
 					'pro_total' => $pro_total
 				);
 				$_SESSION["checkout_product"][$count] = $array_result;
-				echo $count;
 			}else {
 				$array_result = array(
 					'pro_name' => $pro_name,
@@ -172,9 +171,20 @@
 					'pro_total' => $pro_total
 				);
 				$_SESSION["checkout_product"][0] = $array_result;
-				echo '0';
 			}
 		}
+
+		//insert to table hdban
+		$pre_id = "mfb17_";
+		$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+	    for ($i = 0; $i < 6; $i++)
+	        $pre_id .= $characters[mt_rand(0, 61)];
+
+	    date_default_timezone_set("Asia/Ho_Chi_Minh");
+	    $date = date('Y-m-d H:i:s', time());
+
+		$sql = "INSERT INTO `hdban` (`MaHDB`, `NgayLap`, `ThanhTien`, `ChietKhau`, `TongThanhTien`, `MaTK`) VALUES ('$pre_id', '$date', '$subtotal', '0', '$total', NULL)";
+		$run_query = mysqli_query($conn, $sql);
 	}
 
 	//truncate table cart
@@ -183,7 +193,7 @@
 		mysqli_query($conn, $sql);
 	}
 
-	/*=========================================== * milk_items * ============================================*/
+	/*======================== * milk_items * ===============================================================*/
 	//get data from hanghoa
 	if (isset($_POST["get_info_items"])) {
 		$sql = "SELECT * FROM hanghoa, hangtonkho, loaihang WHERE hanghoa.MaHH=hangtonkho.MaHH AND hanghoa.MaLoai=loaihang.MaLoai";
@@ -203,7 +213,7 @@
 		}
 	}
 
-	/*=========================================== * milk_add_new * ============================================*/
+	/*====================== * milk_add_new * =================================================================*/
 	//get data from hanghoa
 	if (isset($_POST["get_type_items"])) {
 		$sql = "SELECT * FROM loaihang";
@@ -214,7 +224,7 @@
 		}
 		
 	}
-	/*=========================================== * milk_type_item * ============================================*/
+	/*===================== * milk_type_item * ===============================================================*/
 	//add data from hanghoa
 	if (isset($_POST["add_type_items"])) {
 		$type_name = $_POST["send_type_name"];
@@ -229,7 +239,6 @@
 
 	//add data from hanghoa
 	if (isset($_POST["add_items"])) {
-		
 		
 		//$sql = "INSERT INTO `loaihang` (`MaLoai`, `TenLoaiH`) VALUES ('$type_code', '$type_name')";
 		echo "string";

@@ -28,11 +28,11 @@
                             <div class="bill-data text-right">
                                 <p class="mb-none">
                                     <span class="text-dark">Ngày lập:</span>
-                                    <span class="value"><?php echo date("M d Y"); ?></span>
+                                    <span class="value"><?php echo date("d M Y"); ?></span>
                                 </p>
                                 <p class="mb-none">
                                     <span class="text-dark">Ngày hạn:</span>
-                                    <span class="value"><?php echo date("M d Y"); ?></span>
+                                    <span class="value"><?php echo date("d M Y"); ?></span>
                                 </p>
                                 
                              </div>
