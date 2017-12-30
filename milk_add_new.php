@@ -16,6 +16,81 @@
     <link href="css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/add_new_item.css">
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css">
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="js/sb-admin-charts.min.js"></script>
+
+  <!-- Add JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/accounting.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        
+        getTypeItems();
+
+        function getTypeItems(){
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {get_type_items:1},
+            success: function(data){
+              $('#type_items').html(data);
+            }
+          });
+        }
+
+        $("body").delegate("#btn_add_type_items", "click", function(event){
+            var type_name = $("#input_add_type_name").val();
+            var type_code = $("#input_add_type_code").val();
+
+            $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {add_type_items:1, send_type_name:type_name, send_type_code: type_code},
+            //{ten dt gui, ten tu dat:type_name,....}
+            success: function(data){
+              //$('#type_items').html(data);
+              alert(data);
+              location.reload();
+            }
+          });
+        });
+
+        $("body").delegate(".btn_save_items", "click", function(event){
+            var link = document.getElementById("link_items").href;
+            alert(link);
+            $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {add_items:1},
+            //{ten dt gui, ten tu dat:type_name,....}
+            success: function(data){
+              //$('#type_items').html(data);
+              alert(data);
+              //location.reload();
+            }
+          });
+        });
+
+      });
+    </script>
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -164,7 +239,7 @@
                 <li class="addnew-button">
                    <div class="form-inline">
                         <a href="#" class="margin-a">
-                            <button type="button" class="btn btn-outline-success btn-sm">
+                            <button type="button" class="btn btn-outline-success btn-sm btn_save_items">
                                 Lưu
                             </button>
                         </a>
@@ -194,20 +269,19 @@
                         </li>
                         <li class="right-side">
                             <p>Link ảnh.</p>
-                            <input name="ipImageLink" class="input" placeholder="link" />
+                            <input type="file" name="ipImageLink" class="input" placeholder="link" id="link_items" />
                         </li>
                         <li class="right-side">
                             <p>Loại hàng</p>
-                            <select name="cbTypeItem" size=1 onChange="">
-                                <option value="Loại 1">loại 1</option>
-                                <option value="Loại 2">loại 2</option>
+                            <select name="cbTypeItem" size=1 onChange="" id="type_items">
+                                
                             </select>
                         </li>
                         <li class="right-side">
                             <button type="button" class="bt btn-outline-success btn-sm" data-toggle=modal data-target=#add-type-modal>Thêm loại</button>
                         </li>
                         <li class="btn-li-flex-end">
-                            <button type="button" class="btn btn-success btn-sm">Lưu</button>
+                            <button type="button" class="btn btn-success btn-sm btn_save_items">Lưu</button>
                         </li>
                     </ul>
                 </div>
@@ -240,19 +314,19 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Tên</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="" placeholder="Enter name">
+                                    <input type="text" class="form-control" id="input_add_type_name" placeholder="Enter name">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Mã</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="" placeholder="Enter code">
+                                    <input type="text" class="form-control" id="input_add_type_code" placeholder="Enter code">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success btn-sm">Thêm</button>
+                        <button type="button" class="btn btn-success btn-sm" id="btn_add_type_items">Thêm</button>
                         <button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal">Thoát</button>
                     </div>
                 </div>
@@ -276,17 +350,7 @@
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-        <!-- Page level plugin JavaScript-->
-        <script src="vendor/chart.js/Chart.min.js"></script>
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin.min.js"></script>
-        <!-- Custom scripts for this page-->
-        <script src="js/sb-admin-charts.min.js"></script>
+        
     </div>
 </body>
 

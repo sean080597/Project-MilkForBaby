@@ -1,6 +1,6 @@
 <?php 
-  $conn = mysqli_connect("localhost", "root", "") or die("Could not connect DB");
-  mysqli_select_db($conn, "milk_for_baby") or die("Could not find db!");
+  $conn = mysqli_connect("localhost", "root", "", "milk_for_baby") or die("Could not connect DB");
+  //mysqli_select_db($conn, ) or die("Could not find db!");
   mysqli_set_charset($conn, "utf8");
 
   if (mysqli_connect_errno()) {
@@ -114,7 +114,6 @@
         },function(){
           jQuery(this).find('.contentinner').stop().animate({marginTop: '118px'});
         });
-
       });
     </script>
 

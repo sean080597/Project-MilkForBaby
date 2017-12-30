@@ -16,6 +16,18 @@
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        // jQuery('.prodlist li').hover(function(){
+        //   jQuery(this).find('.contentinner').stop().animate({marginTop: 0});
+        // },function(){
+        //   jQuery(this).find('.contentinner').stop().animate({marginTop: '118px'});
+        // });
+
+        alert("dsads");
+      });
+    </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">

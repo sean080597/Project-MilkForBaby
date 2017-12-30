@@ -1,6 +1,6 @@
 <?php
 
-	$conn = mysqli_connect("localhost", "LuuSean", "9704061342284595") or die("Could not connect DB");
+	$conn = mysqli_connect("localhost", "root", "") or die("Could not connect DB");
 	mysqli_select_db($conn, "milk_for_baby") or die("Could not find db!");
 	mysqli_set_charset($conn, "utf8");
 
@@ -181,6 +181,59 @@
 	if (isset($_POST["truncate_cart"])) {
 		$sql = "TRUNCATE TABLE cart";
 		mysqli_query($conn, $sql);
+	}
+
+	/*=========================================== * milk_items * ============================================*/
+	//get data from hanghoa
+	if (isset($_POST["get_info_items"])) {
+		$sql = "SELECT * FROM hanghoa, hangtonkho, loaihang WHERE hanghoa.MaHH=hangtonkho.MaHH AND hanghoa.MaLoai=loaihang.MaLoai";
+		$run_query = mysqli_query($conn, $sql);
+		while ($row = mysqli_fetch_array($run_query)) {
+			$tenhh = $row['TenHH'];
+			$tenloai = $row['TenLoaiH'];
+			$sl = $row['SoLuong'];
+			$stt = $row['TinhTrang'];
+
+			echo '<tr>
+                    <td>'.$tenhh.'</td>
+                    <td>'.$tenloai.'</td>
+                    <td>'.$sl.'</td>
+                    <td>'.$stt.'</td>
+                </tr>';
+		}
+	}
+
+	/*=========================================== * milk_add_new * ============================================*/
+	//get data from hanghoa
+	if (isset($_POST["get_type_items"])) {
+		$sql = "SELECT * FROM loaihang";
+		$run_query = mysqli_query($conn, $sql);
+		while ($row = mysqli_fetch_array($run_query)) {
+			$tenloai = $row["TenLoaiH"];
+			echo '<option value="'.$tenloai.'">'.$tenloai.'</option>';
+		}
+		
+	}
+	/*=========================================== * milk_type_item * ============================================*/
+	//add data from hanghoa
+	if (isset($_POST["add_type_items"])) {
+		$type_name = $_POST["send_type_name"];
+		$type_code = $_POST["send_type_code"];
+		
+		$sql = "INSERT INTO `loaihang` (`MaLoai`, `TenLoaiH`) VALUES ('$type_code', '$type_name')";
+		if (mysqli_query($conn, $sql)) {
+			echo 'Thêm mới loại hàng thành công';
+		}
+		
+	}
+
+	//add data from hanghoa
+	if (isset($_POST["add_items"])) {
+		
+		
+		//$sql = "INSERT INTO `loaihang` (`MaLoai`, `TenLoaiH`) VALUES ('$type_code', '$type_name')";
+		echo "string";
+		
 	}
 
 ?>
