@@ -155,7 +155,6 @@
 	      	$pro_total = $row['TongTien'];
 
 	      	if (isset($_SESSION["checkout_product"])) {
-				//$item_array_id = array_column($_SESSION["checkout_product"], "MaHH");
 				$count = count($_SESSION["checkout_product"]);
 				$array_result = array(
 					'pro_name' => $pro_name,
