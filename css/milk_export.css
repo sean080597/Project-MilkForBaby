@@ -1,0 +1,37 @@
+/*Items page*/
+/*******************************/
+
+body.sticky-footer .content-wrapper {
+    width: 95%;
+}
+
+/*btn them: canh le*/
+li.btn-add-new-item{
+    position: absolute;
+    right:30px;
+ }
+
+.form-inline button.btn.btn-outline-success.btn-sm {
+    width: 90px;
+	margin-right: 5px;
+}
+/*table*/
+.table.table-hover{
+	margin-top: 10px;
+}
+.thead{
+	background-color: #28a745;
+	color: #FFFFFF;
+}
+.code-bill{
+	width:10%;
+}
+.price{
+	width: 20% ;
+}
+.discount{
+	width: 20%;
+}
+.total-price{
+	width: 20%;
+}
