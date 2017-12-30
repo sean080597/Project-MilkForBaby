@@ -15,20 +15,20 @@ li.btn-add-new-item{
     width: 90px;
 	margin-right: 5px;
 }
-/*table*/
-.table.table-hover{
+
+/* container-items */
+.container-items{
 	margin-top: 10px;
 }
-.thead{
+.t-head{
 	background-color: #28a745;
 	color: #FFFFFF;
 }
-.code-bill{
-	width:20%;
+th.code-type-item {
+    width: 30%;
+    padding-left: 40px;
 }
-.total-price{
-	width: 30% ;
-}
-.date-bill{
-	width:40%;
+td.code-type-item {
+    width: 30%;
+    padding-left: 40px;
 }

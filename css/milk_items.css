@@ -17,13 +17,22 @@ li.btn-add-new-item{
 }
 
 /* container-items */
-.container-items {
-    margin-top: 10px;
-    background-color:#BAE4CE;
+.container-items{
+	margin-top: 10px;
 }
-.container-items .row{
-	margin: 1px 5px 1px 3px;
-	padding-top: 5px;
-	padding-bottom: 5px;
+.thead{
+	background-color: #28a745;
+	color: #FFFFFF;
 }
-
+th.name-bill {
+    width: 20%;
+}
+th.type-item{
+	width: 15% ;
+}
+th.quantity{
+	width:15%;
+}
+th.state{
+	width: 30%;
+}

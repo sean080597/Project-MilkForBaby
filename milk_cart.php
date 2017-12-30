@@ -1,5 +1,5 @@
 <?php 
-  $conn = mysqli_connect("localhost", "LuuSean", "9704061342284595") or die("Could not connect DB");
+  $conn = mysqli_connect("localhost", "root", "") or die("Could not connect DB");
   mysqli_select_db($conn, "milk_for_baby") or die("Could not find db!");
   mysqli_set_charset($conn, "utf8");
 

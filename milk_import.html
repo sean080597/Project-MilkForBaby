@@ -15,6 +15,21 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="css/milk_import.css">
+
+    <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Page level plugin JavaScript-->
+        <script src="vendor/chart.js/Chart.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin.min.js"></script>
+        <!-- Custom scripts for this page-->
+        <script src="js/sb-admin-charts.min.js"></script>
+        <script src="vendor/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+        <script src="vendor/bootstrap/js/popper.min.js"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -28,27 +43,27 @@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                     <a class="nav-link" href="index.html">
-                        <i class="fa fa-fw fa-dashboard"></i>
-                        <span class="nav-link-text">Tổng Quan</span>
-                    </a>
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Tổng Quan</span>
+          </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                     <a class="nav-link" href="charts.html">
-                        <i class="fa fa-fw fa-area-chart"></i>
-                        <span class="nav-link-text">Charts</span>
-                    </a>
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Charts</span>
+          </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                     <a class="nav-link" href="tables.html">
-                        <i class="fa fa-fw fa-table"></i>
-                        <span class="nav-link-text">Tables</span>
-                    </a>
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Tables</span>
+          </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-wrench"></i>
-                        <span class="nav-link-text">Hàng hóa</span>
-                    </a>
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Hàng hóa</span>
+          </a>
                     <ul class="sidenav-second-level collapse" id="collapseComponents">
                         <li>
                             <a href="milk_items.html">Cập nhật hàng hóa</a>
@@ -63,9 +78,9 @@
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-file"></i>
-                        <span class="nav-link-text">Example Pages</span>
-                    </a>
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">Example Pages</span>
+          </a>
                     <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                         <li>
                             <a href="login.html">Login Page</a>
@@ -83,9 +98,9 @@
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-sitemap"></i>
-                        <span class="nav-link-text">Menu Levels</span>
-                    </a>
+            <i class="fa fa-fw fa-sitemap"></i>
+            <span class="nav-link-text">Menu Levels</span>
+          </a>
                     <ul class="sidenav-second-level collapse" id="collapseMulti">
                         <li>
                             <a href="#">Second Level Item</a>
@@ -114,27 +129,34 @@
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                     <a class="nav-link" href="#">
-                        <i class="fa fa-fw fa-link"></i>
-                        <span class="nav-link-text">Link</span>
-                    </a>
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">Link</span>
+          </a>
                 </li>
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
                     <a class="nav-link text-center" id="sidenavToggler">
-                    <i class="fa fa-fw fa-angle-left"></i>
-                    </a>
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                        
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for...">
+                            <span class="input-group-btn">
+                <button class="btn btn-success" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+                        </div>
                     </form>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
                 </li>
             </ul>
         </div>
@@ -146,118 +168,63 @@
                 <li class="breadcrumb-item">
                     <a href="#" class="bt text-success">Tổng Quan</a>
                 </li>
-                <li class="breadcrumb-item active">Items</li>
+                <li class="breadcrumb-item active">Hóa đơn nhập</li>
+                <li class="btn-add-new-item">
+                    <div class="form-inline">
+                        <a href="milk_import_bills.html" class="margin-a">
+                            <button type="button" class="btn btn-outline-success btn-sm">
+                                Thêm mới
+                            </button>
+                        </a>
+                        <a href="#" class="margin-a">
+                            <button type="button" class="btn btn-outline-success btn-sm">
+                                Sửa
+                            </button>
+                        </a>
+                        <a href="#" class="margin-a">
+                            <button type="button" class="btn btn-outline-success btn-sm">
+                                Xóa
+                            </button>
+                        </a>
+                        <a href="index.html" class="text-success">
+                            Quay lại
+                        </a>
+                    </div>
+                </li>
             </ol>
             <!-- Area for Example-->
             <!-- /.container-fluid-->
         </div>
-        <div class="container-import">
-            <div class="form-inline">
-                <input class="form-control" type="text" name="code-bill" placeholder="Mã hóa đơn">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Tìm kiếm sản phẩm">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                </div>
-            </div>   
-            <div class="container-total">
-                <div class="container-items">
-                    <div class="table-items">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th id="th-code">Mã hàng hóa</th>
-                                    <th id="th-name">Tên</th>
-                                    <th>Đơn giá</th>
-                                    <th>Số lượng</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr data-toggle="modal" data-target="#modal-item">
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="modal fade" id="modal-item">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-success text-light">
-                                        <h5>Nhập hàng hóa</h5>
-                                        <button type="button" class="close" data-dismiss="modal">
-                                            &times;
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form class="form-horizontal">
-                                            <div class="form-group">
-                                                <label class="control-label col-sm-5">Mã hàng hóa</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="" value="#" readonly="true">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-sm-5">Tên</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="" value="#" readonly="true">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-sm-5">Đơn giá</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="" placeholder="nhập đơn giá">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-sm-5">Số lượng</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="" placeholder="Nhập số lượng">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-success btn-sm">
-                                        Nhập
-                                        </button>
-                                        <button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal">
-                                        Thoát
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-search">
-                    </div>
-                    </div>
-                <div class="container-cal">
-                    <form >
-                        <div class="form-group">
-                            <label class="control-label col-sm-5">Số lượng</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="" value="0" readonly="true">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5">Tổng tiền</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="" value="0" readonly="true">
-                            </div>
-                        </div>
-                    </form>
-                    <div class="container-handle">
-                        <button class="bt btn-success btn-sm">Nhập</button>
-                        <button class="bt btn-outline-success btn-sm">Thoát</button>
-                    </div>
-                </div>
-            </div>
+        <!-- container-item-->
+        <div class="container-items">
+            <table class="table table-hover">
+                <thead class="thead">
+                    <tr>
+                        <th class="code-bill">Mã hóa đơn</th>
+                        <th class="total-price">Thành Tiền</th>
+                        <th class="date-bill">Ngày nhập</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-toggle="modal" data-target="#modal-item">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#modal-item">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#modal-item">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        <!-- /.container-items-->
         <!-- /.content-wrapper-->
         <footer class="sticky-footer">
             <div class="container">
@@ -288,17 +255,7 @@
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-        <!-- Page level plugin JavaScript-->
-        <script src="vendor/chart.js/Chart.min.js"></script>
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin.min.js"></script>
-        <!-- Custom scripts for this page-->
-        <script src="js/sb-admin-charts.min.js"></script>
+
     </div>
 </body>
 

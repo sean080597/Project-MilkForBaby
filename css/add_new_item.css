@@ -2,21 +2,24 @@
 body.sticky-footer .content-wrapper {
     width: 95%;
 }
-
-/*canh vi tri cho btn them va luu*/
-li.addnew-button {
+li.addnew-button{
     position: absolute;
-    right: 30px;
-}
-li.addnew-button button{
-	border: 1px solid;
-}
+    right:30px;
+ }
 
+ li.addnew-button>.form-inline button{
+    margin-right: 10px;
+    width: 90px;
+ }
+ ol.breadcrumb {
+    background-color: #FFFFFF;
+    margin-bottom: 5px;
+ }
 /*css cho them san pham*/
 
 .content-addnew {
     width: 400px;
-    margin: 0 auto;
+    margin-left: 300px;
     /*
    canh giữa nếu có 1 block
     nhiều block thì dùng{
@@ -42,7 +45,6 @@ li.btn-li-flex-end {
 }
 .area-addnew {
     border-top: 1px solid;
-    margin-top: 5px;
     padding-top: 30px;
 }
 
