@@ -271,7 +271,7 @@
 	/*===================== * login * ===============================================================*/
 	//add data from hanghoa
 	if (isset($_POST["login_require"])) {
-		$acc = $_POST['account'];
+		$acc = mysqli_real_escape_string($conn, $_POST['account']);
 		$pass = $_POST['password'];
 		
 		$sql = "SELECT * FROM `taikhoan` WHERE MaTK='$acc' AND Passwords = '$pass'";
