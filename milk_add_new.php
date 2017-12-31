@@ -45,19 +45,22 @@
             var type_name = $("#input_add_type_name").val();
             var type_code = $("#input_add_type_code").val();
 
-            alert("here");
-
-            $.ajax({
-            url: 'action.php',
-            method: 'POST',
-            data: {add_type_items:1, send_type_name:type_name, send_type_code: type_code},
-            //{ten dt gui, ten tu dat:type_name,....}
-            success: function(data){
-              //$('#type_items').html(data);
-              alert(data);
-              location.reload();
+            if (type_name==="" || type_code==="") {
+                alert("Bạn chưa nhập đủ thông tin");
             }
-          });
+            else {
+                  $.ajax({
+                    url: 'action.php',
+                    method: 'POST',
+                    data: {add_type_items:1, send_type_name:type_name, send_type_code: type_code},
+                    //{ten dt gui, ten tu dat:type_name,....}
+                    success: function(data){
+                      //$('#type_items').html(data);
+                      alert(data);
+                      location.reload();
+                    }
+                  });
+            }
         });
 
         //event for btn save of page
@@ -68,11 +71,11 @@
             var item_price = $("#item_price").val();
             var item_unit = $("#item_unit").val();
             var type_item = $("#type_item").val();
-            // var seletedFile = document.getElementById("input_image_link");
-            // var linkImg = "http://localhost:8888/Project-MilkForBaby/imgs/"+ seletedFile.item(0).name;
-            // var nono = seletedFile.item(0).name;
+            
+            var selectedFile = document.getElementById("input_image_link");
+            var link = "http://localhost:8888/Project-MilkForBaby/imgs/" + selectedFile.files.item(0).name;
 
-
+            //if(name_item===""||barcode==="")
             $.ajax({
                 url: 'action.php',
                 method: 'POST',
@@ -80,7 +83,7 @@
                         send_name_item:name_item,
                         send_barcode: barcode,
                         send_item_price: item_price,
-                        //send_linkImg: linkImg,
+                        send_linkImg: link,
                         send_item_unit: item_unit,
                         send_type_item: type_item
                         },
@@ -246,7 +249,7 @@
                                 Lưu
                             </button>
                         </a>
-                        <a href="milk_items.html" class="margin-a">
+                        <a href="milk_items.php" class="margin-a">
                             <button type="button" class="btn btn-outline-success btn-sm">
                                 Hủy
                             </button>
@@ -258,7 +261,7 @@
             <div class="area-addnew">
                 <div class="content-addnew">
                     <form class="form-horizontal">
-                        <div class="form-inline">
+                        <div class="form-inline input_css">
                             <label class="control-label col-sm-4 text-success" for="name_item">
                             Tên sản phẩm: 
                             </label>
@@ -268,7 +271,7 @@
                                 class="form-control">
                             </div>
                         </div>
-                        <div class="form-inline">
+                        <div class="form-inline input_css">
                             <label class="control-label col-sm-4 text-success" for="barcode">
                             Mã sản phẩm: 
                             </label>
@@ -278,17 +281,17 @@
                                 class="form-control">
                             </div>
                         </div>
-                        <div class="form-inline">
+                        <div class="form-inline input_css">
                             <label class="control-label col-sm-4 text-success" for="item_price">
                             Đơn giá: 
                             </label>
                             <div class="col-sm">
-                                <input type="text" name="" id="item_price" 
-                                placeholder="Nhập giá sản phẩm"
-                                class="form-control">
+                                <form>
+                                    <input type="number" placeholder="Nhập giá sản phẩm" class="form-control" id="item_price" min="0" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 189 ? false : true">
+                                </form>
                             </div>
                         </div>
-                        <div class="form-inline">
+                        <div class="form-inline input_css">
                             <label class="control-label col-sm-4 text-success" for="item_unit">
                             Đơn vị tính:
                             </label>
@@ -298,7 +301,7 @@
                                 class="form-control">
                             </div>
                         </div>
-                        <div class="form-inline">
+                        <div class="form-inline input_css">
                             <label class="control-label col-sm-4 text-success" for="input_image_link">
                             Link ảnh:  
                             </label>
@@ -306,7 +309,7 @@
                                 <input type="file" id="input_image_link">
                             </div>
                         </div>
-                        <div class="form-inline">
+                        <div class="form-inline input_css">
                             <label class="control-label col-sm-4 text-success" for="type_item">
                             Loại hàng: 
                             </label>
@@ -317,7 +320,7 @@
                             </div>
                         </div>
                         <div class="block_btn">
-                            <button type="button" class="btn btn-success btn-sm btn_save_item" id="btn_save">Lưu</button>
+                            <button type="button" class="btn btn-success btn-sm btn_save_item " id="btn_save">Lưu</button>
                         </div>
                     </form>
                 </div>
@@ -381,7 +384,7 @@
               <div class="modal-body">Chọn "Thoát" để kết thúc phiên làm việc.</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
-                <a class="btn btn-primary" href="login.html">Thoát</a>
+                <a class="btn btn-primary" href="login.php">Thoát</a>
               </div>
             </div>
           </div>

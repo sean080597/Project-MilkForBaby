@@ -229,8 +229,7 @@
 		$name_item = $_POST["send_name_item"];
 		$item_price = $_POST["send_item_price"];
 		$item_unit = $_POST["send_item_unit"];
-		//$linkImg = $_POST["send_linkImg"];
-		$linkImg = "1";
+		$linkImg = $_POST["send_linkImg"];
 		$status = "null";
 		$type_item = $_POST["send_type_item"];
 

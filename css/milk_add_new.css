@@ -35,7 +35,7 @@ li.addnew-button{
     padding-top: 30px;
 }
 
-.form-horizontal .form-inline{
+.input_css{
     margin: 10px;
 }
 
@@ -58,7 +58,7 @@ select {
     width: 220px;
     border: 1px solid #b7b7b7;
     border-radius: 3px;
-    font: normal 13px/normal "Trebuchet MS", Helvetica, sans-serif;
+    height: 35px;
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2) inset;
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.66);
     background: rgba(252, 252, 252, 1);
