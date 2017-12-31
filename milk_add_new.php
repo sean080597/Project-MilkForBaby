@@ -35,7 +35,7 @@
             method: 'POST',
             data: {get_name_type_items:1},
             success: function(data){
-              $('#type_items').html(data);
+              $('#type_item').html(data);
             }
           });
         }
@@ -44,6 +44,8 @@
         $("body").delegate("#btn_add_type_items", "click", function(event){
             var type_name = $("#input_add_type_name").val();
             var type_code = $("#input_add_type_code").val();
+
+            alert("here");
 
             $.ajax({
             url: 'action.php',
@@ -58,21 +60,37 @@
           });
         });
 
-        //event for btn save inside modal "add type of items"
-        $("body").delegate(".btn_save_items", "click", function(event){
-            var link = document.getElementById("link_items").href;
-            alert(link);
-            $.ajax({
-            url: 'action.php',
-            method: 'POST',
-            data: {add_items:1},
-            //{ten dt gui, ten tu dat:type_name,....}
-            success: function(data){
-              alert(data);
-            }
-          });
-        });
+        //event for btn save of page
+        $("body").delegate(".btn_save_item","click",function(event){
 
+            var name_item = $("#name_item").val();
+            var barcode = $("#barcode").val();
+            var item_price = $("#item_price").val();
+            var item_unit = $("#item_unit").val();
+            var type_item = $("#type_item").val();
+            // var seletedFile = document.getElementById("input_image_link");
+            // var linkImg = "http://localhost:8888/Project-MilkForBaby/imgs/"+ seletedFile.item(0).name;
+            // var nono = seletedFile.item(0).name;
+
+
+            $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {add_new_item: 1,
+                        send_name_item:name_item,
+                        send_barcode: barcode,
+                        send_item_price: item_price,
+                        //send_linkImg: linkImg,
+                        send_item_unit: item_unit,
+                        send_type_item: type_item
+                        },
+                success: function(data){
+                    alert(data);
+                    location.reload();
+                }
+            });
+
+        });
       });
     </script>
 
@@ -124,7 +142,7 @@
                             <a href="milk_add_new.php">Thêm hàng hóa</a>
                         </li>
                         <li>
-                            <a href="milk_type_items.html">Loại hàng hóa</a>
+                            <a href="milk_type_items.php">Loại hàng hóa</a>
                         </li>
                     </ul>
                 </li>
@@ -224,7 +242,7 @@
                 <li class="addnew-button">
                    <div class="form-inline">
                         <a href="#" class="margin-a">
-                            <button type="button" class="btn btn-outline-success btn-sm btn_save_items">
+                            <button type="button" class="btn btn-success btn-sm btn_save_item">
                                 Lưu
                             </button>
                         </a>
@@ -271,6 +289,16 @@
                             </div>
                         </div>
                         <div class="form-inline">
+                            <label class="control-label col-sm-4 text-success" for="item_unit">
+                            Đơn vị tính:
+                            </label>
+                            <div class="col-sm">
+                                <input type="text" name="" id="item_unit" 
+                                placeholder="Nhập DVT"
+                                class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-inline">
                             <label class="control-label col-sm-4 text-success" for="input_image_link">
                             Link ảnh:  
                             </label>
@@ -279,17 +307,17 @@
                             </div>
                         </div>
                         <div class="form-inline">
-                            <label class="control-label col-sm-4 text-success" for="type_items">
+                            <label class="control-label col-sm-4 text-success" for="type_item">
                             Loại hàng: 
                             </label>
                             <div class="col-sm">
-                                 <select name="cbTypeItem" size=1 onChange="" id="type_items">
+                                 <select name="cbTypeItem" size=1 onChange="" id="type_item">
                                 </select>
+                                <button type="button" class="bt btn-outline-success btn-sm" data-toggle=modal data-target=#add-type-modal>Thêm loại</button>
                             </div>
                         </div>
-                        <div>
-                            <button type="button" class="bt btn-outline-success btn-sm" data-toggle=modal data-target=#add-type-modal>Thêm loại</button>
-                            <button type="button" class="btn btn-success btn-sm btn_save_items">Lưu</button>
+                        <div class="block_btn">
+                            <button type="button" class="btn btn-success btn-sm btn_save_item" id="btn_save">Lưu</button>
                         </div>
                     </form>
                 </div>

@@ -19,7 +19,7 @@ li.addnew-button{
 
 .content-addnew {
     width: 600px;
-    margin-left: 300px;
+    margin-left: 20%;
     /*
    canh giữa nếu có 1 block
     nhiều block thì dùng{
@@ -31,27 +31,39 @@ li.addnew-button{
 }
 
 .area-addnew {
-    border-top: 1px solid;
+    border-top: 3px solid #28a745;
     padding-top: 30px;
 }
 
-.content-addnew ul li p {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin: 0 4px;
+.form-horizontal .form-inline{
+    margin: 10px;
 }
 
+.form-inline .col-sm>input{
+    width: 300px;
+}
+
+button.bt.btn-outline-success.btn-sm {
+    border-style: solid;
+} 
+button.btn.btn-success.btn-sm.btn_save_item{
+    width: 90px;
+}
+
+button#btn_save {
+    margin-left: 50%;
+}
 
 select {
     width: 220px;
     border: 1px solid #b7b7b7;
     border-radius: 3px;
-    font: normal 15px/normal "Trebuchet MS", Helvetica, sans-serif;
+    font: normal 13px/normal "Trebuchet MS", Helvetica, sans-serif;
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2) inset;
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.66);
     background: rgba(252, 252, 252, 1);
     padding: 0 18px;
-    color: #838383
+    color: #838383;
 }
 
     

@@ -213,16 +213,39 @@
 	}
 
 	/*====================== * milk_add_new * =================================================================*/
-	//get data from hanghoa
+	//get type name from loaihang
 	if (isset($_POST["get_name_type_items"])) {
 		$sql = "SELECT * FROM loaihang";
 		$run_query = mysqli_query($conn, $sql);
 		while ($row = mysqli_fetch_array($run_query)) {
 			$tenloai = $row["TenLoaiH"];
 			echo '<option value="'.$tenloai.'">'.$tenloai.'</option>';
-		}
-		
+		}	
 	}
+
+	//add data to hanghoa
+	if(isset($_POST["add_new_item"])){
+		$barcode = $_POST["send_barcode"];
+		$name_item = $_POST["send_name_item"];
+		$item_price = $_POST["send_item_price"];
+		$item_unit = $_POST["send_item_unit"];
+		//$linkImg = $_POST["send_linkImg"];
+		$linkImg = "1";
+		$status = "null";
+		$type_item = $_POST["send_type_item"];
+
+		$sql1 = "SELECT * FROM `loaihang` WHERE `TenLoaiH` = '$type_item'";
+		$run_query = mysqli_query($conn, $sql1);
+		$row = mysqli_fetch_array($run_query);
+		$type_code =$row["MaLoai"];
+
+		$sql = "INSERT INTO `hanghoa`(`MaHH`, `TenHH`, `GiaBan`, `DVT`, `HinhAnh`, `TinhTrang`, `MaLoai`) VALUES ('$barcode','$name_item','$item_price','$item_unit','$linkImg','$status','$type_code')";
+		if (mysqli_query($conn, $sql)) {
+			echo 'Thêm mới loại hàng thành công';
+		}
+	}
+	
+
 	/*===================== * milk_type_item * ===============================================================*/
 	//add data from hanghoa
 	if (isset($_POST["add_type_items"])) {
