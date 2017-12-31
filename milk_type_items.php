@@ -40,7 +40,7 @@
     
     <script type="text/javascript">
       $(document).ready(function(){
-
+        //event for btn add new
         $("body").delegate("#btn_add_type_items", "click", function(event){
             var type_name = $("#input_add_type_name").val();
             var type_code = $("#input_add_type_code").val();
@@ -53,9 +53,31 @@
             success: function(data){
               //$('#type_items').html(data);
               alert(data);
+              location.reload();
             }
           });
         });
+
+        //event for btn edit
+        
+
+        //event for btn clear
+
+        //get data of items to table
+        getTypeItems();
+
+        function getTypeItems(){
+            $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data:{
+                    get_type_items:1
+                },
+                success: function(data){
+                    $('#info_type_items').html(data);
+                }
+            });
+        }
 
       });
     </script>
@@ -73,44 +95,46 @@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                     <a class="nav-link" href="index.html">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Tổng Quan</span>
-          </a>
+                     <i class="fa fa-fw fa-dashboard"></i>
+                     <span class="nav-link-text">Tổng Quan</span>
+                    </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                     <a class="nav-link" href="charts.html">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Charts</span>
-          </a>
+                        <i class="fa fa-fw fa-area-chart"></i>
+                        <span class="nav-link-text">Charts</span>
+                    </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                     <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tables</span>
-          </a>
+                        <i class="fa fa-fw fa-table"></i>
+                        <span class="nav-link-text">Tables</span>
+                    </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Hàng hóa</span>
-          </a>
+                    <a class="nav-link nav-link-collapse collapsed"
+                    data-toggle="collapse" href="#collapseComponents"
+                    data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-wrench"></i>
+                        <span class="nav-link-text">Hàng hóa</span>
+                    </a>
                     <ul class="sidenav-second-level collapse" id="collapseComponents">
                         <li>
-                            <a href="milk_items.html">Cập nhật hàng hóa</a>
+                            <a href="milk_items.php">Cập nhật hàng hóa</a>
                         </li>
                         <li>
-                            <a href="milk_add_new.html">Thêm hàng hóa</a>
+                            <a href="milk_add_new.php">Thêm hàng hóa</a>
                         </li>
                         <li>
-                            <a href="milk_type_items.html">Loại hàng hóa</a>
+                            <a href="milk_type_items.php">Loại hàng hóa</a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Example Pages</span>
-          </a>
+                        <i class="fa fa-fw fa-file"></i>
+                        <span class="nav-link-text">Example Pages</span>
+                      </a>
                     <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                         <li>
                             <a href="login.html">Login Page</a>
@@ -127,10 +151,12 @@
                     </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
-          </a>
+                    <a class="nav-link nav-link-collapse collapsed" 
+                    data-toggle="collapse" href="#collapseMulti" 
+                    data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-sitemap"></i>
+                        <span class="nav-link-text">Menu Levels</span>
+                    </a>
                     <ul class="sidenav-second-level collapse" id="collapseMulti">
                         <li>
                             <a href="#">Second Level Item</a>
@@ -159,16 +185,16 @@
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                     <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
-          </a>
+                        <i class="fa fa-fw fa-link"></i>
+                        <span class="nav-link-text">Link</span>
+                    </a>
                 </li>
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
                     <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-          </a>
+                        <i class="fa fa-fw fa-angle-left"></i>
+                    </a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -177,16 +203,18 @@
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Search for...">
                             <span class="input-group-btn">
-                <button class="btn btn-success" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
+                                <button class="btn btn-success" type="button">
+                                  <i class="fa fa-search"></i>
+                                </button>
+                            </span>
                         </div>
                     </form>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                    <i class="fa fa-fw fa-sign-out"></i>
+                    Logout
+                    </a>
                 </li>
             </ul>
         </div>
@@ -227,12 +255,7 @@
                         <th class="name-type-item">Tên Loại</th>
                     </tr>   
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="code-type-item">1</td>
-                        <td>2</td>
-                    </tr>
-
+                <tbody id="info_type_items">
                 </tbody>
             </table>
         </div>

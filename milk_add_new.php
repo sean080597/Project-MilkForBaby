@@ -14,7 +14,7 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/add_new_item.css">
+    <link rel="stylesheet" type="text/css" href="css/milk_add_new.css">
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css">
 
     <!-- Bootstrap core JavaScript-->
@@ -41,20 +41,21 @@
 
     <script type="text/javascript">
       $(document).ready(function(){
-        
+        //add data for select "type items"
         getTypeItems();
 
         function getTypeItems(){
           $.ajax({
             url: 'action.php',
             method: 'POST',
-            data: {get_type_items:1},
+            data: {get_name_type_items:1},
             success: function(data){
               $('#type_items').html(data);
             }
           });
         }
 
+        //event for btn add new type
         $("body").delegate("#btn_add_type_items", "click", function(event){
             var type_name = $("#input_add_type_name").val();
             var type_code = $("#input_add_type_code").val();
@@ -72,6 +73,7 @@
           });
         });
 
+        //event for btn save inside modal "add type of items"
         $("body").delegate(".btn_save_items", "click", function(event){
             var link = document.getElementById("link_items").href;
             alert(link);
@@ -81,9 +83,7 @@
             data: {add_items:1},
             //{ten dt gui, ten tu dat:type_name,....}
             success: function(data){
-              //$('#type_items').html(data);
               alert(data);
-              //location.reload();
             }
           });
         });
@@ -254,36 +254,59 @@
             <!-- Area Input Example-->
             <div class="area-addnew">
                 <div class="content-addnew">
-                    <ul>
-                        <li class="right-side">
-                            <p>Tên sản phẩm</p>
-                            <input name="ipNameItem" class="input" placeholder="Tên sản phẩm" />
-                        </li>
-                        <li class="right-side">
-                            <p>Barcode.</p>
-                            <input name="ipBarcode" class="input" placeholder="Mã barcode" />
-                        </li>
-                        <li class="right-side">
-                            <p>Giá bán.</p>
-                            <input name="ipPrice" class="input" placeholder="Giá" />
-                        </li>
-                        <li class="right-side">
-                            <p>Link ảnh.</p>
-                            <input type="file" name="ipImageLink" class="input" placeholder="link" id="link_items" />
-                        </li>
-                        <li class="right-side">
-                            <p>Loại hàng</p>
-                            <select name="cbTypeItem" size=1 onChange="" id="type_items">
-                                
-                            </select>
-                        </li>
-                        <li class="right-side">
+                    <form class="form-horizontal">
+                        <div class="form-inline">
+                            <label class="control-label col-sm-4 text-success" for="name_item">
+                            Tên sản phẩm: 
+                            </label>
+                            <div class="col-sm">
+                                <input type="text" name="" id="name_item" 
+                                placeholder="Nhập tên sản phẩm"
+                                class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-inline">
+                            <label class="control-label col-sm-4 text-success" for="barcode">
+                            Mã sản phẩm: 
+                            </label>
+                            <div class="col-sm">
+                                <input type="text" name="" id="barcode" 
+                                placeholder="Nhập mã sản phẩm"
+                                class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-inline">
+                            <label class="control-label col-sm-4 text-success" for="item_price">
+                            Đơn giá: 
+                            </label>
+                            <div class="col-sm">
+                                <input type="text" name="" id="item_price" 
+                                placeholder="Nhập giá sản phẩm"
+                                class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-inline">
+                            <label class="control-label col-sm-4 text-success" for="input_image_link">
+                            Link ảnh:  
+                            </label>
+                            <div class="col-sm">
+                                <input type="file" id="input_image_link">
+                            </div>
+                        </div>
+                        <div class="form-inline">
+                            <label class="control-label col-sm-4 text-success" for="type_items">
+                            Loại hàng: 
+                            </label>
+                            <div class="col-sm">
+                                 <select name="cbTypeItem" size=1 onChange="" id="type_items">
+                                </select>
+                            </div>
+                        </div>
+                        <div>
                             <button type="button" class="bt btn-outline-success btn-sm" data-toggle=modal data-target=#add-type-modal>Thêm loại</button>
-                        </li>
-                        <li class="btn-li-flex-end">
                             <button type="button" class="btn btn-success btn-sm btn_save_items">Lưu</button>
-                        </li>
-                    </ul>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

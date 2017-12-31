@@ -91,13 +91,13 @@
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseComponents">
                         <li>
-                            <a href="milk_items.html">Cập nhật hàng hóa</a>
+                            <a href="milk_items.php">Cập nhật hàng hóa</a>
                         </li>
                         <li>
-                            <a href="milk_add_new.html">Thêm hàng hóa</a>
+                            <a href="milk_add_new.php">Thêm hàng hóa</a>
                         </li>
                         <li>
-                            <a href="milk_type_items.html">Loại hàng hóa</a>
+                            <a href="milk_type_items.php">Loại hàng hóa</a>
                         </li>
                     </ul>
                 </li>
@@ -193,10 +193,10 @@
                 <li class="breadcrumb-item">
                     <a href="#" class="bt text-success">Tổng Quan</a>
                 </li>
-                <li class="breadcrumb-item active">Items</li>
+                <li class="breadcrumb-item active">Hàng hóa</li>
                 <li class="btn-add-new-item">
                     <div class="form-inline">
-                        <a href="milk_add_new.html" class="margin-a">
+                        <a href="milk_add_new.php" class="margin-a">
                             <button type="button" class="btn btn-outline-success btn-sm">
                                 Thêm mới
                             </button>

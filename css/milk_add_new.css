@@ -18,7 +18,7 @@ li.addnew-button{
 /*css cho them san pham*/
 
 .content-addnew {
-    width: 400px;
+    width: 600px;
     margin-left: 300px;
     /*
    canh giữa nếu có 1 block
@@ -29,20 +29,7 @@ li.addnew-button{
   
   */
 }
-li.right-side {
-    display: flex;
-    justify-content: flex-end;
-    padding: 5px 0;
-}
-li.right-side button{
-	border: 1px solid;
-}
 
-li.btn-li-flex-end {
-    display: flex;
-    justify-content: flex-end;
-    padding: 5px 0;
-}
 .area-addnew {
     border-top: 1px solid;
     padding-top: 30px;
@@ -54,24 +41,8 @@ li.btn-li-flex-end {
     margin: 0 4px;
 }
 
-.content-addnew ul li input.input {
-    display: inline-block;
-    box-sizing: content-box;
-    padding: 10px 20px;
-    border: 1px solid #b7b7b7;
-    border-radius: 3px;
-    font: normal 15px/normal "Trebuchet MS", Helvetica, sans-serif;
-    color: #28a745;
-    text-overflow: clip;
-    letter-spacing: 1px;
-    background: rgba(252, 252, 252, 1);
-    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2) inset;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.66);
-    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-}
 
-
-.content-addnew ul li select {
+select {
     width: 220px;
     border: 1px solid #b7b7b7;
     border-radius: 3px;
@@ -83,6 +54,4 @@ li.btn-li-flex-end {
     color: #838383
 }
 
-li.right-side .modal-dialog .modal-content button{
-	border: none;
-}
+    
