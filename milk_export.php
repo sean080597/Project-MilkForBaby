@@ -17,19 +17,36 @@
     <link rel="stylesheet" href="css/milk_export.css">
 
     <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-        <!-- Page level plugin JavaScript-->
-        <script src="vendor/chart.js/Chart.min.js"></script>
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin.min.js"></script>
-        <!-- Custom scripts for this page-->
-        <script src="js/sb-admin-charts.min.js"></script>
-        <script src="vendor/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-        <script src="vendor/bootstrap/js/popper.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-charts.min.js"></script>
+    <script src="vendor/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        getBillDetails();
+        function getBillDetails(){
+            $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {get_bill_details:1},
+                success: function(data){
+                    $("#bill_details").html(data);
+                }
+            });
+        }
+      });
+    </script>
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -192,7 +209,7 @@
         </div>
         <!-- container-item-->
         <div class="container-items">
-            <table class="table table-hover">
+            <table class="table table-hover table-striped bill_details">
                 <thead class="thead">
                     <tr>
                         <th class="code-bill">Mã hóa đơn</th>
@@ -202,14 +219,14 @@
                         <th class="date-bill">Ngày nhập</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr data-toggle="modal" data-target="#modal-item">
+                <tbody id="bill_details">
+                    <!-- <tr data-toggle="modal" data-target="#modal-item">
                         <td>1</td>
                         <td>2</td>
                         <td>3</td>
                         <td>4</td>
                         <td>5</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -218,7 +235,7 @@
         <footer class="sticky-footer">
             <div class="container">
                 <div class="text-center">
-                    <small>Copyright © Your Website 2017</small>
+                    <small>Copyright © Milk for Baby 2017</small>
                 </div>
             </div>
         </footer>

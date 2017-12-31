@@ -1,10 +1,6 @@
 /*Items page*/
 /*******************************/
 
-body.sticky-footer .content-wrapper {
-    width: 95%;
-}
-
 /*btn them: canh le*/
 li.btn-add-new-item{
     position: absolute;
@@ -15,6 +11,7 @@ li.btn-add-new-item{
     width: 90px;
 	margin-right: 5px;
 }
+
 /*table*/
 .table.table-hover{
 	margin-top: 10px;
@@ -23,15 +20,26 @@ li.btn-add-new-item{
 	background-color: #28a745;
 	color: #FFFFFF;
 }
-.code-bill{
-	width:10%;
+
+.container-items{
+	width: 100%;
 }
-.price{
-	width: 20% ;
+
+.code-bill {
+	width: 15%;
 }
-.discount{
+
+.price, .discount, .total-price{
 	width: 20%;
 }
-.total-price{
-	width: 20%;
+
+.date-bill{
+	width: auto;
+}
+
+.bill_details tbody td {
+	text-align: center;
+}
+.bill_details thead th {
+	text-align: center;
 }

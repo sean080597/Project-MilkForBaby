@@ -245,4 +245,28 @@
 		
 	}
 
+	/*===================== * milk_export * ===============================================================*/
+	//add data from hanghoa
+	if (isset($_POST["get_bill_details"])) {
+		$sql = "SELECT * FROM `hdban`";
+		$run_query = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($run_query) > 0) {
+			while ($row = mysqli_fetch_array($run_query)) {
+			    $billId = $row['MaHDB'];
+			    $day = $row['NgayLap'];
+			    $subtotal = $row['ThanhTien'];
+			    $total = $row['TongThanhTien'];
+			    $discount = $row['ChietKhau'];
+
+			    echo '<tr data-toggle="modal" data-target="#modal-item">
+                        <td>'.$billId.'</td>
+                        <td>'.number_format($subtotal, 0, ".", ",").' VNĐ</td>
+                        <td>'.$discount.'</td>
+                        <td>'.number_format($total, 0, ".", ",").' VNĐ</td>
+                        <td>'.$day.'</td>
+                    </tr>';
+			}
+		}
+	}
+
 ?>
