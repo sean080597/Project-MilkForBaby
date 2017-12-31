@@ -14,6 +14,7 @@
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -117,7 +118,7 @@
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
-          <a class="nav-link text-center" id="sidenavToggler">
+          <a class="nav-link text-center" id="sidenavToggler" >
             <i class="fa fa-fw fa-angle-left"></i>
           </a>
         </li>

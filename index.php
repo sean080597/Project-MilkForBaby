@@ -34,7 +34,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <div class="navbar-brand">
-            <a class="logo" href="index.html">Milk for Baby</a>
+            <a class="logo" href="index.php">Milk for Baby</a>
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,13 +42,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="index.php">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Tổng Quan</span>
           </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="cart">
-                    <a class="nav-link" href="milk_cart.html">
+                    <a class="nav-link" href="milk_cart.php">
             <i class="fa fa-fw fa-cart-plus"></i>
             <span class="nav-link-text">Bán hàng</span>
           </a>
@@ -162,7 +162,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            <i class="fa fa-fw fa-sign-out"></i>Đăng xuất</a>
                 </li>
             </ul>
         </div>
