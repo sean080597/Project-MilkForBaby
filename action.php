@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	$conn = mysqli_connect("localhost", "root", "") or die("Could not connect DB");
 	mysqli_select_db($conn, "milk_for_baby") or die("Could not find db!");
 	mysqli_set_charset($conn, "utf8");
@@ -131,7 +131,6 @@
 	}
 
 	//check out the bill
-	session_start();
 	if (isset($_POST["check_bill"])) {
 		$subtotal = $_POST["sendSubtotal"];
 		$total = $_POST["sendTotal"];
@@ -282,6 +281,29 @@
                         <td>'.$day.'</td>
                     </tr>';
 			}
+		}
+	}
+
+	/*===================== * login * ===============================================================*/
+	//add data from hanghoa
+	if (isset($_POST["login_require"])) {
+		$acc = $_POST['account'];
+		$pass = $_POST['password'];
+		
+		$sql = "SELECT * FROM `taikhoan` WHERE MaTK='$acc' AND Passwords = '$pass'";
+		$run_query = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($run_query) > 0){
+			$_SESSION['loggedin'] = true;
+			echo 1;
+		}else {
+			echo 0;
+		}
+	}
+
+	//add data from hanghoa
+	if (isset($_POST["logout_require"])) {
+		if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+			unset($_SESSION['loggedin']);
 		}
 	}
 

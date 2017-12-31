@@ -95,9 +95,21 @@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                     <a class="nav-link" href="index.html">
+<<<<<<< HEAD:milk_type_items.php
                      <i class="fa fa-fw fa-dashboard"></i>
                      <span class="nav-link-text">Tổng Quan</span>
                     </a>
+=======
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Tổng Quan</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="cart">
+                  <a class="nav-link" href="milk_cart.php">
+                    <i class="fa fa-fw fa-cart-plus"></i>
+                    <span class="nav-link-text">Bán hàng</span>
+                  </a>
+>>>>>>> b280bc913c37e452cc62ce83af2c09e8603dfeff:milk_type_items.html
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                     <a class="nav-link" href="charts.html">
@@ -112,9 +124,13 @@
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+<<<<<<< HEAD:milk_type_items.php
                     <a class="nav-link nav-link-collapse collapsed"
                     data-toggle="collapse" href="#collapseComponents"
                     data-parent="#exampleAccordion">
+=======
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+>>>>>>> b280bc913c37e452cc62ce83af2c09e8603dfeff:milk_type_items.html
                         <i class="fa fa-fw fa-wrench"></i>
                         <span class="nav-link-text">Hàng hóa</span>
                     </a>
@@ -134,7 +150,11 @@
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-file"></i>
                         <span class="nav-link-text">Example Pages</span>
+<<<<<<< HEAD:milk_type_items.php
                       </a>
+=======
+                    </a>
+>>>>>>> b280bc913c37e452cc62ce83af2c09e8603dfeff:milk_type_items.html
                     <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                         <li>
                             <a href="login.html">Login Page</a>
@@ -151,9 +171,13 @@
                     </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+<<<<<<< HEAD:milk_type_items.php
                     <a class="nav-link nav-link-collapse collapsed" 
                     data-toggle="collapse" href="#collapseMulti" 
                     data-parent="#exampleAccordion">
+=======
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
+>>>>>>> b280bc913c37e452cc62ce83af2c09e8603dfeff:milk_type_items.html
                         <i class="fa fa-fw fa-sitemap"></i>
                         <span class="nav-link-text">Menu Levels</span>
                     </a>
@@ -212,8 +236,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+<<<<<<< HEAD:milk_type_items.php
                     <i class="fa fa-fw fa-sign-out"></i>
                     Logout
+=======
+                        <i class="fa fa-fw fa-sign-out"></i>Logout
+>>>>>>> b280bc913c37e452cc62ce83af2c09e8603dfeff:milk_type_items.html
                     </a>
                 </li>
             </ul>
@@ -302,8 +330,8 @@
         </div>
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
+          <i class="fa fa-angle-up"></i>
+        </a>
         <!-- Logout Modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

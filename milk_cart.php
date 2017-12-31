@@ -1,4 +1,12 @@
 <?php 
+  session_start();
+
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true) {
+  }else {
+    echo 'Bạn hãy đăng nhập để thấy trang';
+    echo '<script>location.href = "http://localhost:8888/project-MilkForBaby/login.php";</script>';
+  }
+
   $conn = mysqli_connect("localhost", "root", "", "milk_for_baby") or die("Could not connect DB");
   //mysqli_select_db($conn, ) or die("Could not find db!");
   mysqli_set_charset($conn, "utf8");
@@ -86,23 +94,10 @@
   <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Core plugin JavaScript-->
+  <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-    <!-- Custom scripts for this page-->
-    <script src="js/sb-admin-datatables.min.js"></script>
-    <script src="js/sb-admin-charts.min.js"></script>
-
   <!-- Add JS -->
-    <script src="js/jquery.min.js"></script>
     <script src="js/accounting.min.js"></script>
 
     
@@ -324,6 +319,15 @@
           });
         });
 
+        //button logout
+        $("body").delegate("#btn_logout", "click", function(event) {
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {logout_require:1}
+          });
+        });
+
       });
     </script>
 
@@ -341,10 +345,10 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
-          </a>
+            <a class="nav-link" href="index.php">
+                <i class="fa fa-fw fa-dashboard"></i>
+                <span class="nav-link-text">Tổng Quan</span>
+            </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="cart">
           <a class="nav-link" href="milk_cart.php">
@@ -365,18 +369,21 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="navbar.html">Navbar</a>
-            </li>
-            <li>
-              <a href="cards.html">Cards</a>
-            </li>
-          </ul>
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-wrench"></i>
+                <span class="nav-link-text">Hàng hóa</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseComponents">
+                <li>
+                    <a href="milk_items.php">Cập nhật hàng hóa</a>
+                </li>
+                <li>
+                    <a href="milk_add_new.php">Thêm hàng hóa</a>
+                </li>
+                <li>
+                    <a href="milk_type_items.html">Loại hàng hóa</a>
+                </li>
+            </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
@@ -385,7 +392,7 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="login.html">Login Page</a>
+              <a href="login.php">Login Page</a>
             </li>
             <li>
               <a href="register.html">Registration Page</a>
@@ -446,7 +453,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            <i class="fa fa-fw fa-sign-out"></i>Đăng xuất</a>
         </li>
       </ul>
     </div>
@@ -710,13 +717,16 @@
           <div class="modal-body">Chọn "Thoát" để kết thúc phiên làm việc.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
-            <a class="btn btn-primary" href="login.html">Thoát</a>
+            <a class="btn btn-primary" href="login.php" id="btn_logout">Thoát</a>
           </div>
         </div>
       </div>
     </div>
 
   </div>
+  
+  <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
 
 </body>
 
