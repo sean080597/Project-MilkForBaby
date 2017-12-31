@@ -214,7 +214,7 @@
 
 	/*====================== * milk_add_new * =================================================================*/
 	//get data from hanghoa
-	if (isset($_POST["get_type_items"])) {
+	if (isset($_POST["get_name_type_items"])) {
 		$sql = "SELECT * FROM loaihang";
 		$run_query = mysqli_query($conn, $sql);
 		while ($row = mysqli_fetch_array($run_query)) {
@@ -234,6 +234,22 @@
 			echo 'Thêm mới loại hàng thành công';
 		}
 		
+	}
+
+	//add data for table type of items
+	if(isset($_POST["get_type_items"])){
+		$sql = "SELECT * FROM loaihang";
+		$run_query = mysqli_query($conn,$sql);
+		while ($row = mysqli_fetch_array($run_query)) {
+			$maloai = $row["MaLoai"];
+			$tenloai = $row["TenLoaiH"];
+			echo '<tr>
+					<td class="code-type-item">'.$maloai.'</td>
+					<td>'.$tenloai.'</td>
+				</tr>
+				';		
+		}
+
 	}
 
 	//add data from hanghoa
