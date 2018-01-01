@@ -5,7 +5,9 @@ body.sticky-footer .content-wrapper {
 .content-wrapper {
 	background-color: #e9ecef
 }
-
+.container-import {
+    min-height: 500px;
+}
 .container-import>div{
 	width: 100%;
 	background-color: #FFFFFF;
@@ -15,7 +17,7 @@ body.sticky-footer .content-wrapper {
 }
 
 .container-total {
-    min-height: 420px;
+    min-height: 495px;
     display: flex;
 }
 
@@ -49,16 +51,16 @@ th.th-quantity{
 
 .container-items{
 	flex-grow: 1;
-	min-height: 445px;
+	min-height: 410px;
 }
 
 .table-items{
-	height:70%;
+	height:65%;
 	overflow-y: scroll; 
 }
 
 .container-search{
-	height: 30%;
+	height: 165px;
 	background-color: #A49090
 }
 
@@ -72,4 +74,15 @@ th.th-quantity{
 
 .container-handle button{
 	border: 1px solid;
+}
+.ul_search{
+	display: flex;
+}
+.ul_search li{
+	list-style: none;
+	margin-left: 10px;
+}
+.ul_search li div{
+	width: 160px;
+	height: 160px;
 }
