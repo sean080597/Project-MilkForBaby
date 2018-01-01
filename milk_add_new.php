@@ -78,10 +78,11 @@
             e.preventDefault();
 
             var name_item = $("#name_item").val();
-            var barcode = $("#barcode").val();
             var item_price = $("#item_price").val();
             var item_unit = $("#item_unit").val();
             var type_item = $("#type_item").val();
+            var barcode = $("#barcode").val();
+            barcode = type_item + barcode;
             
             var selectedFile = document.getElementById("input_image_link");
             var link = "http://localhost:8888/Project-MilkForBaby/imgs/" + selectedFile.files.item(0).name;
@@ -327,19 +328,7 @@
                             Loại hàng: 
                             </label>
                             <div class="col-sm">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                 <select name="cbTypeItem" size="1" id="type_item">
-=======
                                 <select name="cbTypeItem" size=1 onChange="" id="type_item">
->>>>>>> dc4067994811fc444ca27f1b79d4475906b38356
-=======
-                                <select name="cbTypeItem" size=1 onChange="" id="type_item">
->>>>>>> dc4067994811fc444ca27f1b79d4475906b38356
-=======
-                                <select name="cbTypeItem" size=1 onChange="" id="type_item">
->>>>>>> dc4067994811fc444ca27f1b79d4475906b38356
                                 </select>
                                 <button type="button" class="bt btn-outline-success btn-sm" data-toggle="modal" data-target="#add-type-modal">Thêm loại</button>
                             </div>

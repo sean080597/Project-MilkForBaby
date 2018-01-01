@@ -174,7 +174,7 @@
 		}
 
 		//insert to table hdban
-		$pre_bill_id = "mfb17_";
+		$pre_bill_id = "mfb18_";
 		$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 	    for ($i = 0; $i < 6; $i++)
 	        $pre_bill_id .= $characters[mt_rand(0, 61)];
@@ -240,8 +240,9 @@
 		$sql = "SELECT * FROM loaihang";
 		$run_query = mysqli_query($conn, $sql);
 		while ($row = mysqli_fetch_array($run_query)) {
+			$maloai = $row["MaLoai"];
 			$tenloai = $row["TenLoaiH"];
-			echo '<option value="'.$tenloai.'">'.$tenloai.'</option>';
+			echo '<option value="'.$maloai.'">'.$tenloai.'</option>';
 		}	
 	}
 
@@ -255,14 +256,15 @@
 		$status = "null";
 		$type_item = $_POST["send_type_item"];
 
-		$sql1 = "SELECT * FROM `loaihang` WHERE `TenLoaiH` = '$type_item'";
-		$run_query = mysqli_query($conn, $sql1);
-		$row = mysqli_fetch_array($run_query);
-		$type_code =$row["MaLoai"];
-
-		$sql = "INSERT INTO `hanghoa`(`MaHH`, `TenHH`, `GiaBan`, `DVT`, `HinhAnh`, `TinhTrang`, `MaLoai`) VALUES ('$barcode','$name_item','$item_price','$item_unit','$linkImg','$status','$type_code')";
-		if (mysqli_query($conn, $sql)) {
-			echo 'Thêm mới loại hàng thành công';
+		$sql = "SELECT * FROM hanghoa WHERE MaHH = '$barcode'";
+		$run_query = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($run_query) > 0){
+			echo 'Đã có mã SP này trong dữ liệu';
+		}else {
+			$sql = "INSERT INTO `hanghoa`(`MaHH`, `TenHH`, `GiaBan`, `DVT`, `HinhAnh`, `TinhTrang`, `MaLoai`) VALUES ('$barcode','$name_item','$item_price','$item_unit','$linkImg','$status','$type_item')";
+			if (mysqli_query($conn, $sql)) {
+				echo 'Thêm mới SP thành công';
+			}
 		}
 	}
 	
