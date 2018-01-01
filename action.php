@@ -225,6 +225,11 @@
                     <td>'.$tenloai.'</td>
                     <td>'.$sl.'</td>
                     <td>'.$stt.'</td>
+                    <td>
+                    <a href="#" class="btn_edit">
+                    	<i class="fa fa-pencil-square fa-2x" aria-hidden="true" data-toggle="modal" data-target="#modal-item"></i>
+                    </a>
+                    </td>
                 </tr>';
 		}
 	}
@@ -308,11 +313,19 @@
 			    $discount = $row['ChietKhau'];
 
 			    echo '<tr data-toggle="modal" data-target="#modal-item">
+			    		<td class="input_check">
+							<input type="checkbox" class="form-check-input" value="">
+						</td>
                         <td>'.$billId.'</td>
                         <td>'.number_format($subtotal, 0, ".", ",").' VNĐ</td>
                         <td>'.$discount.'</td>
                         <td>'.number_format($total, 0, ".", ",").' VNĐ</td>
                         <td>'.$day.'</td>
+                        <td>
+		                    <a href="#" class="btn_edit">
+		                    	<i class="fa fa-list" aria-hidden="true" data-toggle="modal" data-target="#modal-item"></i>
+		                    </a>
+	                    </td>
                     </tr>';
 			}
 		}

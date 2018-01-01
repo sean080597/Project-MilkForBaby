@@ -191,7 +191,7 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#" class="bt text-success">Tổng Quan</a>
+                    <a href="index.php" class="bt text-success">Tổng Quan</a>
                 </li>
                 <li class="breadcrumb-item active">Hàng hóa</li>
                 <li class="btn-add-new-item">
@@ -203,21 +203,8 @@
                         </a>
                         <a href="#" class="margin-a">
                             <button type="button" class="btn btn-outline-success btn-sm">
-                                Cập nhật
-                            </button>
-                        </a>
-                        <a href="#" class="margin-a">
-                            <button type="button" class="btn btn-outline-success btn-sm">
-                                Sửa
-                            </button>
-                        </a>
-                        <a href="#" class="margin-a">
-                            <button type="button" class="btn btn-outline-success btn-sm">
                                 Xóa
                             </button>
-                        </a>
-                        <a href="index.php" class="text-success">
-                            Quay lại
                         </a>
                     </div>
                 </li>
@@ -235,6 +222,7 @@
                         <th class="type-item">Loại</th>
                         <th class="quantity">Số lượng</th>
                         <th class="state">Tình trạng</th>
+                        <th class="icon_edit">
                     </tr>   
                 </thead>
                 <tbody id="info_items">
@@ -243,8 +231,7 @@
                         <td>2</td>
                         <td>3</td>
                         <td>4</td>
-                    </tr>
- -->
+                    </tr>-->
                 </tbody>
             </table>
         </div>
@@ -261,6 +248,55 @@
         <a class="scroll-to-top rounded" href="#page-top">
           <i class="fa fa-angle-up"></i>
         </a>
+        <!--Add value Modal-->
+        <div class="modal fade" id="modal-item">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-light">
+                        <h5>Cập nhật</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Mã hàng hóa</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Tên</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Giá bán</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Tình trạng</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm">
+                        Cập nhật
+                        </button>
+                        <button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal">
+                        Thoát
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Logout Modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -279,7 +315,7 @@
             </div>
           </div>
         </div>
-        
+        <a href="#" class="success"></a>
     </div>
 
     <!-- Custom scripts for all pages-->
