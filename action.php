@@ -174,16 +174,30 @@
 		}
 
 		//insert to table hdban
-		$pre_id = "mfb17_";
+		$pre_bill_id = "mfb17_";
 		$characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 	    for ($i = 0; $i < 6; $i++)
-	        $pre_id .= $characters[mt_rand(0, 61)];
+	        $pre_bill_id .= $characters[mt_rand(0, 61)];
 
 	    date_default_timezone_set("Asia/Ho_Chi_Minh");
 	    $date = date('Y-m-d H:i:s', time());
 
-		$sql = "INSERT INTO `hdban` (`MaHDB`, `NgayLap`, `ThanhTien`, `ChietKhau`, `TongThanhTien`, `MaTK`) VALUES ('$pre_id', '$date', '$subtotal', '0', '$total', NULL)";
+		$sql = "INSERT INTO `hdban` (`MaHDB`, `NgayLap`, `ThanhTien`, `ChietKhau`, `TongThanhTien`, `MaTK`) VALUES ('$pre_bill_id', '$date', '$subtotal', '0', '$total', NULL)";
 		$run_query = mysqli_query($conn, $sql);
+
+		//insert to table ct_hdban
+		$sql = "SELECT * FROM cart";
+		$run_query = mysqli_query($conn, $sql);
+		while ($row = mysqli_fetch_array($run_query)) {
+		    $pro_id = $row['MaHH'];
+	      	$pro_qty = $row['qty'];
+	      	$pro_price = $row['GiaBan'];
+	      	$pro_total = $row['TongTien'];
+
+	      	$sql = "INSERT INTO `ct_hdban` (`MaHDB`, `MaHH`, `DonGia`, `SoLuong`, `KhuyenMai`, `Vat`, `ThanhTien`) VALUES ('$pre_bill_id', '$pro_id', '$pro_price', '$pro_qty', NULL, NULL, '$pro_total')";
+	      	mysqli_query($conn, $sql);
+		}
+		
 	}
 
 	//truncate table cart
@@ -280,14 +294,6 @@
 
 	}
 
-	//add data from hanghoa
-	if (isset($_POST["add_items"])) {
-		
-		//$sql = "INSERT INTO `loaihang` (`MaLoai`, `TenLoaiH`) VALUES ('$type_code', '$type_name')";
-		echo "string";
-		
-	}
-
 	/*===================== * milk_export * ===============================================================*/
 	//add data from hanghoa
 	if (isset($_POST["get_bill_details"])) {
@@ -316,7 +322,7 @@
 	//add data from hanghoa
 	if (isset($_POST["login_require"])) {
 		$acc = mysqli_real_escape_string($conn, $_POST['account']);
-		$pass = $_POST['password'];
+		$pass = mysqli_real_escape_string($conn, $_POST['password']);
 		
 		$sql = "SELECT * FROM `taikhoan` WHERE MaTK='$acc' AND Passwords = '$pass'";
 		$run_query = mysqli_query($conn, $sql);
@@ -337,7 +343,6 @@
 
 	/*=================* milk import *====================*/
 	/*===================================================*/
-
 	if (isset($_POST["get_info_bill_import"])) {
 		$sql = "SELECT * FROM `ct_hdnhap`";
 		$run_query = mysqli_query($conn, $sql);
@@ -358,4 +363,22 @@
 				';		
 		}
 	}
+
+	/*=================* milk import bills *====================*/
+	/*===================================================*/
+	if (isset($_POST["get_items_search"])) {
+		$search = $_POST['search_text'];
+		$search = preg_replace("#[^0-9a-z]#i", "", $search);
+
+		$sql = "SELECT * FROM hanghoa WHERE TenHH LIKE %$search%";
+		$run_query = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($run_query) > 0){
+			while ($row = mysqli_fetch_array($run_query)) {
+		    	echo '';
+			}
+		}else {
+			echo 'Không có kết quả tìm kiếm';
+		}
+	}
+
 ?>

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true) {
+  }else {
+    echo 'Bạn hãy đăng nhập để thấy trang';
+    echo '<script>location.href = "http://localhost:8888/project-MilkForBaby/login.php";</script>';
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>Milk for Baby</title>
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -26,12 +36,40 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+           //button logout
+            $("body").delegate("#btn_logout", "click", function(event) {
+              $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {logout_require:1}
+              });
+            }); 
+
+            //button search
+            $("body").delegate("#btn_search", "click", function(event) {
+                var searchText = $("#input_search").val();
+                $.ajax({
+                    url: 'action.php',
+                    method: 'POST',
+                    data: {get_items_search:1, search_text:searchText},
+                    success: function(data){
+                        alert(data);
+                    }
+                });
+            });
+
+        });
+    </script>
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="index.html">Milk for Baby</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -145,7 +183,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                    <i class="fa fa-fw fa-sign-out"></i>Đăng xuất</a>
                 </li>
             </ul>
         </div>
@@ -166,9 +204,9 @@
             <div class="form-inline">
                 <input class="form-control" type="text" name="code-bill" placeholder="Mã hóa đơn">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Tìm kiếm sản phẩm">
+                    <input id="input_search" class="form-control" type="text" placeholder="Tìm kiếm sản phẩm">
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button">
+                            <button class="btn btn-success" type="button" id="btn_search">
                                 <i class="fa fa-search"></i>
                             </button>
                         </span>
@@ -184,6 +222,7 @@
                                     <th class="th-name">Tên</th>
                                     <th class="th-price">Đơn giá</th>
                                     <th class="th-quantity">Số lượng</th>
+                                    <th class="th-subtotal">Thành tiền</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -192,22 +231,20 @@
                                     <td>2</td>
                                     <td>3</td>
                                     <td>4</td>
+                                    <td>5</td>
                                 </tr>
                             </tbody>
                         </table>
                         
                     </div>
+
                     <div class="container-search">
+                        
                     </div>
+
                     </div>
                 <div class="container-cal">
                     <form >
-                        <div class="form-group">
-                            <label class="control-label col-sm-5">Số lượng</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="" value="0" readonly="true">
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label class="control-label col-sm-5">Tổng tiền</label>
                             <div class="col-sm-12">
@@ -228,7 +265,7 @@
         <footer class="sticky-footer">
             <div class="container">
                 <div class="text-center">
-                    <small>Copyright © Your Website 2017</small>
+                    <small>Copyright © Milk for Baby 2017</small>
                 </div>
             </div>
         </footer>
@@ -287,21 +324,21 @@
         </div>
         <!-- Logout Modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
-                </div>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Bạn muốn thoát?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Chọn "Thoát" để kết thúc phiên làm việc.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
+                <a class="btn btn-primary" href="login.php" id="btn_logout">Thoát</a>
+              </div>
             </div>
+          </div>
         </div>
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>

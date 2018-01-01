@@ -129,6 +129,8 @@
                 </div>
 
                 <?php
+                    
+
                     unset($_SESSION['checkout_product']);
                     unset($_SESSION['checkout_total']);
                 ?>
