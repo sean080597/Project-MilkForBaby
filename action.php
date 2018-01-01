@@ -240,7 +240,7 @@
 		}	
 	}
 
-	//add data to hanghoa
+	//add item to hanghoa
 	if(isset($_POST["add_new_item"])){
 		$barcode = $_POST["send_barcode"];
 		$name_item = $_POST["send_name_item"];

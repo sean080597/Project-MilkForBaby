@@ -381,7 +381,7 @@
                     <a href="milk_add_new.php">Thêm hàng hóa</a>
                 </li>
                 <li>
-                    <a href="milk_type_items.html">Loại hàng hóa</a>
+                    <a href="milk_type_items.php">Loại hàng hóa</a>
                 </li>
             </ul>
         </li>
