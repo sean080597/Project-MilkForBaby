@@ -187,9 +187,6 @@
                 <li class="btn-add-new-item">
                     <div class="form-inline">
                         <a href="#" class="margin-a">
-                            <button type="button" class="btn btn-outline-success btn-sm">Sửa</button>
-                        </a>
-                        <a href="#" class="margin-a">
                             <button type="button" class="btn btn-outline-success btn-sm">Xóa</button>
                         </a>
                         <a href="index.html" class="text-success">Quay lại</a>
@@ -204,11 +201,13 @@
             <table class="table table-hover table-striped bill_details">
                 <thead class="thead">
                     <tr>
+                        <th class="input_del">Chọn</th>
                         <th class="code-bill">Mã hóa đơn</th>
                         <th class="price">Thành Tiền</th>
                         <th class="discount">Chiết Khấu</th>
                         <th class="total-price">Tổng tiền</th>
                         <th class="date-bill">Ngày nhập</th>
+                        <th class="icon_edit">
                     </tr>
                 </thead>
                 <tbody id="bill_details">
@@ -235,6 +234,48 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fa fa-angle-up"></i>
         </a>
+
+         <!--Add value Modal-->
+        <div class="modal fade" id="modal-item">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-light">
+                        <h5>Chi tiết hóa đơn</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       <table class="table table-hover">
+                            <thead class="thead">
+                                <tr>
+                                    <th class="name_item_modal">Tên Hàng</th>
+                                    <th class="price_item_modal">Đơn giá</th>
+                                    <th class="quantity_modal">Số lượng</th>
+                                    <th class="discount_modal">Khuyên mãi</th>
+                                    <th class="vat_modal">VAT</th>
+                                    <th class="total_price_modal">Thành tiền</th>
+                                </tr>   
+                            </thead>
+                            <tbody id="info_items">
+                                <!-- <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal">
+                        Thoát
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Logout Modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">

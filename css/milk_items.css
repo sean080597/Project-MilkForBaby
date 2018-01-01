@@ -45,15 +45,15 @@ th.state{
 th.icon_edit{
 	width: 20%;
 }
-a:link{
+.btn_edit:link{
 	color: #28a745;
 }
-a:visited{
+.btn_edit:visited{
 	color: #28a745;
 }
-a:active{
+.btn_edit:active{
 	color: green;
 }
-a:hover{
+.btn_edit:hover{
 	color: green;	
 }

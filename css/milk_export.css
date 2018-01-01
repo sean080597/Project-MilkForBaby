@@ -24,17 +24,24 @@ li.btn-add-new-item{
 .container-items{
 	width: 100%;
 }
-
+.input_del{
+	width: 5%;
+}
 .code-bill {
 	width: 15%;
 }
 
-.price, .discount, .total-price{
-	width: 20%;
+.price, .total-price{
+	width: 15%;
 }
-
-.date-bill{
+.discount{
+	width: 15%;
+}
+.icon_edit{
 	width: auto;
+}
+.date-bill{
+	width: 20%;
 }
 
 .bill_details tbody td {
@@ -42,4 +49,23 @@ li.btn-add-new-item{
 }
 .bill_details thead th {
 	text-align: center;
+}
+.btn_edit:link{
+	color: #28a745;
+}
+.btn_edit:visited{
+	color: #28a745;
+}
+.btn_edit:active{
+	color: green;
+}
+.btn_edit:hover{
+	color: green;	
+}
+td.input_check {
+    padding-left: 50px;
+}
+.modal-body{
+	min-height: 400px;
+	overflow-y: scroll;
 }
