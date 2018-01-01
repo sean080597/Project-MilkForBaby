@@ -216,7 +216,7 @@
                                 Xóa
                             </button>
                         </a>
-                        <a href="index.html" class="text-success">
+                        <a href="index.php" class="text-success">
                             Quay lại
                         </a>
                     </div>
@@ -230,6 +230,7 @@
             <table class="table table-hover">
                 <thead class="thead">
                     <tr>
+                        <th class="input_del">Chọn</th>
                         <th class="name-bill">Tên Hàng</th>
                         <th class="type-item">Loại</th>
                         <th class="quantity">Số lượng</th>

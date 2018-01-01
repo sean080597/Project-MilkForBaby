@@ -23,6 +23,9 @@ li.btn-add-new-item{
 	background-color: #28a745;
 	color: #FFFFFF;
 }
+.select_check{
+	width: 5%;
+}
 .code-bill{
 	width:20%;
 }
@@ -31,4 +34,7 @@ li.btn-add-new-item{
 }
 .date-bill{
 	width:40%;
+}
+td.input_check {
+    padding-left: 50px;
 }

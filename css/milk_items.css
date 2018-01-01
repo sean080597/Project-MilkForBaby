@@ -24,6 +24,12 @@ li.btn-add-new-item{
 	background-color: #28a745;
 	color: #FFFFFF;
 }
+th.input_del{
+	width: 5%;
+}
+td.input_check {
+    padding-left: 50px;
+}
 th.name-bill {
     width: 20%;
 }

@@ -204,6 +204,9 @@
 			$stt = $row['TinhTrang'];
 
 			echo '<tr>
+					<td class="input_check">
+						<input type="checkbox" class="form-check-input" value="">
+					</td>
                     <td>'.$tenhh.'</td>
                     <td>'.$tenloai.'</td>
                     <td>'.$sl.'</td>
@@ -266,6 +269,9 @@
 			$maloai = $row["MaLoai"];
 			$tenloai = $row["TenLoaiH"];
 			echo '<tr>
+					<td class="input_check">
+						<input type="checkbox" class="form-check-input" value="">
+					</td>
 					<td class="code-type-item">'.$maloai.'</td>
 					<td>'.$tenloai.'</td>
 				</tr>
@@ -329,4 +335,27 @@
 		}
 	}
 
+	/*=================* milk import *====================*/
+	/*===================================================*/
+
+	if (isset($_POST["get_info_bill_import"])) {
+		$sql = "SELECT * FROM `ct_hdnhap`";
+		$run_query = mysqli_query($conn, $sql);
+		while ($row = mysqli_fetch_array($run_query)) {
+			$maHD = $row["MaHDN"];
+			//$ngaynhap = $row[""];
+			$dongia = $row["DonGia"];
+			$soluong = $row["SoLuong"];
+			$thanhtien = $soluong*$dongia;
+			echo '<tr data-toggle="modal" data-target="#modal-item">
+						<td class="input_check">
+							<input type="checkbox" class="form-check-input" value="">
+						</td>
+                        <td>'.$maHD.'</td>
+                        <td>'.$thanhtien.'</td>
+                        <td>###</td>
+                    </tr>
+				';		
+		}
+	}
 ?>

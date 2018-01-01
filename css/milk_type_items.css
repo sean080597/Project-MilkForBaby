@@ -24,11 +24,18 @@ li.btn-add-new-item{
 	background-color: #28a745;
 	color: #FFFFFF;
 }
+
+th.select_check {
+    width: 5%;
+}
+
 th.code-type-item {
     width: 30%;
-    padding-left: 40px;
 }
-td.code-type-item {
-    width: 30%;
-    padding-left: 40px;
+th.name-type-item{
+    width: 30;
+}
+
+td.input_check {
+    padding-left: 50px;
 }
