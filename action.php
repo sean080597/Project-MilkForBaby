@@ -323,7 +323,7 @@
                         <td>'.$day.'</td>
                         <td>
 		                    <a href="#" class="btn_edit">
-		                    	<i class="fa fa-pencil-square fa-2x" aria-hidden="true" data-toggle="modal" data-target="#modal-item"></i>
+		                    	<i class="fa fa-list" aria-hidden="true" data-toggle="modal" data-target="#modal-item"></i>
 		                    </a>
 	                    </td>
                     </tr>';
