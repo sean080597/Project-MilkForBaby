@@ -211,6 +211,11 @@
                     <td>'.$tenloai.'</td>
                     <td>'.$sl.'</td>
                     <td>'.$stt.'</td>
+                    <td>
+                    <a href="#">
+                    	<i class="fa fa-pencil-square fa-2x" aria-hidden="true" data-toggle="modal" data-target="#modal-item"></i>
+                    </a>
+                    </td>
                 </tr>';
 		}
 	}

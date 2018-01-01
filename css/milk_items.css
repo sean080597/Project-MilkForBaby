@@ -37,8 +37,23 @@ th.type-item{
 	width: 15% ;
 }
 th.quantity{
-	width:15%;
+	width:10%;
 }
 th.state{
-	width: 30%;
+	width: 10%;
+}
+th.icon_edit{
+	width: 20%;
+}
+a:link{
+	color: #28a745;
+}
+a:visited{
+	color: #28a745;
+}
+a:active{
+	color: green;
+}
+a:hover{
+	color: green;	
 }

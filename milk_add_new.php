@@ -314,7 +314,7 @@
                             Loại hàng: 
                             </label>
                             <div class="col-sm">
-                                 <select name="cbTypeItem" size=1 onChange="" id="type_item">
+                                <select name="cbTypeItem" size=1 onChange="" id="type_item">
                                 </select>
                                 <button type="button" class="bt btn-outline-success btn-sm" data-toggle=modal data-target=#add-type-modal>Thêm loại</button>
                             </div>
