@@ -329,7 +329,11 @@
                             <div class="col-sm">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                                  <select name="cbTypeItem" size="1" id="type_item">
+=======
+                                <select name="cbTypeItem" size=1 onChange="" id="type_item">
+>>>>>>> dc4067994811fc444ca27f1b79d4475906b38356
 =======
                                 <select name="cbTypeItem" size=1 onChange="" id="type_item">
 >>>>>>> dc4067994811fc444ca27f1b79d4475906b38356
