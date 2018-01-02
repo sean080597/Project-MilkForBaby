@@ -11,6 +11,14 @@ li.btn-add-new-item{
     right:30px;
  }
 
+.form-inline {
+    margin: 10px 0px;
+}
+.form-inline label{
+	display: block;
+    text-align: right;
+}
+
 .form-inline button.btn.btn-outline-success.btn-sm {
     width: 90px;
 	margin-right: 5px;

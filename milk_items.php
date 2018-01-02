@@ -82,7 +82,7 @@
         //btn_update
         $("body").delegate("#btn_update","click", function(event){
             event.preventDefault();
-            
+            var old_item_id = $("#update_form").attr("pid");
             var item_id = $("#modal_id_item").val();
             var item_name =$("#modal_name_item").val();
             var item_type =$("#type_item").val();
@@ -90,19 +90,20 @@
             var item_status =$("#modal_status").val();
             
             $.ajax({
-                        url: 'action.php',
-                        method: 'POST',
-                        data: {update_data_item: 1,
-                                send_item_id:item_id,
-                                send_item_name: item_name,
-                                send_item_type: item_type,
-                                send_item_price: item_price,
-                                send_item_status: item_status
-                                },
-                        success: function(data){
-                            alert(data);
-                            location.reload();
-                        }
+                url: 'action.php',
+                method: 'POST',
+                data: {update_data_item: 1,
+                        send_old_item_id:old_item_id,
+                        send_item_id:item_id,
+                        send_item_name: item_name,
+                        send_item_type: item_type,
+                        send_item_price: item_price,
+                        send_item_status: item_status
+                        },
+                success: function(data){
+                    alert(data);
+                    location.reload();
+                }
             });
 
         });
