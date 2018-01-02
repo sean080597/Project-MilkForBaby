@@ -33,9 +33,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="navbar-brand">
-            <a class="logo" href="index.php">Milk for Baby</a>
-        </div>
+        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,33 +41,21 @@
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                     <a class="nav-link" href="index.php">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Tổng Quan</span>
-          </a>
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Tổng Quan</span>
+                    </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="cart">
-                    <a class="nav-link" href="milk_cart.php">
-            <i class="fa fa-fw fa-cart-plus"></i>
-            <span class="nav-link-text">Bán hàng</span>
-          </a>
+                  <a class="nav-link" href="milk_cart.php">
+                    <i class="fa fa-fw fa-cart-plus"></i>
+                    <span class="nav-link-text">Bán hàng</span>
+                  </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                    <a class="nav-link" href="charts.html">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Charts</span>
-          </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tables</span>
-          </a>
-                </li>
-               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Hàng hóa</span>
-          </a>
+                        <i class="fa fa-fw fa-wrench"></i>
+                        <span class="nav-link-text">Hàng hóa</span>
+                    </a>
                     <ul class="sidenav-second-level collapse" id="collapseComponents">
                         <li>
                             <a href="milk_items.php">Cập nhật hàng hóa</a>
@@ -84,12 +70,24 @@
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Example Pages</span>
-          </a>
+                        <i class="fa fa-fw fa-file"></i>
+                        <span class="nav-link-text">Quản lý hóa đơn</span>
+                    </a>
                     <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                         <li>
-                            <a href="login.html">Login Page</a>
+                            <a href="milk_import.php">Hóa đơn nhập</a>
+                        </li>
+                        <li>
+                            <a href="milk_import_bills.php">Chi tiết hóa đơn nhập</a>
+                        </li>
+                        <li>
+                            <a href="milk_export.php">Hóa đơn bán</a> 
+                        </li>
+                        <!-- <li>
+                            <a href="">Chi tiết hóa đơn bán</a>
+                        </li> -->
+                        <!-- <li>
+                            <a href="login.php">Login Page</a>
                         </li>
                         <li>
                             <a href="register.html">Registration Page</a>
@@ -99,22 +97,25 @@
                         </li>
                         <li>
                             <a href="blank.html">Blank Page</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
-          </a>
+                        <i class="fa fa-fw fa-sitemap"></i>
+                        <span class="nav-link-text">Quản lý nhân viên</span>
+                      </a>
                     <ul class="sidenav-second-level collapse" id="collapseMulti">
                         <li>
-                            <a href="#">Second Level Item</a>
+                            <a href="#">Cập nhật thông tin NV</a>
                         </li>
                         <li>
-                            <a href="#">Second Level Item</a>
+                            <a href="#">Phân quyền hệ thống</a>
                         </li>
                         <li>
+                            <a href="login.php">Đăng nhập</a>
+                        </li>
+                        <!-- <li>
                             <a href="#">Second Level Item</a>
                         </li>
                         <li>
@@ -130,21 +131,21 @@
                                     <a href="#">Third Level Item</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+               <!--  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                     <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
-          </a>
-                </li>
+                        <i class="fa fa-fw fa-link"></i>
+                        <span class="nav-link-text">Link</span>
+                    </a>
+                </li> -->
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
                     <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-          </a>
+                        <i class="fa fa-fw fa-angle-left"></i>
+                    </a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -153,16 +154,16 @@
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Search for...">
                             <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
+                                <button class="btn btn-success" type="button">
+                                  <i class="fa fa-search"></i>
+                                </button>
+                            </span>
                         </div>
                     </form>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Đăng xuất</a>
+                    <i class="fa fa-fw fa-sign-out"></i>Đăng xuất</a>
                 </li>
             </ul>
         </div>
@@ -177,7 +178,7 @@
                 <li class="breadcrumb-item active">Tổng quan</li>
             </ol>
             <!-- Icon Cards-->
-            <div class="row">
+           <!--  <div class="row">
                 <div class="col-xl-3 col-sm-6 mb-3">
                     <div class="card text-white bg-primary o-hidden h-100">
                         <div class="card-body">
@@ -242,9 +243,9 @@
             </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Area Chart Example-->
-            <div class="card mb-3">
+            <!-- <div class="card mb-3">
                 <div class="card-header">
                     <i class="fa fa-area-chart"></i> Area Chart Example</div>
                 <div class="card-body">
@@ -253,9 +254,9 @@
                 <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
             </div>
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-8"> -->
                     <!-- Example Bar Chart Card-->
-                    <div class="card mb-3">
+                    <!-- <div class="card mb-3">
                         <div class="card-header">
                             <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
                         <div class="card-body">
@@ -276,14 +277,14 @@
                             </div>
                         </div>
                         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                    </div>
+                    </div> -->
                     <!-- Card Columns Example Social Feed-->
-                    <div class="mb-0 mt-4">
+                   <!--  <div class="mb-0 mt-4">
                         <i class="fa fa-newspaper-o"></i> News Feed</div>
                     <hr class="mt-2">
-                    <div class="card-columns">
+                    <div class="card-columns"> -->
                         <!-- Example Social Card-->
-                        <div class="card mb-3">
+                        <!-- <div class="card mb-3">
                             <a href="#">
                 <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=610" alt="">
               </a>
@@ -338,9 +339,9 @@
                                 </div>
                             </div>
                             <div class="card-footer small text-muted">Posted 32 mins ago</div>
-                        </div>
+                        </div> -->
                         <!-- Example Social Card-->
-                        <div class="card mb-3">
+                        <!-- <div class="card mb-3">
                             <a href="#">
                 <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=180" alt="">
               </a>
@@ -379,8 +380,8 @@
                             </div>
                             <div class="card-footer small text-muted">Posted 46 mins ago</div>
                         </div>
-                        <!-- Example Social Card-->
-                        <div class="card mb-3">
+                        <!-- Example Social  -->
+                       <!--  <div class="card mb-3">
                             <a href="#">
                 <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=281" alt="">
               </a>
@@ -402,9 +403,9 @@
                   <i class="fa fa-fw fa-share"></i>Share</a>
                             </div>
                             <div class="card-footer small text-muted">Posted 1 hr ago</div>
-                        </div>
+                        </div> -->
                         <!-- Example Social Card-->
-                        <div class="card mb-3">
+                      <!--   <div class="card mb-3">
                             <a href="#">
                 <img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=185" alt="">
               </a>
@@ -466,21 +467,21 @@
                             </div>
                             <div class="card-footer small text-muted">Posted yesterday</div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- /Card Columns-->
-                </div>
-                <div class="col-lg-4">
+               <!--  </div>
+                <div class="col-lg-4"> -->
                     <!-- Example Pie Chart Card-->
-                    <div class="card mb-3">
+                   <!--  <div class="card mb-3">
                         <div class="card-header">
                             <i class="fa fa-pie-chart"></i> Pie Chart Example</div>
                         <div class="card-body">
                             <canvas id="myPieChart" width="100%" height="100"></canvas>
                         </div>
                         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                    </div>
+                    </div> -->
                     <!-- Example Notifications Card-->
-                    <div class="card mb-3">
+                    <!-- <div class="card mb-3">
                         <div class="card-header">
                             <i class="fa fa-bell-o"></i> Feed Example</div>
                         <div class="list-group list-group-flush small">
@@ -530,9 +531,9 @@
                         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Example DataTables Card-->
-            <div class="card mb-3">
+           <!--  <div class="card mb-3">
                 <div class="card-header">
                     <i class="fa fa-table"></i> Data Table Example</div>
                 <div class="card-body">
@@ -1020,7 +1021,7 @@
                     </div>
                 </div>
                 <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-            </div>
+            </div> -->
         </div>
         <!-- /.container-fluid-->
         <!-- /.content-wrapper-->

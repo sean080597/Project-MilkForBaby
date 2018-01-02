@@ -51,28 +51,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="index.php">
                         <i class="fa fa-fw fa-dashboard"></i>
                         <span class="nav-link-text">Tổng Quan</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="cart">
-                    <a class="nav-link" href="milk_cart.php">
-                        <i class="fa fa-fw fa-cart-plus"></i>
-                        <span class="nav-link-text">Bán hàng</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                    <a class="nav-link" href="charts.html">
-                        <i class="fa fa-fw fa-area-chart"></i>
-                        <span class="nav-link-text">Charts</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fa fa-fw fa-table"></i>
-                        <span class="nav-link-text">Tables</span>
-                    </a>
+                  <a class="nav-link" href="milk_cart.php">
+                    <i class="fa fa-fw fa-cart-plus"></i>
+                    <span class="nav-link-text">Bán hàng</span>
+                  </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
@@ -81,24 +69,36 @@
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseComponents">
                         <li>
-                            <a href="milk_items.html">Cập nhật hàng hóa</a>
+                            <a href="milk_items.php">Cập nhật hàng hóa</a>
                         </li>
                         <li>
-                            <a href="milk_add_new.html">Thêm hàng hóa</a>
+                            <a href="milk_add_new.php">Thêm hàng hóa</a>
                         </li>
                         <li>
-                            <a href="milk_type_items.html">Loại hàng hóa</a>
+                            <a href="milk_type_items.php">Loại hàng hóa</a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-file"></i>
-                        <span class="nav-link-text">Example Pages</span>
+                        <span class="nav-link-text">Quản lý hóa đơn</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                         <li>
-                            <a href="login.html">Login Page</a>
+                            <a href="milk_import.php">Hóa đơn nhập</a>
+                        </li>
+                        <li>
+                            <a href="milk_import_bills.php">Chi tiết hóa đơn nhập</a>
+                        </li>
+                        <li>
+                            <a href="milk_export.php">Hóa đơn bán</a> 
+                        </li>
+                        <!-- <li>
+                            <a href="">Chi tiết hóa đơn bán</a>
+                        </li> -->
+                        <!-- <li>
+                            <a href="login.php">Login Page</a>
                         </li>
                         <li>
                             <a href="register.html">Registration Page</a>
@@ -108,22 +108,25 @@
                         </li>
                         <li>
                             <a href="blank.html">Blank Page</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-sitemap"></i>
-                        <span class="nav-link-text">Menu Levels</span>
-                    </a>
+                        <span class="nav-link-text">Quản lý nhân viên</span>
+                      </a>
                     <ul class="sidenav-second-level collapse" id="collapseMulti">
                         <li>
-                            <a href="#">Second Level Item</a>
+                            <a href="#">Cập nhật thông tin NV</a>
                         </li>
                         <li>
-                            <a href="#">Second Level Item</a>
+                            <a href="#">Phân quyền hệ thống</a>
                         </li>
                         <li>
+                            <a href="login.php">Đăng nhập</a>
+                        </li>
+                        <!-- <li>
                             <a href="#">Second Level Item</a>
                         </li>
                         <li>
@@ -139,36 +142,24 @@
                                     <a href="#">Third Level Item</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+               <!--  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                     <a class="nav-link" href="#">
                         <i class="fa fa-fw fa-link"></i>
                         <span class="nav-link-text">Link</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
                     <a class="nav-link text-center" id="sidenavToggler">
-                    <i class="fa fa-fw fa-angle-left"></i>
-                </a>
+                        <i class="fa fa-fw fa-angle-left"></i>
+                    </a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-success" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-fw fa-sign-out"></i>Đăng xuất</a>

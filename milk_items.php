@@ -22,6 +22,8 @@
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+     <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
     
     <script type="text/javascript">
       $(document).ready(function(){
@@ -62,6 +64,33 @@
               });
         });
 
+        //btn_update
+        $("body").delegate("#btn_update","click", function(event){
+            event.preventDefault();
+            
+            var item_id = $("#modal_id_item").val();
+            var item_name =$("#modal_name_item").val();
+            var item_type =$("#type_item").val();
+            var item_price =$("#modal_price").val();
+            var item_status =$("#modal_status").val();
+            
+            $.ajax({
+                        url: 'action.php',
+                        method: 'POST',
+                        data: {update_data_item: 1,
+                                send_item_id:item_id,
+                                send_item_name: item_name,
+                                send_item_type: item_type,
+                                send_item_price: item_price,
+                                send_item_status: item_status
+                                },
+                        success: function(data){
+                            alert(data);
+                            location.reload();
+                        }
+            });
+
+        });
 
 
       });
@@ -90,18 +119,6 @@
                     <span class="nav-link-text">Bán hàng</span>
                   </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                    <a class="nav-link" href="charts.html">
-                        <i class="fa fa-fw fa-area-chart"></i>
-                        <span class="nav-link-text">Charts</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fa fa-fw fa-table"></i>
-                        <span class="nav-link-text">Tables</span>
-                    </a>
-                </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-wrench"></i>
@@ -122,10 +139,22 @@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-file"></i>
-                        <span class="nav-link-text">Example Pages</span>
+                        <span class="nav-link-text">Quản lý hóa đơn</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                         <li>
+                            <a href="milk_import.php">Hóa đơn nhập</a>
+                        </li>
+                        <li>
+                            <a href="milk_import_bills.php">Chi tiết hóa đơn nhập</a>
+                        </li>
+                        <li>
+                            <a href="milk_export.php">Hóa đơn bán</a> 
+                        </li>
+                        <!-- <li>
+                            <a href="">Chi tiết hóa đơn bán</a>
+                        </li> -->
+                        <!-- <li>
                             <a href="login.php">Login Page</a>
                         </li>
                         <li>
@@ -136,22 +165,25 @@
                         </li>
                         <li>
                             <a href="blank.html">Blank Page</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
                         <i class="fa fa-fw fa-sitemap"></i>
-                        <span class="nav-link-text">Menu Levels</span>
+                        <span class="nav-link-text">Quản lý nhân viên</span>
                       </a>
                     <ul class="sidenav-second-level collapse" id="collapseMulti">
                         <li>
-                            <a href="#">Second Level Item</a>
+                            <a href="#">Cập nhật thông tin NV</a>
                         </li>
                         <li>
-                            <a href="#">Second Level Item</a>
+                            <a href="#">Phân quyền hệ thống</a>
                         </li>
                         <li>
+                            <a href="login.php">Đăng nhập</a>
+                        </li>
+                        <!-- <li>
                             <a href="#">Second Level Item</a>
                         </li>
                         <li>
@@ -167,15 +199,15 @@
                                     <a href="#">Third Level Item</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+               <!--  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                     <a class="nav-link" href="#">
                         <i class="fa fa-fw fa-link"></i>
                         <span class="nav-link-text">Link</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
@@ -305,7 +337,7 @@
                         </form> -->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success btn-sm">
+                        <button type="button" class="btn btn-success btn-sm" id="btn_update">
                         Cập nhật
                         </button>
                         <button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal">
@@ -335,9 +367,6 @@
         </div>
         <a href="#" class="success"></a>
     </div>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
 
 </body>
 

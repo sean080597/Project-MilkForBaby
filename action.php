@@ -248,36 +248,69 @@
 			$mahh = $row['MaHH'];
 			$tenhh = $row['TenHH'];
 			$giaban = $row['GiaBan'];
-			$tinhtrang = $row['TinhTrang'];
+			$tinhtrang = $row['TinhTrang'];	
+			$loaihang = $row['TenLoaiH'];
 
 			echo '<form class="form-horizontal">
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">Mã hàng hóa</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="" value="'.$mahh.'">
+                            <div class="form-inline">
+                                <label class="control-label col-sm-4">Mã hàng hóa</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="modal_id_item" value="'.$mahh.'">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">Tên</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="" value="'.$tenhh.'">
+                            <div class="form-inline">
+                                <label class="control-label col-sm-4">Tên hàng</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="modal_name_item" value="'.$tenhh.'">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">Giá bán</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="" value="'.$giaban.'">
+                            <div class="form-inline">
+                                <label class="control-label col-sm-4">Loại hàng</label>
+                                <div class="col-sm-8">
+                                    <select name="'.$loaihang.'" size=1 onChange="" id="type_item"> ';
+
+                            		//select loai hang
+									$sql_type = "SELECT * FROM loaihang";
+									$run_query_type = mysqli_query($conn, $sql_type);
+									while ($row = mysqli_fetch_array($run_query_type)) {
+										$maloai = $row["MaLoai"];
+										$tenloai = $row["TenLoaiH"];
+										echo '<option value="'.$maloai.'">'.$tenloai.'</option>';
+									}
+			echo '
+									</select>
+									</div>
+                            </div>
+                            <div class="form-inline">
+                                <label class="control-label col-sm-4">Giá bán</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="modal_price" value="'.$giaban.'">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">Tình trạng</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="" value="'.$tinhtrang.'">
+                            <div class="form-inline">
+                                <label class="control-label col-sm-4">Tình trạng</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="modal_status" value="'.$tinhtrang.'">
                                 </div>
                             </div>
                         </form>';
 		}
 	}
+
+	if(isset($_POST["update_data_item"])){
+		$barcode = $_POST["send_item_id"];
+		$name_item = $_POST["send_item_name"];
+		$item_price = $_POST["send_item_price"];
+		$status = $_POST["send_item_status"];
+	//	$type_item = $_POST["send_type_item"];
+
+		$sql = "UPDATE hanghoa SET MaHH='$barcode', TenHH='$name_item', GiaBan='$item_price', TinhTrang='$status'";
+		if (mysqli_query($conn, $sql)) {
+				echo 'cập nhật SP thành công';
+			}
+		
+	}
+	
 
 	/*====================== * milk_add_new * =================================================================*/
 	//get type name from loaihang

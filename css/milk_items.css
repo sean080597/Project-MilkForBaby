@@ -57,3 +57,6 @@ th.icon_edit{
 .btn_edit:hover{
 	color: green;	
 }
+.form-horizontal .form-inline{
+	margin-bottom: 15px;
+}
