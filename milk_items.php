@@ -40,6 +40,7 @@
           });
         }
 
+
         //button logout
         $("body").delegate("#btn_logout", "click", function(event) {
           $.ajax({
@@ -47,6 +48,20 @@
             method: 'POST',
             data: {logout_require:1}
           });
+        });
+        //btn search
+        $("body").delegate("#btn_search", "click", function(event) {
+            event.preventDefault();
+            var search = $("#input_search").val();
+            $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {get_info_items_search:1,
+                        send_search:search},
+                success: function(data){
+                  $('#info_items').html(data);
+                }
+            });
         });
 
         //btn edit
@@ -220,9 +235,9 @@
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for...">
+                            <input class="form-control" type="text" placeholder="Search for..." id="input_search">
                             <span class="input-group-btn">
-                                <button class="btn btn-success" type="button">
+                                <button class="btn btn-success" type="button" id="btn_search">
                                   <i class="fa fa-search"></i>
                                 </button>
                             </span>

@@ -238,6 +238,45 @@
                 </tr>';
 		}
 	}
+
+	//btn search--------------------------------
+	
+	if (isset($_POST["get_info_items_search"])) {
+		$i = 0;
+		$search =  $_POST["send_search"];
+		$sql = "SELECT * FROM hanghoa, hangtonkho, loaihang WHERE hanghoa.MaHH=hangtonkho.MaHH AND hanghoa.MaLoai=loaihang.MaLoai AND hanghoa.TenHH LIKE %$search% ";
+		$run_query = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($run_query) > 0){
+			while ($row = mysqli_fetch_array($run_query)) {
+		    	$mahh = $row['MaHH'];
+				$tenhh = $row['TenHH'];
+				$tenloai = $row['TenLoaiH'];
+				$sl = $row['SoLuong'];
+				$stt = $row['TinhTrang'];
+				$j = $i++;
+				$id = "td_name_item_$i";
+				
+				echo '<tr>
+						<td class="input_check">
+							<input type="checkbox" class="form-check-input" value="">
+						</td>
+	                    <td>'.$tenhh.'</td>
+	                    <td>'.$tenloai.'</td>
+	                    <td>'.$sl.'</td>
+	                    <td>'.$stt.'</td>
+	                    <td>
+	                    <a href="#" class="btn_edit"  id="'.$mahh.'">
+	                    	<i class="fa fa-pencil-square fa-2x edt_btn" aria-hidden="true" data-toggle="modal" data-target="#modal-item"
+	                    		id="'.$mahh.'"></i>
+	                    </a>
+	                    </td>
+	                </tr>';
+			}
+		}else {
+			echo 'Không có kết quả tìm kiếm';
+		}
+	}
+
 	// get info to edit
 	if (isset($_POST["get_edt_info_items"])) {
 		$id_item = $_POST["send_id_item"];
@@ -297,6 +336,8 @@
 		}
 	}
 
+	//------------update items--------------------
+	
 	if(isset($_POST["update_data_item"])){
 		$barcode = $_POST["send_item_id"];
 		$name_item = $_POST["send_item_name"];
