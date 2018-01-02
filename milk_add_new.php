@@ -76,7 +76,6 @@
         //event for btn save of page
         $("#add_item_form").on('submit',(function(e) {
             e.preventDefault();
-
             var name_item = $("#name_item").val();
             var item_price = $("#item_price").val();
             var item_unit = $("#item_unit").val();
@@ -115,6 +114,15 @@
             });
 
         }));
+
+        //button logout
+        $("body").delegate("#btn_logout", "click", function(event) {
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {logout_require:1}
+          });
+        });
 
       });
     </script>
@@ -398,7 +406,7 @@
               <div class="modal-body">Chọn "Thoát" để kết thúc phiên làm việc.</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
-                <a class="btn btn-primary" href="login.php">Thoát</a>
+                <a class="btn btn-primary" href="login.php" id="btn_logout">Thoát</a>
               </div>
             </div>
           </div>
