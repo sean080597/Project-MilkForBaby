@@ -426,7 +426,7 @@
 	}
 
 	/*===================== * milk_export * ===============================================================*/
-	//add data from hanghoa
+	//get data from hdban table
 	if (isset($_POST["get_bill_details"])) {
 		$sql = "SELECT * FROM `hdban`";
 		$run_query = mysqli_query($conn, $sql);
@@ -448,10 +448,37 @@
                         <td>'.number_format($total, 0, ".", ",").' VNĐ</td>
                         <td>'.$day.'</td>
                         <td>
-		                    <a href="#" class="btn_edit">
+		                    <a href="#" class="btn_edit" billId="'.$billId.'">
 		                    	<i class="fa fa-list" aria-hidden="true" data-toggle="modal" data-target="#modal-item"></i>
 		                    </a>
 	                    </td>
+                    </tr>';
+			}
+		}
+	}
+
+	//get details of a bill
+	if (isset($_POST['get_details_of_a_bill'])) {
+		$billId = $_POST['bill_id'];
+		
+		$sql = "SELECT * FROM hanghoa h, ct_hdban c WHERE h.MaHH=c.MaHH AND c.MaHDB='$billId'";
+		$run_query = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($run_query) > 0) {
+			while ($row = mysqli_fetch_array($run_query)) {
+				$tenhh = $row['TenHH'];
+				$giaban = $row['GiaBan'];
+				$qty = $row['SoLuong'];
+				$km = $row['KhuyenMai'];
+				$vat = $row['Vat'];
+				$thanhtien = $row['ThanhTien'];
+
+			    echo '<tr>
+                        <td>'.$tenhh.'</td>
+                        <td>'.$giaban.'</td>
+                        <td>'.$qty.'</td>
+                        <td>'.$km.'</td>
+                        <td>'.$vat.'</td>
+                        <td>'.$thanhtien.'</td>
                     </tr>';
 			}
 		}

@@ -21,6 +21,13 @@ li.btn-add-new-item{
 	color: #FFFFFF;
 }
 
+#table_details_of_bill thead tr th{
+	text-align: center;
+}
+#table_details_of_bill tbody tr td{
+	text-align: center;
+}
+
 .container-items{
 	width: 100%;
 }

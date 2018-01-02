@@ -42,7 +42,7 @@
             success: function(data){
               if (data == 1) {
                 alert("Đăng nhập thành công");
-                location.href = "http://localhost:8888/Project-MilkForBaby/milk_cart.php";
+                location.href = "http://localhost:8888/Project-MilkForBaby/index.php";
               }else{
                 alert("Sai tên đăng nhập hoặc mật khẩu");
               }

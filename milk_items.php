@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true) {
+    }else {
+        echo 'Bạn hãy đăng nhập để thấy trang';
+        echo '<script>location.href = "http://localhost:8888/project-MilkForBaby/login.php";</script>';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,9 +115,16 @@
                     location.reload();
                 }
             });
-
         });
 
+        //button logout
+        $("body").delegate("#btn_logout", "click", function(event) {
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {logout_require:1}
+          });
+        });
 
       });
     </script>
@@ -117,7 +134,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="index.php">Milk for Baby</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

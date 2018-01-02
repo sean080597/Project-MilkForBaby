@@ -38,19 +38,9 @@
     <script src="js/accounting.min.js"></script>
     <!--0000000000000000000000000000000000-->
     
-
     <script>
         $(document).ready(function() {
-           //button logout
-            $("body").delegate("#btn_logout", "click", function(event) {
-              $.ajax({
-                url: 'action.php',
-                method: 'POST',
-                data: {logout_require:1}
-              });
-            }); 
-
-            //button search
+           //button search
             $("body").delegate("#btn_search", "click", function(event) {
                 var searchText = $("#input_search").val();
                 $.ajax({
@@ -63,6 +53,15 @@
                 });
             });
 
+            //button logout
+            $("body").delegate("#btn_logout", "click", function(event) {
+              $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {logout_require:1}
+              });
+            });
+
         });
     </script>
 
@@ -71,7 +70,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="index.php">Milk for Baby</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true) {
+    }else {
+        echo 'Bạn hãy đăng nhập để thấy trang';
+        echo '<script>location.href = "http://localhost:8888/project-MilkForBaby/login.php";</script>';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>Milk for Baby</title>
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -36,6 +46,29 @@
                 }
             });
         }
+
+        //button logout
+        $("body").delegate("#btn_logout", "click", function(event) {
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {logout_require:1}
+          });
+        });
+
+        //button show details of bill
+        $("body").delegate(".btn_edit", "click", function(event) {
+            var billId = $(this).attr("billId");
+            $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {get_details_of_a_bill:1, bill_id:billId},
+                success: function(data){
+                    $("#info_items").html(data);
+                }
+            });
+        });
+
       });
     </script>
 
@@ -44,7 +77,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="index.php">Milk for Baby</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -212,21 +245,8 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.container-items-->
-        <!-- /.content-wrapper-->
-        <footer class="sticky-footer">
-            <div class="container">
-                <div class="text-center">
-                    <small>Copyright © Milk for Baby 2017</small>
-                </div>
-            </div>
-        </footer>
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fa fa-angle-up"></i>
-        </a>
 
-         <!--Add value Modal-->
+        <!--Add value Modal-->
         <div class="modal fade" id="modal-item">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -237,7 +257,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                       <table class="table table-hover">
+                       <table class="table table-hover" id="table_details_of_bill">
                             <thead class="thead">
                                 <tr>
                                     <th class="name_item_modal">Tên Hàng</th>
@@ -254,7 +274,9 @@
                                     <td>2</td>
                                     <td>3</td>
                                     <td>4</td>
-                                </tr>-->
+                                    <td>5</td>
+                                    <td>6</td>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -266,7 +288,19 @@
                 </div>
             </div>
         </div>
-
+        <!-- /.container-items-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+          <div class="container">
+            <div class="text-center">
+              <small>Copyright © Milk For Baby 2017</small>
+            </div>
+          </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fa fa-angle-up"></i>
+        </a>
         <!-- Logout Modal-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -280,7 +314,7 @@
               <div class="modal-body">Chọn "Thoát" để kết thúc phiên làm việc.</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
-                <a class="btn btn-primary" href="login.html">Thoát</a>
+                <a class="btn btn-primary" href="login.php" id="btn_logout">Thoát</a>
               </div>
             </div>
           </div>

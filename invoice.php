@@ -1,5 +1,11 @@
 <?php 
     session_start();
+
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true) {
+    }else {
+        echo 'Bạn hãy đăng nhập để thấy trang';
+        echo '<script>location.href = "http://localhost:8888/project-MilkForBaby/login.php";</script>';
+    }
 ?>
 
 <!DOCTYPE html>
