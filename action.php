@@ -209,14 +209,18 @@
 	/*======================== * milk_items * ===============================================================*/
 	//get data from hanghoa
 	if (isset($_POST["get_info_items"])) {
+		$i = 0;
 		$sql = "SELECT * FROM hanghoa, hangtonkho, loaihang WHERE hanghoa.MaHH=hangtonkho.MaHH AND hanghoa.MaLoai=loaihang.MaLoai";
 		$run_query = mysqli_query($conn, $sql);
 		while ($row = mysqli_fetch_array($run_query)) {
+			$mahh = $row['MaHH'];
 			$tenhh = $row['TenHH'];
 			$tenloai = $row['TenLoaiH'];
 			$sl = $row['SoLuong'];
 			$stt = $row['TinhTrang'];
-
+			$j = $i++;
+			$id = "td_name_item_$i";
+			
 			echo '<tr>
 					<td class="input_check">
 						<input type="checkbox" class="form-check-input" value="">
@@ -226,11 +230,52 @@
                     <td>'.$sl.'</td>
                     <td>'.$stt.'</td>
                     <td>
-                    <a href="#" class="btn_edit">
-                    	<i class="fa fa-pencil-square fa-2x" aria-hidden="true" data-toggle="modal" data-target="#modal-item"></i>
+                    <a href="#" class="btn_edit"  id="'.$mahh.'">
+                    	<i class="fa fa-pencil-square fa-2x edt_btn" aria-hidden="true" data-toggle="modal" data-target="#modal-item"
+                    		id="'.$mahh.'"></i>
                     </a>
                     </td>
                 </tr>';
+		}
+	}
+	// get info to edit
+	if (isset($_POST["get_edt_info_items"])) {
+		$id_item = $_POST["send_id_item"];
+
+		$sql = "SELECT * FROM hanghoa, hangtonkho, loaihang WHERE hanghoa.MaHH=hangtonkho.MaHH AND hanghoa.MaLoai=loaihang.MaLoai AND hanghoa.MaHH = '$id_item' ";
+		$run_query = mysqli_query($conn, $sql);
+		while ($row = mysqli_fetch_array($run_query)) {
+			$mahh = $row['MaHH'];
+			$tenhh = $row['TenHH'];
+			$giaban = $row['GiaBan'];
+			$tinhtrang = $row['TinhTrang'];
+
+			echo '<form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Mã hàng hóa</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="" value="'.$mahh.'">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Tên</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="" value="'.$tenhh.'">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Giá bán</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="" value="'.$giaban.'">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Tình trạng</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="" value="'.$tinhtrang.'">
+                                </div>
+                            </div>
+                        </form>';
 		}
 	}
 

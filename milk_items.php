@@ -46,6 +46,24 @@
             data: {logout_require:1}
           });
         });
+
+        //btn edit
+        $("body").delegate(".edt_btn","click", function(event){
+            event.preventDefault();
+            var id_item = $(this).attr('id');
+            $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {get_edt_info_items:1,
+                        send_id_item: id_item},
+                success: function(data){
+                  $('#modal_body').html(data);
+                }
+              });
+        });
+
+
+
       });
     </script>
 
@@ -258,8 +276,8 @@
                             &times;
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal">
+                    <div class="modal-body" id="modal_body">
+                        <!-- <form class="form-horizontal">
                             <div class="form-group">
                                 <label class="control-label col-sm-5">Mã hàng hóa</label>
                                 <div class="col-sm-10">
@@ -284,7 +302,7 @@
                                     <input type="text" class="form-control" id="">
                                 </div>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success btn-sm">
