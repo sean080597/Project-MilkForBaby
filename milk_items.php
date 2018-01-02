@@ -231,7 +231,7 @@
             <!-- /.container-fluid-->
         </div>
         <!-- container-item-->
-        <div class="container-items">
+        <div class="container-fluid container-items">
             <table class="table table-hover">
                 <thead class="thead">
                     <tr>

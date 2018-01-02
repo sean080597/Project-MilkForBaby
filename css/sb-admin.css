@@ -18,7 +18,7 @@ body.sticky-footer {
 }
 
 body.sticky-footer .content-wrapper {
-    width: 82.5%;
+    /*width: 90%;*/
 }
 
 body.fixed-nav {

@@ -381,7 +381,7 @@
                     <a href="milk_add_new.php">Thêm hàng hóa</a>
                 </li>
                 <li>
-                    <a href="milk_type_items.html">Loại hàng hóa</a>
+                    <a href="milk_type_items.php">Loại hàng hóa</a>
                 </li>
             </ul>
         </li>
@@ -496,7 +496,7 @@
                 <label class="product-name">Tên hàng</label>
                 <label class="product-unit">Đơn vị</label>
                 <label class="product-quantity">Số lượng</label>
-                <label class="product-price">Đơn giá (VNĐ)</label>
+                <label class="product-price">Đơn giá</label>
                 <label class="product-discount">Chiết khấu</label>
                 <label class="product-removal">Bỏ</label>
                 <label class="product-line-price">Thành tiền (VNĐ)</label>

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true) {
+    }else {
+    echo 'Bạn hãy đăng nhập để thấy trang';
+    echo '<script>location.href = "http://localhost:8888/project-MilkForBaby/login.php";</script>';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>Milk for Baby</title>
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -64,36 +74,56 @@
         });
 
         //event for btn save of page
-        $("body").delegate(".btn_save_item","click",function(event){
-
+        $("#add_item_form").on('submit',(function(e) {
+            e.preventDefault();
             var name_item = $("#name_item").val();
-            var barcode = $("#barcode").val();
             var item_price = $("#item_price").val();
             var item_unit = $("#item_unit").val();
             var type_item = $("#type_item").val();
+            var barcode = $("#barcode").val();
+            barcode = type_item + barcode;
             
             var selectedFile = document.getElementById("input_image_link");
             var link = "http://localhost:8888/Project-MilkForBaby/imgs/" + selectedFile.files.item(0).name;
 
-            //if(name_item===""||barcode==="")
             $.ajax({
-                url: 'action.php',
-                method: 'POST',
-                data: {add_new_item: 1,
-                        send_name_item:name_item,
-                        send_barcode: barcode,
-                        send_item_price: item_price,
-                        send_linkImg: link,
-                        send_item_unit: item_unit,
-                        send_type_item: type_item
-                        },
+                url: "uploadImage.php",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
                 success: function(data){
-                    alert(data);
-                    location.reload();
+                    $.ajax({
+                        url: 'action.php',
+                        method: 'POST',
+                        data: {add_new_item: 1,
+                                send_name_item:name_item,
+                                send_barcode: barcode,
+                                send_item_price: item_price,
+                                send_linkImg: link,
+                                send_item_unit: item_unit,
+                                send_type_item: type_item
+                                },
+                        success: function(data){
+                            alert(data);
+                            location.reload();
+                        }
+                    });
                 }
             });
 
+        }));
+
+        //button logout
+        $("body").delegate("#btn_logout", "click", function(event) {
+          $.ajax({
+            url: 'action.php',
+            method: 'POST',
+            data: {logout_require:1}
+          });
         });
+
       });
     </script>
 
@@ -260,15 +290,13 @@
             <!-- Area Input Example-->
             <div class="area-addnew">
                 <div class="content-addnew">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="add_item_form" action="uploadImage.php" method="post">
                         <div class="form-inline input_css">
                             <label class="control-label col-sm-4 text-success" for="name_item">
                             Tên sản phẩm: 
                             </label>
                             <div class="col-sm">
-                                <input type="text" name="" id="name_item" 
-                                placeholder="Nhập tên sản phẩm"
-                                class="form-control">
+                                <input type="text" id="name_item" placeholder="Nhập tên sản phẩm" class="form-control" maxlength="50" required>
                             </div>
                         </div>
                         <div class="form-inline input_css">
@@ -276,9 +304,7 @@
                             Mã sản phẩm: 
                             </label>
                             <div class="col-sm">
-                                <input type="text" name="" id="barcode" 
-                                placeholder="Nhập mã sản phẩm"
-                                class="form-control">
+                                <input type="text" id="barcode" placeholder="Nhập mã sản phẩm" class="form-control" maxlength="10" required>
                             </div>
                         </div>
                         <div class="form-inline input_css">
@@ -286,9 +312,7 @@
                             Đơn giá: 
                             </label>
                             <div class="col-sm">
-                                <form>
-                                    <input type="number" placeholder="Nhập giá sản phẩm" class="form-control" id="item_price" min="0" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 189 ? false : true">
-                                </form>
+                                <input type="number" placeholder="Nhập giá sản phẩm" class="form-control" id="item_price" min="0" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 189 ? false : true" required>
                             </div>
                         </div>
                         <div class="form-inline input_css">
@@ -296,9 +320,7 @@
                             Đơn vị tính:
                             </label>
                             <div class="col-sm">
-                                <input type="text" name="" id="item_unit" 
-                                placeholder="Nhập DVT"
-                                class="form-control">
+                                <input type="text" id="item_unit" placeholder="Nhập DVT" class="form-control" maxlength="10" required>
                             </div>
                         </div>
                         <div class="form-inline input_css">
@@ -306,7 +328,7 @@
                             Link ảnh:  
                             </label>
                             <div class="col-sm">
-                                <input type="file" id="input_image_link">
+                                <input type="file" accept="image/png, image/jpeg, image/gif" id="input_image_link" name="upload_photo" required>
                             </div>
                         </div>
                         <div class="form-inline input_css">
@@ -316,11 +338,11 @@
                             <div class="col-sm">
                                 <select name="cbTypeItem" size=1 onChange="" id="type_item">
                                 </select>
-                                <button type="button" class="bt btn-outline-success btn-sm" data-toggle=modal data-target=#add-type-modal>Thêm loại</button>
+                                <button type="button" class="bt btn-outline-success btn-sm" data-toggle="modal" data-target="#add-type-modal">Thêm loại</button>
                             </div>
                         </div>
                         <div class="block_btn">
-                            <button type="button" class="btn btn-success btn-sm btn_save_item " id="btn_save">Lưu</button>
+                            <button type="submit" class="btn btn-success btn-sm btn_save_item" id="btn_save">Lưu</button>
                         </div>
                     </form>
                 </div>
@@ -353,13 +375,13 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Tên</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input_add_type_name" placeholder="Enter name">
+                                    <input type="text" class="form-control" id="input_add_type_name" placeholder="Nhập tên loại">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Mã</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input_add_type_code" placeholder="Enter code">
+                                    <input type="text" class="form-control" id="input_add_type_code" placeholder="Nhập mã loại">
                                 </div>
                             </div>
                         </form>
@@ -384,7 +406,7 @@
               <div class="modal-body">Chọn "Thoát" để kết thúc phiên làm việc.</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
-                <a class="btn btn-primary" href="login.php">Thoát</a>
+                <a class="btn btn-primary" href="login.php" id="btn_logout">Thoát</a>
               </div>
             </div>
           </div>
