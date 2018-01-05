@@ -244,7 +244,7 @@
 	if (isset($_POST["get_info_items_search"])) {
 		$i = 0;
 		$search =  $_POST["send_search"];
-		$sql = "SELECT * FROM hanghoa, hangtonkho, loaihang WHERE hanghoa.MaHH=hangtonkho.MaHH AND hanghoa.MaLoai=loaihang.MaLoai AND hanghoa.TenHH LIKE %$search% ";
+		$sql = "SELECT * FROM hanghoa, hangtonkho, loaihang WHERE hanghoa.MaHH=hangtonkho.MaHH AND hanghoa.MaLoai=loaihang.MaLoai AND hanghoa.TenHH LIKE '%$search%' ";
 		$run_query = mysqli_query($conn, $sql);
 		if (mysqli_num_rows($run_query) > 0){
 			while ($row = mysqli_fetch_array($run_query)) {

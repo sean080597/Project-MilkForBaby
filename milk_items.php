@@ -50,15 +50,6 @@
           });
         }
 
-
-        //button logout
-        $("body").delegate("#btn_logout", "click", function(event) {
-          $.ajax({
-            url: 'action.php',
-            method: 'POST',
-            data: {logout_require:1}
-          });
-        });
         //btn search
         $("body").delegate("#btn_search", "click", function(event) {
             event.preventDefault();
