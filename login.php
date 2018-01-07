@@ -1,7 +1,7 @@
 <?php
   session_start();
   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true) {
-    echo '<script>location.href = "http://localhost:8888/project-MilkForBaby/milk_cart.php";</script>';
+    echo '<script>location.href = "http://localhost:8888/project-MilkForBaby/index.php";</script>';
   }
 ?>
 

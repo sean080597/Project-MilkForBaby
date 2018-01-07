@@ -32,8 +32,6 @@
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
     
     <script type="text/javascript">
       $(document).ready(function(){
@@ -391,6 +389,9 @@
         </div>
         <a href="#" class="success"></a>
     </div>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
 
 </body>
 
