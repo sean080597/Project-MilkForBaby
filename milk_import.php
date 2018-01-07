@@ -200,7 +200,7 @@
                 <li class="breadcrumb-item active">Hóa đơn nhập</li>
                 <li class="btn-add-new-item">
                     <div class="form-inline">
-                        <a href="milk_import_bills.html" class="margin-a">
+                        <a href="milk_import_bills.php" class="margin-a">
                             <button type="button" class="btn btn-outline-success btn-sm">
                                 Thêm mới
                             </button>
@@ -215,7 +215,7 @@
                                 Xóa
                             </button>
                         </a>
-                        <a href="index.html" class="text-success">
+                        <a href="index.php" class="text-success">
                             Quay lại
                         </a>
                     </div>
