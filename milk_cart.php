@@ -475,9 +475,9 @@
 
         <!-- Search product -->
         <form action="milk_cart.php" method="post" class="input-group input-group-sm custom-form-search col-lg-5 col-md-5 col-sm-5 col-xs-5">
-          <input type="text" name="search" class="form-control" placeholder="Enter name">
+          <input type="text" name="search" class="form-control" placeholder="Nhập tên sản phẩm">
           <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">Search</button>
+            <button type="submit" class="btn btn-default">Tìm kiếm</button>
           </span>
         </form>
 

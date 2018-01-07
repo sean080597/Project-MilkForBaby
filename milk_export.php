@@ -213,7 +213,7 @@
                         <a href="#" class="margin-a">
                             <button type="button" class="btn btn-outline-success btn-sm">Xóa</button>
                         </a>
-                        <a href="index.html" class="text-success">Quay lại</a>
+                        <a href="index.php" class="text-success">Quay lại</a>
                     </div>
                 </li>
             </ol>
