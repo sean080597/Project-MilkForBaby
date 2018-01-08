@@ -5,7 +5,7 @@
 	mysqli_set_charset($conn, "utf8");
 
 	if (mysqli_connect_errno()) {
-	echo "Failed to connect MySQL".mysqli_connect_error();
+		echo "Failed to connect MySQL".mysqli_connect_error();
 	}
 
 	//add to cart
@@ -328,7 +328,7 @@
                     <div class="form-inline">
                         <label class="control-label col-sm-4">Giá bán</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="modal_price" value="'.$giaban.'">
+                            <input type="number" class="form-control" id="modal_price" value="'.$giaban.'" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 189 ? false : true">
                         </div>
                     </div>
                     <div class="form-inline">

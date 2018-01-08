@@ -247,19 +247,19 @@
                         <div>
                             <ul class="ul_search">
                                 <li>
-                                    <div class="item_1 " style="background-image: url('http://imgholder.ru/160x150/ccc/333.png?text=placeholder');">    
+                                    <div class="item_1" style="background-image: url('imgs/333.png');">    
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="item_1 " style="background-image: url('http://imgholder.ru/160x150/ccc/333.png?text=placeholder');">    
+                                    <div class="item_1" style="background-image: url('imgs/333.png');">    
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="item_1 " style="background-image: url('http://imgholder.ru/160x160/ccc/333.png?text=placeholder');">    
+                                    <div class="item_1" style="background-image: url('imgs/333.png');">    
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="item_1 " style="background-image: url('http://imgholder.ru/160x150/ccc/333.png?text=placeholder');">    
+                                    <div class="item_1" style="background-image: url('imgs/333.png');">    
                                     </div>
                                 </li>
                             </ul>
